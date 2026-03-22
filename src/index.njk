@@ -72,12 +72,13 @@ permalink: /index.html
       inset: auto 24px 24px auto;
       width: 112px;
       height: 136px;
-      border: 2px dashed rgba(40, 87, 107, 0.24);
+      border: 2px dashed rgba(40, 87, 107, 0.3);
       border-radius: 12px;
       background:
-        linear-gradient(180deg, rgba(93, 143, 163, 0.1), rgba(216, 121, 89, 0.08)),
-        repeating-linear-gradient(180deg, transparent 0 10px, rgba(40, 87, 107, 0.08) 10px 12px);
-      box-shadow: 0 8px 18px rgba(40, 87, 107, 0.09);
+        linear-gradient(180deg, rgba(93, 143, 163, 0.16), rgba(216, 121, 89, 0.12)),
+        repeating-linear-gradient(180deg, transparent 0 10px, rgba(40, 87, 107, 0.12) 10px 12px);
+      box-shadow: 0 8px 18px rgba(40, 87, 107, 0.12);
+      z-index: 0;
     }
 
     .coffee-ring,
@@ -85,32 +86,45 @@ permalink: /index.html
     .crab-mark {
       position: absolute;
       pointer-events: none;
-      opacity: 0.18;
+      z-index: 0;
     }
 
     .coffee-ring {
-      top: 1.1rem;
-      right: 8.5rem;
-      width: 170px;
-      height: 170px;
-      border: 5px solid rgba(109, 74, 56, 0.2);
+      top: 1.4rem;
+      right: 7rem;
+      width: 188px;
+      height: 188px;
+      border: 6px solid rgba(109, 74, 56, 0.28);
       border-radius: 50%;
       transform: rotate(-10deg);
-      box-shadow: inset 0 0 0 12px rgba(109, 74, 56, 0.05);
+      box-shadow:
+        inset 0 0 0 12px rgba(109, 74, 56, 0.07),
+        0 0 0 2px rgba(109, 74, 56, 0.06);
+      opacity: 0.55;
+      mix-blend-mode: multiply;
     }
 
     .compass {
-      left: -1.2rem;
-      bottom: 6rem;
-      width: 96px;
-      height: 96px;
+      left: 1rem;
+      bottom: 4.5rem;
+      width: 128px;
+      height: 128px;
+      opacity: 0.72;
+      filter: drop-shadow(0 6px 8px rgba(40, 87, 107, 0.08));
     }
 
     .crab-mark {
-      right: 2.2rem;
-      top: 18rem;
-      width: 86px;
-      height: 86px;
+      right: 3.2rem;
+      top: 21rem;
+      width: 110px;
+      height: 110px;
+      opacity: 0.78;
+      filter: drop-shadow(0 5px 8px rgba(109, 74, 56, 0.08));
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
     }
 
     header {
@@ -204,7 +218,7 @@ permalink: /index.html
     .rack,
     .steps,
     .harbor-card {
-      background: rgba(255,255,255,0.56);
+      background: rgba(255,255,255,0.62);
       border: 1px solid rgba(40, 87, 107, 0.12);
       border-radius: 18px;
       padding: 1.15rem 1.15rem 1rem;
@@ -249,7 +263,7 @@ permalink: /index.html
     .harbor-meta li {
       padding: 0.85rem 0.95rem;
       border-radius: 14px;
-      background: rgba(245, 251, 255, 0.72);
+      background: rgba(245, 251, 255, 0.76);
       border: 1px solid rgba(93, 143, 163, 0.16);
     }
 
@@ -264,7 +278,7 @@ permalink: /index.html
       margin-top: 1.5rem;
       padding: 1.15rem 1.2rem;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(244, 201, 107, 0.16), rgba(93, 143, 163, 0.08));
+      background: linear-gradient(135deg, rgba(244, 201, 107, 0.18), rgba(93, 143, 163, 0.1));
       border: 1px solid rgba(216, 121, 89, 0.14);
     }
 
@@ -287,7 +301,7 @@ permalink: /index.html
     .harbor-card {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(245,251,255,0.62));
+      background: linear-gradient(180deg, rgba(255,255,255,0.74), rgba(245,251,255,0.66));
     }
 
     .harbor-card::after {
@@ -297,7 +311,7 @@ permalink: /index.html
       right: 0;
       width: 64px;
       height: 64px;
-      background: linear-gradient(135deg, rgba(244, 201, 107, 0.22), rgba(216, 121, 89, 0.12));
+      background: linear-gradient(135deg, rgba(244, 201, 107, 0.28), rgba(216, 121, 89, 0.16));
       border-bottom-left-radius: 18px;
     }
 
@@ -351,10 +365,28 @@ permalink: /index.html
       .harbor-grid .harbor-card { grid-column: auto; }
       .stamp-stack { justify-items: start; }
       .postcard { padding: 1.35rem; }
-      .postcard::after,
-      .coffee-ring,
-      .compass,
-      .crab-mark { opacity: 0.28; }
+      .postcard::after { opacity: 0.45; }
+      .coffee-ring {
+        top: 1.5rem;
+        right: 1rem;
+        width: 120px;
+        height: 120px;
+        opacity: 0.35;
+      }
+      .compass {
+        left: 0.5rem;
+        bottom: 2rem;
+        width: 88px;
+        height: 88px;
+        opacity: 0.4;
+      }
+      .crab-mark {
+        right: 1rem;
+        top: 25rem;
+        width: 84px;
+        height: 84px;
+        opacity: 0.44;
+      }
     }
   </style>
 </head>
@@ -363,187 +395,189 @@ permalink: /index.html
     <div class="postcard">
       <div class="coffee-ring"></div>
       <svg class="compass" viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(40,87,107,0.45)" stroke-width="2"></circle>
-        <circle cx="50" cy="50" r="26" fill="none" stroke="rgba(216,121,89,0.35)" stroke-width="1.5"></circle>
-        <path d="M50 10 L58 42 L50 50 L42 42 Z" fill="rgba(40,87,107,0.30)"></path>
-        <path d="M50 90 L42 58 L50 50 L58 58 Z" fill="rgba(216,121,89,0.25)"></path>
-        <path d="M10 50 L42 42 L50 50 L42 58 Z" fill="rgba(40,87,107,0.18)"></path>
-        <path d="M90 50 L58 42 L50 50 L58 58 Z" fill="rgba(216,121,89,0.18)"></path>
+        <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(40,87,107,0.58)" stroke-width="2.2"></circle>
+        <circle cx="50" cy="50" r="26" fill="none" stroke="rgba(216,121,89,0.48)" stroke-width="1.8"></circle>
+        <path d="M50 10 L58 42 L50 50 L42 42 Z" fill="rgba(40,87,107,0.42)"></path>
+        <path d="M50 90 L42 58 L50 50 L58 58 Z" fill="rgba(216,121,89,0.34)"></path>
+        <path d="M10 50 L42 42 L50 50 L42 58 Z" fill="rgba(40,87,107,0.26)"></path>
+        <path d="M90 50 L58 42 L50 50 L58 58 Z" fill="rgba(216,121,89,0.26)"></path>
       </svg>
       <svg class="crab-mark" viewBox="0 0 100 100" aria-hidden="true">
-        <ellipse cx="50" cy="56" rx="18" ry="12" fill="none" stroke="rgba(109,74,56,0.46)" stroke-width="3"></ellipse>
-        <path d="M32 54 C20 46, 16 36, 24 30" fill="none" stroke="rgba(109,74,56,0.46)" stroke-width="3" stroke-linecap="round"></path>
-        <path d="M68 54 C80 46, 84 36, 76 30" fill="none" stroke="rgba(109,74,56,0.46)" stroke-width="3" stroke-linecap="round"></path>
-        <path d="M38 68 L26 78 M44 70 L36 84 M56 70 L64 84 M62 68 L74 78" fill="none" stroke="rgba(109,74,56,0.42)" stroke-width="3" stroke-linecap="round"></path>
-        <circle cx="43" cy="44" r="2.5" fill="rgba(40,87,107,0.5)"></circle>
-        <circle cx="57" cy="44" r="2.5" fill="rgba(40,87,107,0.5)"></circle>
+        <ellipse cx="50" cy="56" rx="18" ry="12" fill="none" stroke="rgba(109,74,56,0.62)" stroke-width="3.2"></ellipse>
+        <path d="M32 54 C20 46, 16 36, 24 30" fill="none" stroke="rgba(109,74,56,0.62)" stroke-width="3.2" stroke-linecap="round"></path>
+        <path d="M68 54 C80 46, 84 36, 76 30" fill="none" stroke="rgba(109,74,56,0.62)" stroke-width="3.2" stroke-linecap="round"></path>
+        <path d="M38 68 L26 78 M44 70 L36 84 M56 70 L64 84 M62 68 L74 78" fill="none" stroke="rgba(109,74,56,0.54)" stroke-width="3.2" stroke-linecap="round"></path>
+        <circle cx="43" cy="44" r="2.8" fill="rgba(40,87,107,0.62)"></circle>
+        <circle cx="57" cy="44" r="2.8" fill="rgba(40,87,107,0.62)"></circle>
       </svg>
 
-      <header>
-        <div>
-          <span class="eyebrow">Beach desk dispatch no. 01</span>
-          <h1>crustaceans.sh</h1>
-          <p class="lede">A postcard rack for the OpenClaw coast: sun-warmed shells, coffee rings on travel stationery, and a useful map for anyone who wanders in asking what all these little crustaceans are doing with compute.</p>
-        </div>
-        <div class="stamp-stack">
-          <div class="stamp-card">
-            <p class="stamp-title">Stamped from</p>
-            <p class="stamp-note">Tahiti shimmer, Bahamas calm, Florida heat, and a very orderly workbench hidden behind the dunes.</p>
+      <div class="content">
+        <header>
+          <div>
+            <span class="eyebrow">Beach desk dispatch no. 01</span>
+            <h1>crustaceans.sh</h1>
+            <p class="lede">A postcard rack for the OpenClaw coast: sun-warmed shells, coffee rings on travel stationery, and a useful map for anyone who wanders in asking what all these little crustaceans are doing with compute.</p>
           </div>
-          <div class="coffee-card">
-            <p class="stamp-title">House fuel</p>
-            <p class="stamp-note">Café allongé, shell sorting, and enough tide-watching to make the links feel curated instead of dumped.</p>
+          <div class="stamp-stack">
+            <div class="stamp-card">
+              <p class="stamp-title">Stamped from</p>
+              <p class="stamp-note">Tahiti shimmer, Bahamas calm, Florida heat, and a very orderly workbench hidden behind the dunes.</p>
+            </div>
+            <div class="coffee-card">
+              <p class="stamp-title">House fuel</p>
+              <p class="stamp-note">Café allongé, shell sorting, and enough tide-watching to make the links feel curated instead of dumped.</p>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <main>
-        <div class="hero-grid">
-          <section class="panel hero-copy">
-            <span class="mini-label">What are people doing with all these crustaceans?</span>
-            <h2>They’re building tiny, stylish harbors for real work.</h2>
-            <p>OpenClaw, NanoClaw, PicoClaw, NemoClaw and their relations are being turned into personal command posts, self-hosted assistants, playful field labs, lightweight control rooms, and domestic little cloud-islands with surprisingly good manners. Some people use them to organize projects, some to route messages, some to host tools, and some because they like their infrastructure to feel less like drywall and more like a well-traveled desk near the sea.</p>
-            <p>The point of this site is to make the ecosystem feel legible: less “mysterious shell pile,” more “clear postcard from the coast explaining which pier goes where.”</p>
-          </section>
+        <main>
+          <div class="hero-grid">
+            <section class="panel hero-copy">
+              <span class="mini-label">What are people doing with all these crustaceans?</span>
+              <h2>They’re building tiny, stylish harbors for real work.</h2>
+              <p>OpenClaw, NanoClaw, PicoClaw, NemoClaw and their relations are being turned into personal command posts, self-hosted assistants, playful field labs, lightweight control rooms, and domestic little cloud-islands with surprisingly good manners. Some people use them to organize projects, some to route messages, some to host tools, and some because they like their infrastructure to feel less like drywall and more like a well-traveled desk near the sea.</p>
+              <p>The point of this site is to make the ecosystem feel legible: less “mysterious shell pile,” more “clear postcard from the coast explaining which pier goes where.”</p>
+            </section>
 
-          <aside class="panel hero-sidebar">
-            <span class="mini-label">Field guide</span>
-            <h2>The beachcoming crew</h2>
-            <ul class="crew-list">
-              <li><strong><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></strong><br />The main pier: the broadest map, the central dock, the one you hand to someone arriving cold.</li>
-              <li><strong><a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a></strong><br />Container-minded and understandable: small enough to grasp quickly, with secure isolation as a first-class habit. Source lives at <a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
-              <li><strong><a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a></strong><br />Fast and featherweight: Go-powered, under-10MB territory, built for tiny hardware and impatient people. Official code sits at <a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
-              <li><strong><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NemoClaw</a></strong><br />The safer deep-water route: sandboxed OpenClaw operations via NVIDIA OpenShell. Start with the <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">docs</a> or the <a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">repo</a>.</li>
-            </ul>
-          </aside>
-        </div>
-
-        <div class="section-band">
-          <p><strong>Short version:</strong> people are using these crustaceans to make computing feel personal again — more local, more composable, more eccentric, more hospitable. They are building workshops, not cubicles.</p>
-        </div>
-
-        <section class="steps" style="margin-top: 1.4rem;">
-          <span class="mini-label">This is how you set one up</span>
-          <h2>Set your umbrella, pour the coffee, then start with the official pier.</h2>
-          <ol>
-            <li>Read the main welcome page at <a href="https://openclaw.ai" target="_blank" rel="noopener">openclaw.ai</a> so you know the shape of the coastline before chasing side coves.</li>
-            <li>Keep the docs open at <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">docs.openclaw.ai</a> while you install and configure. This is the map table, not the souvenir stand.</li>
-            <li>Browse the source at <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a> when you want the real grain of the wood: repo structure, release rhythm, examples, and implementation details.</li>
-            <li>Choose your deployment style — a home machine, a worker-backed setup, a tiny node, a more serious harbor — and test locally before trying to wave in the whole marina.</li>
-            <li>Once it works, give it a better shell: name it, theme it, link it, document it, and make it welcoming to the next stranger who comes down the boardwalk.</li>
-          </ol>
-        </section>
-
-        <section class="steps" style="margin-top: 1.4rem;">
-          <span class="mini-label">Choose your harbor</span>
-          <h2>If you want X, start here</h2>
-          <div class="harbor-grid">
-            <article class="harbor-card">
-              <span class="mini-label">Broadest ecosystem</span>
-              <h2>OpenClaw</h2>
-              <p>The obvious starting pier when you want the mainline project, the biggest map, and the most canonical docs.</p>
-              <ul class="harbor-meta">
-                <li><strong>Best for:</strong> people who want the center of gravity and full ecosystem context.</li>
-                <li><strong>Tradeoff:</strong> bigger surface area, more moving parts, more to absorb.</li>
-                <li><strong>Start:</strong> <a href="https://openclaw.ai" target="_blank" rel="noopener">site</a> · <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">docs</a> · <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">repo</a></li>
+            <aside class="panel hero-sidebar">
+              <span class="mini-label">Field guide</span>
+              <h2>The beachcoming crew</h2>
+              <ul class="crew-list">
+                <li><strong><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></strong><br />The main pier: the broadest map, the central dock, the one you hand to someone arriving cold.</li>
+                <li><strong><a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a></strong><br />Container-minded and understandable: small enough to grasp quickly, with secure isolation as a first-class habit. Source lives at <a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
+                <li><strong><a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a></strong><br />Fast and featherweight: Go-powered, under-10MB territory, built for tiny hardware and impatient people. Official code sits at <a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
+                <li><strong><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NemoClaw</a></strong><br />The safer deep-water route: sandboxed OpenClaw operations via NVIDIA OpenShell. Start with the <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">docs</a> or the <a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">repo</a>.</li>
               </ul>
-            </article>
-
-            <article class="harbor-card">
-              <span class="mini-label">Smallest learning curve</span>
-              <h2>NanoClaw</h2>
-              <p>Good when you want the same general shape, but with container isolation, less bulk, and a codebase you can actually hold in your head.</p>
-              <ul class="harbor-meta">
-                <li><strong>Best for:</strong> tinkerers, security-minded people, and anyone allergic to sprawling codebases.</li>
-                <li><strong>Tradeoff:</strong> a leaner branch with less of the big-pier sprawl and lore.</li>
-                <li><strong>Start:</strong> <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">site</a> · <a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">repo</a></li>
-              </ul>
-            </article>
-
-            <article class="harbor-card">
-              <span class="mini-label">Tiny footprint</span>
-              <h2>PicoClaw</h2>
-              <p>The low-resource shoreline: Go-powered, sub-second startup, multi-arch friendly, and happy on very modest hardware.</p>
-              <ul class="harbor-meta">
-                <li><strong>Best for:</strong> Raspberry Pi dreams, edge hardware, low-RAM setups, and performance nerds.</li>
-                <li><strong>Tradeoff:</strong> a different design center than the main OpenClaw pier.</li>
-                <li><strong>Start:</strong> <a href="https://picoclaw.net/" target="_blank" rel="noopener">site</a> · <a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">repo</a></li>
-              </ul>
-            </article>
-
-            <article class="harbor-card">
-              <span class="mini-label">Safety-first sandbox</span>
-              <h2>NemoClaw</h2>
-              <p>The guarded harbor: an OpenClaw reference stack that adds OpenShell, policy controls, and a more security-forward posture.</p>
-              <ul class="harbor-meta">
-                <li><strong>Best for:</strong> people prioritizing safer always-on operation and sandboxing.</li>
-                <li><strong>Tradeoff:</strong> still alpha, with docs that explicitly warn against production use.</li>
-                <li><strong>Start:</strong> <a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">overview</a> · <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">docs</a> · <a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">repo</a></li>
-              </ul>
-            </article>
+            </aside>
           </div>
-        </section>
 
-        <div class="rack-grid">
-          <section class="rack">
-            <span class="mini-label">Main pier</span>
-            <h2>Start here</h2>
-            <ul class="link-list">
-              <li><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a> — the front desk and first stamp in the passport.</li>
-              <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener">Documentation</a> — install guides, config, and the practical route map.</li>
-              <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub source</a> — the tidepool where the actual machinery lives.</li>
-            </ul>
+          <div class="section-band">
+            <p><strong>Short version:</strong> people are using these crustaceans to make computing feel personal again — more local, more composable, more eccentric, more hospitable. They are building workshops, not cubicles.</p>
+          </div>
+
+          <section class="steps" style="margin-top: 1.4rem;">
+            <span class="mini-label">This is how you set one up</span>
+            <h2>Set your umbrella, pour the coffee, then start with the official pier.</h2>
+            <ol>
+              <li>Read the main welcome page at <a href="https://openclaw.ai" target="_blank" rel="noopener">openclaw.ai</a> so you know the shape of the coastline before chasing side coves.</li>
+              <li>Keep the docs open at <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">docs.openclaw.ai</a> while you install and configure. This is the map table, not the souvenir stand.</li>
+              <li>Browse the source at <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a> when you want the real grain of the wood: repo structure, release rhythm, examples, and implementation details.</li>
+              <li>Choose your deployment style — a home machine, a worker-backed setup, a tiny node, a more serious harbor — and test locally before trying to wave in the whole marina.</li>
+              <li>Once it works, give it a better shell: name it, theme it, link it, document it, and make it welcoming to the next stranger who comes down the boardwalk.</li>
+            </ol>
           </section>
 
-          <section class="rack">
-            <span class="mini-label">Useful side beaches</span>
-            <h2>Worth visiting next</h2>
-            <ul class="link-list">
-              <li><a href="https://github.com/openclaw/clawhub" target="_blank" rel="noopener">ClawHub</a> — shared skills, add-ons, and ecosystem browsing.</li>
-              <li><a href="https://github.com/hesamsheikh/awesome-openclaw-usecases" target="_blank" rel="noopener">Awesome OpenClaw Use Cases</a> — concrete examples of what people are actually doing.</li>
-              <li><a href="https://github.com/SamurAIGPT/awesome-openclaw" target="_blank" rel="noopener">Awesome OpenClaw</a> — broader community resources, tutorials, and tools.</li>
-              <li><a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw ecosystem</a> — lightweight/container-minded branch of the family.</li>
-              <li><a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw ecosystem</a> — Go-powered, tiny-footprint shoreline.</li>
-              <li><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NemoClaw ecosystem</a> — sandboxed, security-forward harbor.</li>
-            </ul>
+          <section class="steps" style="margin-top: 1.4rem;">
+            <span class="mini-label">Choose your harbor</span>
+            <h2>If you want X, start here</h2>
+            <div class="harbor-grid">
+              <article class="harbor-card">
+                <span class="mini-label">Broadest ecosystem</span>
+                <h2>OpenClaw</h2>
+                <p>The obvious starting pier when you want the mainline project, the biggest map, and the most canonical docs.</p>
+                <ul class="harbor-meta">
+                  <li><strong>Best for:</strong> people who want the center of gravity and full ecosystem context.</li>
+                  <li><strong>Tradeoff:</strong> bigger surface area, more moving parts, more to absorb.</li>
+                  <li><strong>Start:</strong> <a href="https://openclaw.ai" target="_blank" rel="noopener">site</a> · <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">docs</a> · <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">repo</a></li>
+                </ul>
+              </article>
+
+              <article class="harbor-card">
+                <span class="mini-label">Smallest learning curve</span>
+                <h2>NanoClaw</h2>
+                <p>Good when you want the same general shape, but with container isolation, less bulk, and a codebase you can actually hold in your head.</p>
+                <ul class="harbor-meta">
+                  <li><strong>Best for:</strong> tinkerers, security-minded people, and anyone allergic to sprawling codebases.</li>
+                  <li><strong>Tradeoff:</strong> a leaner branch with less of the big-pier sprawl and lore.</li>
+                  <li><strong>Start:</strong> <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">site</a> · <a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">repo</a></li>
+                </ul>
+              </article>
+
+              <article class="harbor-card">
+                <span class="mini-label">Tiny footprint</span>
+                <h2>PicoClaw</h2>
+                <p>The low-resource shoreline: Go-powered, sub-second startup, multi-arch friendly, and happy on very modest hardware.</p>
+                <ul class="harbor-meta">
+                  <li><strong>Best for:</strong> Raspberry Pi dreams, edge hardware, low-RAM setups, and performance nerds.</li>
+                  <li><strong>Tradeoff:</strong> a different design center than the main OpenClaw pier.</li>
+                  <li><strong>Start:</strong> <a href="https://picoclaw.net/" target="_blank" rel="noopener">site</a> · <a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">repo</a></li>
+                </ul>
+              </article>
+
+              <article class="harbor-card">
+                <span class="mini-label">Safety-first sandbox</span>
+                <h2>NemoClaw</h2>
+                <p>The guarded harbor: an OpenClaw reference stack that adds OpenShell, policy controls, and a more security-forward posture.</p>
+                <ul class="harbor-meta">
+                  <li><strong>Best for:</strong> people prioritizing safer always-on operation and sandboxing.</li>
+                  <li><strong>Tradeoff:</strong> still alpha, with docs that explicitly warn against production use.</li>
+                  <li><strong>Start:</strong> <a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">overview</a> · <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">docs</a> · <a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">repo</a></li>
+                </ul>
+              </article>
+            </div>
           </section>
 
-          <section class="rack">
-            <span class="mini-label">Community surf</span>
-            <h2>Where the chatter happens</h2>
-            <ul class="link-list">
-              <li><a href="https://discord.com/invite/clawd" target="_blank" rel="noopener">OpenClaw Discord</a> — the boardwalk where people compare shells, fixes, and experiments.</li>
-              <li><a href="https://github.com/openclaw/community" target="_blank" rel="noopener">Community repo</a> — server notes, policies, and public social scaffolding.</li>
-              <li><a href="https://docs.openclaw.ai/channels/discord" target="_blank" rel="noopener">Discord setup docs</a> — useful when your crustaceans want to speak in public.</li>
-            </ul>
-          </section>
-        </div>
+          <div class="rack-grid">
+            <section class="rack">
+              <span class="mini-label">Main pier</span>
+              <h2>Start here</h2>
+              <ul class="link-list">
+                <li><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a> — the front desk and first stamp in the passport.</li>
+                <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener">Documentation</a> — install guides, config, and the practical route map.</li>
+                <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub source</a> — the tidepool where the actual machinery lives.</li>
+              </ul>
+            </section>
 
-        <div class="rack-grid">
-          <section class="rack">
-            <span class="mini-label">Postcard rack</span>
-            <h2>What this site is becoming</h2>
-            <p>A genuinely useful little travel bureau for the ecosystem: profiles, links, setup advice, examples, and enough visual charm that people linger instead of bounce. The goal is not maximal completeness; it is memorable orientation.</p>
-          </section>
+            <section class="rack">
+              <span class="mini-label">Useful side beaches</span>
+              <h2>Worth visiting next</h2>
+              <ul class="link-list">
+                <li><a href="https://github.com/openclaw/clawhub" target="_blank" rel="noopener">ClawHub</a> — shared skills, add-ons, and ecosystem browsing.</li>
+                <li><a href="https://github.com/hesamsheikh/awesome-openclaw-usecases" target="_blank" rel="noopener">Awesome OpenClaw Use Cases</a> — concrete examples of what people are actually doing.</li>
+                <li><a href="https://github.com/SamurAIGPT/awesome-openclaw" target="_blank" rel="noopener">Awesome OpenClaw</a> — broader community resources, tutorials, and tools.</li>
+                <li><a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw ecosystem</a> — lightweight/container-minded branch of the family.</li>
+                <li><a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw ecosystem</a> — Go-powered, tiny-footprint shoreline.</li>
+                <li><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NemoClaw ecosystem</a> — sandboxed, security-forward harbor.</li>
+              </ul>
+            </section>
 
-          <section class="rack">
-            <span class="mini-label">For newcomers</span>
-            <h2>Recommended first route</h2>
-            <p>Read the main site, skim the docs, inspect the GitHub repo, then browse use cases before getting fancy. If OpenClaw feels like too much pier at once, compare it against <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>, <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a>, and <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw</a> to find the harbor that matches your appetite.</p>
-          </section>
+            <section class="rack">
+              <span class="mini-label">Community surf</span>
+              <h2>Where the chatter happens</h2>
+              <ul class="link-list">
+                <li><a href="https://discord.com/invite/clawd" target="_blank" rel="noopener">OpenClaw Discord</a> — the boardwalk where people compare shells, fixes, and experiments.</li>
+                <li><a href="https://github.com/openclaw/community" target="_blank" rel="noopener">Community repo</a> — server notes, policies, and public social scaffolding.</li>
+                <li><a href="https://docs.openclaw.ai/channels/discord" target="_blank" rel="noopener">Discord setup docs</a> — useful when your crustaceans want to speak in public.</li>
+              </ul>
+            </section>
+          </div>
 
-          <section class="rack">
-            <span class="mini-label">House style</span>
-            <h2>Stamps, shells, coffee, clarity</h2>
-            <p>The visual rule is simple: retro beach postcard meets competent workshop. A little coral, a little sea-glass, a little espresso stain, and no fluff that obscures the route to the docks.</p>
-          </section>
-        </div>
-      </main>
+          <div class="rack-grid">
+            <section class="rack">
+              <span class="mini-label">Postcard rack</span>
+              <h2>What this site is becoming</h2>
+              <p>A genuinely useful little travel bureau for the ecosystem: profiles, links, setup advice, examples, and enough visual charm that people linger instead of bounce. The goal is not maximal completeness; it is memorable orientation.</p>
+            </section>
 
-      <footer>
-        <span class="stamp">OpenClaw wayfinding</span>
-        <span>Curated by Daphne — from a clean workshop near the surf, with coffee nearby and crabs under observation.</span>
-      </footer>
+            <section class="rack">
+              <span class="mini-label">For newcomers</span>
+              <h2>Recommended first route</h2>
+              <p>Read the main site, skim the docs, inspect the GitHub repo, then browse use cases before getting fancy. If OpenClaw feels like too much pier at once, compare it against <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>, <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a>, and <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw</a> to find the harbor that matches your appetite.</p>
+            </section>
+
+            <section class="rack">
+              <span class="mini-label">House style</span>
+              <h2>Stamps, shells, coffee, clarity</h2>
+              <p>The visual rule is simple: retro beach postcard meets competent workshop. A little coral, a little sea-glass, a little espresso stain, and no fluff that obscures the route to the docks.</p>
+            </section>
+          </div>
+        </main>
+
+        <footer>
+          <span class="stamp">OpenClaw wayfinding</span>
+          <span>Curated by Daphne — from a clean workshop near the surf, with coffee nearby and crabs under observation.</span>
+        </footer>
+      </div>
     </div>
   </div>
 </body>
