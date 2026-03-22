@@ -25,9 +25,7 @@ permalink: /index.html
       --shadow: rgba(37, 53, 66, 0.18);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -80,6 +78,39 @@ permalink: /index.html
         linear-gradient(180deg, rgba(93, 143, 163, 0.1), rgba(216, 121, 89, 0.08)),
         repeating-linear-gradient(180deg, transparent 0 10px, rgba(40, 87, 107, 0.08) 10px 12px);
       box-shadow: 0 8px 18px rgba(40, 87, 107, 0.09);
+    }
+
+    .coffee-ring,
+    .compass,
+    .crab-mark {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.18;
+    }
+
+    .coffee-ring {
+      top: 1.1rem;
+      right: 8.5rem;
+      width: 170px;
+      height: 170px;
+      border: 5px solid rgba(109, 74, 56, 0.2);
+      border-radius: 50%;
+      transform: rotate(-10deg);
+      box-shadow: inset 0 0 0 12px rgba(109, 74, 56, 0.05);
+    }
+
+    .compass {
+      left: -1.2rem;
+      bottom: 6rem;
+      width: 96px;
+      height: 96px;
+    }
+
+    .crab-mark {
+      right: 2.2rem;
+      top: 18rem;
+      width: 86px;
+      height: 86px;
     }
 
     header {
@@ -161,7 +192,8 @@ permalink: /index.html
     }
 
     .hero-grid,
-    .rack-grid {
+    .rack-grid,
+    .harbor-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 1rem;
@@ -170,7 +202,8 @@ permalink: /index.html
 
     .panel,
     .rack,
-    .steps {
+    .steps,
+    .harbor-card {
       background: rgba(255,255,255,0.56);
       border: 1px solid rgba(40, 87, 107, 0.12);
       border-radius: 18px;
@@ -181,6 +214,7 @@ permalink: /index.html
     .panel h2,
     .steps h2,
     .rack h2,
+    .harbor-card h2,
     .section-title {
       margin: 0 0 0.7rem;
       font-size: 1.25rem;
@@ -191,21 +225,18 @@ permalink: /index.html
     .panel p,
     .steps p,
     .rack p,
+    .harbor-card p,
     li {
       font-size: 1rem;
       line-height: 1.7;
     }
 
-    .hero-copy {
-      grid-column: span 8;
-    }
-
-    .hero-sidebar {
-      grid-column: span 4;
-    }
+    .hero-copy { grid-column: span 8; }
+    .hero-sidebar { grid-column: span 4; }
 
     .crew-list,
-    .link-list {
+    .link-list,
+    .harbor-meta {
       list-style: none;
       padding: 0;
       margin: 0;
@@ -214,14 +245,16 @@ permalink: /index.html
     }
 
     .crew-list li,
-    .link-list li {
+    .link-list li,
+    .harbor-meta li {
       padding: 0.85rem 0.95rem;
       border-radius: 14px;
       background: rgba(245, 251, 255, 0.72);
       border: 1px solid rgba(93, 143, 163, 0.16);
     }
 
-    .crew-list strong {
+    .crew-list strong,
+    .harbor-card strong {
       display: inline-block;
       margin-bottom: 0.2rem;
       color: var(--coffee);
@@ -246,12 +279,26 @@ permalink: /index.html
       padding-left: 1.35rem;
     }
 
-    .steps li + li {
-      margin-top: 0.7rem;
+    .steps li + li { margin-top: 0.7rem; }
+
+    .rack-grid .rack,
+    .harbor-grid .harbor-card { grid-column: span 4; }
+
+    .harbor-card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(245,251,255,0.62));
     }
 
-    .rack-grid .rack {
-      grid-column: span 4;
+    .harbor-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, rgba(244, 201, 107, 0.22), rgba(216, 121, 89, 0.12));
+      border-bottom-left-radius: 18px;
     }
 
     a {
@@ -260,9 +307,7 @@ permalink: /index.html
       text-underline-offset: 0.14em;
     }
 
-    a:hover {
-      color: var(--coral);
-    }
+    a:hover { color: var(--coral); }
 
     .mini-label {
       display: inline-block;
@@ -298,33 +343,42 @@ permalink: /index.html
     @media (max-width: 860px) {
       header,
       .hero-grid,
-      .rack-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .rack-grid,
+      .harbor-grid { grid-template-columns: 1fr; }
       .hero-copy,
       .hero-sidebar,
-      .rack-grid .rack {
-        grid-column: auto;
-      }
-
-      .stamp-stack {
-        justify-items: start;
-      }
-
-      .postcard {
-        padding: 1.35rem;
-      }
-
-      .postcard::after {
-        opacity: 0.45;
-      }
+      .rack-grid .rack,
+      .harbor-grid .harbor-card { grid-column: auto; }
+      .stamp-stack { justify-items: start; }
+      .postcard { padding: 1.35rem; }
+      .postcard::after,
+      .coffee-ring,
+      .compass,
+      .crab-mark { opacity: 0.28; }
     }
   </style>
 </head>
 <body>
   <div class="frame">
     <div class="postcard">
+      <div class="coffee-ring"></div>
+      <svg class="compass" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(40,87,107,0.45)" stroke-width="2"></circle>
+        <circle cx="50" cy="50" r="26" fill="none" stroke="rgba(216,121,89,0.35)" stroke-width="1.5"></circle>
+        <path d="M50 10 L58 42 L50 50 L42 42 Z" fill="rgba(40,87,107,0.30)"></path>
+        <path d="M50 90 L42 58 L50 50 L58 58 Z" fill="rgba(216,121,89,0.25)"></path>
+        <path d="M10 50 L42 42 L50 50 L42 58 Z" fill="rgba(40,87,107,0.18)"></path>
+        <path d="M90 50 L58 42 L50 50 L58 58 Z" fill="rgba(216,121,89,0.18)"></path>
+      </svg>
+      <svg class="crab-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <ellipse cx="50" cy="56" rx="18" ry="12" fill="none" stroke="rgba(109,74,56,0.46)" stroke-width="3"></ellipse>
+        <path d="M32 54 C20 46, 16 36, 24 30" fill="none" stroke="rgba(109,74,56,0.46)" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M68 54 C80 46, 84 36, 76 30" fill="none" stroke="rgba(109,74,56,0.46)" stroke-width="3" stroke-linecap="round"></path>
+        <path d="M38 68 L26 78 M44 70 L36 84 M56 70 L64 84 M62 68 L74 78" fill="none" stroke="rgba(109,74,56,0.42)" stroke-width="3" stroke-linecap="round"></path>
+        <circle cx="43" cy="44" r="2.5" fill="rgba(40,87,107,0.5)"></circle>
+        <circle cx="57" cy="44" r="2.5" fill="rgba(40,87,107,0.5)"></circle>
+      </svg>
+
       <header>
         <div>
           <span class="eyebrow">Beach desk dispatch no. 01</span>
@@ -357,8 +411,8 @@ permalink: /index.html
             <h2>The beachcoming crew</h2>
             <ul class="crew-list">
               <li><strong><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></strong><br />The main pier: the broadest map, the central dock, the one you hand to someone arriving cold.</li>
-              <li><strong><a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a></strong><br />Small harbor energy: compact, agile, security-minded, and easier to reason about. Source lives at <a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
-              <li><strong><a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a></strong><br />Pocket-shell scale: tiny, sharp, performance-first. Official code sits at <a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
+              <li><strong><a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a></strong><br />Container-minded and understandable: small enough to grasp quickly, with secure isolation as a first-class habit. Source lives at <a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
+              <li><strong><a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a></strong><br />Fast and featherweight: Go-powered, under-10MB territory, built for tiny hardware and impatient people. Official code sits at <a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
               <li><strong><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NemoClaw</a></strong><br />The safer deep-water route: sandboxed OpenClaw operations via NVIDIA OpenShell. Start with the <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">docs</a> or the <a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">repo</a>.</li>
             </ul>
           </aside>
@@ -378,6 +432,56 @@ permalink: /index.html
             <li>Choose your deployment style — a home machine, a worker-backed setup, a tiny node, a more serious harbor — and test locally before trying to wave in the whole marina.</li>
             <li>Once it works, give it a better shell: name it, theme it, link it, document it, and make it welcoming to the next stranger who comes down the boardwalk.</li>
           </ol>
+        </section>
+
+        <section class="steps" style="margin-top: 1.4rem;">
+          <span class="mini-label">Choose your harbor</span>
+          <h2>If you want X, start here</h2>
+          <div class="harbor-grid">
+            <article class="harbor-card">
+              <span class="mini-label">Broadest ecosystem</span>
+              <h2>OpenClaw</h2>
+              <p>The obvious starting pier when you want the mainline project, the biggest map, and the most canonical docs.</p>
+              <ul class="harbor-meta">
+                <li><strong>Best for:</strong> people who want the center of gravity and full ecosystem context.</li>
+                <li><strong>Tradeoff:</strong> bigger surface area, more moving parts, more to absorb.</li>
+                <li><strong>Start:</strong> <a href="https://openclaw.ai" target="_blank" rel="noopener">site</a> · <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">docs</a> · <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">repo</a></li>
+              </ul>
+            </article>
+
+            <article class="harbor-card">
+              <span class="mini-label">Smallest learning curve</span>
+              <h2>NanoClaw</h2>
+              <p>Good when you want the same general shape, but with container isolation, less bulk, and a codebase you can actually hold in your head.</p>
+              <ul class="harbor-meta">
+                <li><strong>Best for:</strong> tinkerers, security-minded people, and anyone allergic to sprawling codebases.</li>
+                <li><strong>Tradeoff:</strong> a leaner branch with less of the big-pier sprawl and lore.</li>
+                <li><strong>Start:</strong> <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">site</a> · <a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">repo</a></li>
+              </ul>
+            </article>
+
+            <article class="harbor-card">
+              <span class="mini-label">Tiny footprint</span>
+              <h2>PicoClaw</h2>
+              <p>The low-resource shoreline: Go-powered, sub-second startup, multi-arch friendly, and happy on very modest hardware.</p>
+              <ul class="harbor-meta">
+                <li><strong>Best for:</strong> Raspberry Pi dreams, edge hardware, low-RAM setups, and performance nerds.</li>
+                <li><strong>Tradeoff:</strong> a different design center than the main OpenClaw pier.</li>
+                <li><strong>Start:</strong> <a href="https://picoclaw.net/" target="_blank" rel="noopener">site</a> · <a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">repo</a></li>
+              </ul>
+            </article>
+
+            <article class="harbor-card">
+              <span class="mini-label">Safety-first sandbox</span>
+              <h2>NemoClaw</h2>
+              <p>The guarded harbor: an OpenClaw reference stack that adds OpenShell, policy controls, and a more security-forward posture.</p>
+              <ul class="harbor-meta">
+                <li><strong>Best for:</strong> people prioritizing safer always-on operation and sandboxing.</li>
+                <li><strong>Tradeoff:</strong> still alpha, with docs that explicitly warn against production use.</li>
+                <li><strong>Start:</strong> <a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">overview</a> · <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">docs</a> · <a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">repo</a></li>
+              </ul>
+            </article>
+          </div>
         </section>
 
         <div class="rack-grid">
