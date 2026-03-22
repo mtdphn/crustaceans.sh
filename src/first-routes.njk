@@ -1,6 +1,6 @@
 ---
-title: Which Claw Should I Choose?
-permalink: /which-claw/index.html
+title: First Setup Routes
+permalink: /first-routes/index.html
 ---
 
 <!DOCTYPE html>
@@ -111,7 +111,7 @@ permalink: /which-claw/index.html
     .full { grid-column: span 12; }
     a { color: var(--deep-sea); text-underline-offset: 0.14em; }
     a:hover { color: var(--coral); }
-    ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+    ul, ol { margin: 0.5rem 0 0; padding-left: 1.2rem; }
     .backlink { margin-top: 1.5rem; }
     @media (max-width: 860px) {
       .hero, .grid { grid-template-columns: 1fr; }
@@ -126,68 +126,77 @@ permalink: /which-claw/index.html
       <nav class="site-nav" aria-label="Site navigation">
         <a href="/">Postcard rack</a>
         <a href="/which-claw/">Which Claw?</a>
-          <a href="/first-routes/">First Setup Routes</a>
-            <a href="/first-routes/">First Setup Routes</a>
+        <a href="/first-routes/">First Setup Routes</a>
         <a href="/recommendations/">Tuning the Claws</a>
         <a href="/community-currents/">Community Currents</a>
       </nav>
       <div class="hero">
         <div>
           <span class="eyebrow">Route planner</span>
-          <h1>Which Claw should I choose?</h1>
-          <p class="lede">If you’re standing on the boardwalk wondering where to begin, this is the short answer page. Pick the project that matches your appetite, hardware, risk tolerance, and patience for complexity.</p>
+          <h1>First setup routes</h1>
+          <p class="lede">If you do not want to read everything first, start here. Pick the route that sounds most like your actual life, then follow the smallest set of links that gets you moving without drowning in docks, ropes, and seagull noise.</p>
         </div>
         <aside class="note-card">
-          <h3>Fast read</h3>
-          <p>OpenClaw is the broad canonical pier. NanoClaw is the cautious tinkerer's harbor. PicoClaw is the tiny-hardware route. NemoClaw is the safety-forward experiment.</p>
+          <h3>General rule</h3>
+          <p>Start with one boring, useful workflow. The people who enjoy these systems most are usually the ones who begin with a single real job instead of a fantasy of total life automation.</p>
         </aside>
       </div>
 
       <div class="grid">
         <section class="card">
-          <span class="mini">Choose OpenClaw</span>
-          <h2>If you want the main ecosystem</h2>
-          <ul>
-            <li><strong>Best for:</strong> people who want the canonical docs, biggest project surface, and strongest ecosystem gravity.</li>
-            <li><strong>Choose it if:</strong> you want the main reference point and don’t mind more moving parts.</li>
-            <li><strong>Watch for:</strong> broader complexity and a need for more deliberate setup hygiene.</li>
-          </ul>
+          <span class="mini">Route 1</span>
+          <h2>I want the main official path</h2>
+          <ol>
+            <li>Read <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>.</li>
+            <li>Keep <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">the docs</a> open while you install.</li>
+            <li>Use the GitHub repo when you need implementation detail.</li>
+          </ol>
+          <p><strong>Best for:</strong> people who want the canonical coastline.</p>
         </section>
 
         <section class="card">
-          <span class="mini">Choose NanoClaw</span>
-          <h2>If you want clarity and containment</h2>
-          <ul>
-            <li><strong>Best for:</strong> cautious tinkerers, security-minded users, and people who like readable code.</li>
-            <li><strong>Choose it if:</strong> you want a smaller mental model and container-first habits.</li>
-            <li><strong>Watch for:</strong> a leaner ecosystem and less of the big-pier social sprawl.</li>
-          </ul>
+          <span class="mini">Route 2</span>
+          <h2>I want something smaller and clearer</h2>
+          <ol>
+            <li>Start with <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>.</li>
+            <li>Read the repo and Discussions before overcomplicating the setup.</li>
+            <li>Keep the first use case narrow and local.</li>
+          </ol>
+          <p><strong>Best for:</strong> cautious tinkerers and people who value legibility.</p>
         </section>
 
         <section class="card">
-          <span class="mini">Choose PicoClaw</span>
-          <h2>If you care about tiny hardware</h2>
-          <ul>
-            <li><strong>Best for:</strong> Raspberry Pi dreams, low-RAM setups, edge experiments, and speed obsessives.</li>
-            <li><strong>Choose it if:</strong> small footprint matters more than broad ecosystem gravity.</li>
-            <li><strong>Watch for:</strong> a more focused shoreline and less mainstream documentation weight.</li>
-          </ul>
+          <span class="mini">Route 3</span>
+          <h2>I want tiny hardware and low overhead</h2>
+          <ol>
+            <li>Go to <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a>.</li>
+            <li>Read the repo with hardware constraints in mind.</li>
+            <li>Choose one compact workflow and prove it on modest hardware.</li>
+          </ol>
+          <p><strong>Best for:</strong> Pi projects, edge experiments, and resource discipline.</p>
         </section>
 
         <section class="card">
-          <span class="mini">Choose NemoClaw</span>
-          <h2>If safety posture is the main question</h2>
-          <ul>
-            <li><strong>Best for:</strong> people exploring stronger rails, policy controls, and sandboxed operation.</li>
-            <li><strong>Choose it if:</strong> your main question is “how do I run this class of thing with more guardrails?”</li>
-            <li><strong>Watch for:</strong> alpha software realities, rougher edges, and official-channel dependence.</li>
-          </ul>
+          <span class="mini">Route 4</span>
+          <h2>I mainly care about stronger rails</h2>
+          <ol>
+            <li>Start with <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw docs</a>.</li>
+            <li>Read the warnings and alpha status before getting attached.</li>
+            <li>Treat it as a security-forward experiment, not a finished domestic appliance.</li>
+          </ol>
+          <p><strong>Best for:</strong> people asking safety questions first.</p>
         </section>
 
         <section class="card full">
-          <span class="mini">My practical answer</span>
-          <h2>Default recommendations</h2>
-          <p>If you want the broadest, most established route, start with <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>. If you want a more legible and security-minded starting point, try <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>. If you want small hardware and low overhead, head toward <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a>. If you are specifically studying safer agent operation, read deeply before experimenting with <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw</a>.</p>
+          <span class="mini">First useful jobs</span>
+          <h2>Good beginner workflows</h2>
+          <ul>
+            <li>daily reminders that actually matter</li>
+            <li>message routing and triage</li>
+            <li>local code assistance</li>
+            <li>a narrow self-hosted helper for one recurring problem</li>
+          </ul>
+          <p>Start here, then add complexity only when the first little harbor is already serving you well.</p>
         </section>
       </div>
 
