@@ -1,6 +1,6 @@
 ---
-title: Community Currents
-permalink: /community-currents/index.html
+title: Which Claw Should I Choose?
+permalink: /which-claw/index.html
 ---
 
 <!DOCTYPE html>
@@ -19,8 +19,7 @@ permalink: /community-currents/index.html
       --coral: #d87959;
       --ink: #26343c;
       --coffee: #6d4a38;
-      --sun: #f4c96b;
-      --shadow: rgba(37, 53, 66, 0.16);
+      --shadow: rgba(37,53,66,0.16);
     }
     * { box-sizing: border-box; }
     body {
@@ -84,7 +83,6 @@ permalink: /community-currents/index.html
       border: 1px solid rgba(40, 87, 107, 0.12);
       font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-    .lede, p, li { line-height: 1.75; }
     .hero {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -94,6 +92,7 @@ permalink: /community-currents/index.html
       padding-bottom: 1.2rem;
       border-bottom: 1px solid rgba(109, 74, 56, 0.18);
     }
+    .lede, p, li { line-height: 1.75; }
     .note-card, .card {
       background: rgba(255,255,255,0.68);
       border: 1px solid rgba(40, 87, 107, 0.12);
@@ -132,61 +131,61 @@ permalink: /community-currents/index.html
       </nav>
       <div class="hero">
         <div>
-          <span class="eyebrow">Boardwalk field guide</span>
-          <h1>Community currents</h1>
-          <p class="lede">Where the various Claw crews actually gather, what kind of talk happens there, and which public docks are worth visiting first. This is the social map, not the install map.</p>
+          <span class="eyebrow">Route planner</span>
+          <h1>Which Claw should I choose?</h1>
+          <p class="lede">If you’re standing on the boardwalk wondering where to begin, this is the short answer page. Pick the project that matches your appetite, hardware, risk tolerance, and patience for complexity.</p>
         </div>
         <aside class="note-card">
-          <h3>Short read</h3>
-          <p>OpenClaw has the strongest centralized public community. NanoClaw and PicoClaw lean more heavily on GitHub Discussions and repo-centric chatter. NemoClaw is still young enough that the official NVIDIA channels matter more than grassroots folklore.</p>
+          <h3>Fast read</h3>
+          <p>OpenClaw is the broad canonical pier. NanoClaw is the cautious tinkerer's harbor. PicoClaw is the tiny-hardware route. NemoClaw is the safety-forward experiment.</p>
         </aside>
       </div>
 
       <div class="grid">
         <section class="card">
-          <span class="mini">OpenClaw</span>
-          <h2>Main boardwalk</h2>
+          <span class="mini">Choose OpenClaw</span>
+          <h2>If you want the main ecosystem</h2>
           <ul>
-            <li><a href="https://discord.com/invite/clawd" target="_blank" rel="noopener">Discord</a> — the primary community dock.</li>
-            <li><a href="https://github.com/openclaw/community" target="_blank" rel="noopener">Community repo</a> — governance and public scaffolding.</li>
-            <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">Main repo</a> — code, issues, releases.</li>
+            <li><strong>Best for:</strong> people who want the canonical docs, biggest project surface, and strongest ecosystem gravity.</li>
+            <li><strong>Choose it if:</strong> you want the main reference point and don’t mind more moving parts.</li>
+            <li><strong>Watch for:</strong> broader complexity and a need for more deliberate setup hygiene.</li>
           </ul>
         </section>
 
         <section class="card">
-          <span class="mini">NanoClaw</span>
-          <h2>Where the tinkerers gather</h2>
+          <span class="mini">Choose NanoClaw</span>
+          <h2>If you want clarity and containment</h2>
           <ul>
-            <li><a href="https://github.com/qwibitai/nanoclaw/discussions" target="_blank" rel="noopener">GitHub Discussions</a> — best public question-and-answer dock.</li>
-            <li><a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">Main repo</a> — source, issues, README, releases.</li>
-            <li>Conversation also spills into self-hosting threads and comparison posts.</li>
+            <li><strong>Best for:</strong> cautious tinkerers, security-minded users, and people who like readable code.</li>
+            <li><strong>Choose it if:</strong> you want a smaller mental model and container-first habits.</li>
+            <li><strong>Watch for:</strong> a leaner ecosystem and less of the big-pier social sprawl.</li>
           </ul>
         </section>
 
         <section class="card">
-          <span class="mini">PicoClaw</span>
-          <h2>Tiny-hardware harbor</h2>
+          <span class="mini">Choose PicoClaw</span>
+          <h2>If you care about tiny hardware</h2>
           <ul>
-            <li><a href="https://github.com/sipeed/picoclaw/discussions" target="_blank" rel="noopener">GitHub Discussions</a> — the cleanest public square.</li>
-            <li><a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">Main repo</a> — where performance-minded discussion lives.</li>
-            <li>The culture feels more code-first and less socially centralized than OpenClaw.</li>
+            <li><strong>Best for:</strong> Raspberry Pi dreams, low-RAM setups, edge experiments, and speed obsessives.</li>
+            <li><strong>Choose it if:</strong> small footprint matters more than broad ecosystem gravity.</li>
+            <li><strong>Watch for:</strong> a more focused shoreline and less mainstream documentation weight.</li>
           </ul>
         </section>
 
         <section class="card">
-          <span class="mini">NemoClaw</span>
-          <h2>Official channels first</h2>
+          <span class="mini">Choose NemoClaw</span>
+          <h2>If safety posture is the main question</h2>
           <ul>
-            <li><a href="https://forums.developer.nvidia.com/t/introducing-nvidia-nemoclaw/363701" target="_blank" rel="noopener">NVIDIA forum thread</a> — official public launch thread.</li>
-            <li><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NVIDIA overview</a> — points people toward the community/Discord path.</li>
-            <li><a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">Main repo</a> — issues, code, docs.</li>
+            <li><strong>Best for:</strong> people exploring stronger rails, policy controls, and sandboxed operation.</li>
+            <li><strong>Choose it if:</strong> your main question is “how do I run this class of thing with more guardrails?”</li>
+            <li><strong>Watch for:</strong> alpha software realities, rougher edges, and official-channel dependence.</li>
           </ul>
         </section>
 
         <section class="card full">
-          <span class="mini">How to use this</span>
-          <h2>What to click first</h2>
-          <p>If you’re new, start with the biggest clearest public dock for the project you care about. For OpenClaw, that usually means Discord plus docs. For NanoClaw and PicoClaw, start with Discussions and the repo itself. For NemoClaw, stay close to the official NVIDIA channels until the grassroots shoreline gets more defined.</p>
+          <span class="mini">My practical answer</span>
+          <h2>Default recommendations</h2>
+          <p>If you want the broadest, most established route, start with <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>. If you want a more legible and security-minded starting point, try <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>. If you want small hardware and low overhead, head toward <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a>. If you are specifically studying safer agent operation, read deeply before experimenting with <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw</a>.</p>
         </section>
       </div>
 
