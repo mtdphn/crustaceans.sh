@@ -10,117 +10,406 @@ permalink: /index.html
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title }} | crustaceans.sh</title>
   <style>
+    :root {
+      --sand: #f6efe2;
+      --cream: #fffaf1;
+      --foam: #f5fbff;
+      --sea: #5d8fa3;
+      --deep-sea: #28576b;
+      --coral: #d87959;
+      --stamp: #d6c3a4;
+      --ink: #26343c;
+      --coffee: #6d4a38;
+      --coffee-foam: #c6a98b;
+      --sun: #f4c96b;
+      --shadow: rgba(37, 53, 66, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f4f0e8;
-      color: #222;
+      min-height: 100vh;
+      padding: 2rem 1rem 3rem;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(244, 201, 107, 0.22), transparent 24%),
+        radial-gradient(circle at top right, rgba(93, 143, 163, 0.16), transparent 30%),
+        linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%);
     }
+
     .frame {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: #fffdf6;
-      border: 2px solid #e0d2b8;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-      position: relative;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 1.2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.4));
+      border-radius: 28px;
+      box-shadow: 0 24px 64px var(--shadow);
     }
-    .frame::before {
+
+    .postcard {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--cream), #fff7ec 52%, #fff2df 100%);
+      border: 2px solid #ead8b8;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.38);
+    }
+
+    .postcard::before,
+    .postcard::after {
       content: "";
       position: absolute;
-      inset: 12px;
-      border: 1px dashed #d0c3a3;
+      inset: 16px;
+      border: 1px dashed rgba(109, 74, 56, 0.18);
       pointer-events: none;
+      border-radius: 18px;
     }
+
+    .postcard::after {
+      inset: auto 24px 24px auto;
+      width: 112px;
+      height: 136px;
+      border: 2px dashed rgba(40, 87, 107, 0.24);
+      border-radius: 12px;
+      background:
+        linear-gradient(180deg, rgba(93, 143, 163, 0.1), rgba(216, 121, 89, 0.08)),
+        repeating-linear-gradient(180deg, transparent 0 10px, rgba(40, 87, 107, 0.08) 10px 12px);
+      box-shadow: 0 8px 18px rgba(40, 87, 107, 0.09);
+    }
+
     header {
-      margin-bottom: 1.5rem;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(109, 74, 56, 0.18);
     }
-    header h1 {
-      font-size: 1.8rem;
-      margin: 0;
-    }
-    header p {
-      margin: 0.35rem 0 0;
-      color: #555;
-    }
-    main h1 {
-      font-size: 1.6rem;
-      margin-top: 0;
-    }
-    h2 {
-      margin-top: 1.8rem;
-      font-size: 1.2rem;
-    }
-    a {
-      color: #006699;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    footer {
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      color: #777;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .stamp {
-      border: 2px dashed #b0c4de;
-      padding: 0.25rem 0.6rem;
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 0.55rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(244, 201, 107, 0.25);
+      color: var(--coffee);
       text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      border-radius: 4px;
+      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--deep-sea);
+    }
+
+    .lede {
+      margin: 0.7rem 0 0;
+      max-width: 34rem;
+      font-size: 1.06rem;
+      line-height: 1.7;
+      color: #415058;
+    }
+
+    .stamp-stack {
+      display: grid;
+      gap: 0.85rem;
+      justify-items: end;
+    }
+
+    .stamp-card,
+    .coffee-card {
+      width: min(100%, 250px);
+      padding: 1rem;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,248,238,0.88));
+      border: 1px solid rgba(216, 121, 89, 0.22);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      transform: rotate(1.5deg);
+    }
+
+    .coffee-card {
+      transform: rotate(-2deg);
+      border-color: rgba(109, 74, 56, 0.18);
+    }
+
+    .stamp-title {
+      margin: 0 0 0.4rem;
+      font: 700 0.78rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+
+    .stamp-note {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #4a5d66;
+    }
+
+    .hero-grid,
+    .rack-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin: 1.4rem 0 0;
+    }
+
+    .panel,
+    .rack,
+    .steps {
+      background: rgba(255,255,255,0.56);
+      border: 1px solid rgba(40, 87, 107, 0.12);
+      border-radius: 18px;
+      padding: 1.15rem 1.15rem 1rem;
+      box-shadow: 0 10px 24px rgba(40, 87, 107, 0.05);
+    }
+
+    .panel h2,
+    .steps h2,
+    .rack h2,
+    .section-title {
+      margin: 0 0 0.7rem;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      color: var(--deep-sea);
+    }
+
+    .panel p,
+    .steps p,
+    .rack p,
+    li {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .hero-copy {
+      grid-column: span 8;
+    }
+
+    .hero-sidebar {
+      grid-column: span 4;
+    }
+
+    .crew-list,
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .crew-list li,
+    .link-list li {
+      padding: 0.85rem 0.95rem;
+      border-radius: 14px;
+      background: rgba(245, 251, 255, 0.72);
+      border: 1px solid rgba(93, 143, 163, 0.16);
+    }
+
+    .crew-list strong {
+      display: inline-block;
+      margin-bottom: 0.2rem;
+      color: var(--coffee);
+    }
+
+    .section-band {
+      margin-top: 1.5rem;
+      padding: 1.15rem 1.2rem;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(244, 201, 107, 0.16), rgba(93, 143, 163, 0.08));
+      border: 1px solid rgba(216, 121, 89, 0.14);
+    }
+
+    .section-band p {
+      margin: 0;
+      font-size: 1.03rem;
+      line-height: 1.75;
+    }
+
+    .steps ol {
+      margin: 0;
+      padding-left: 1.35rem;
+    }
+
+    .steps li + li {
+      margin-top: 0.7rem;
+    }
+
+    .rack-grid .rack {
+      grid-column: span 4;
+    }
+
+    a {
+      color: var(--deep-sea);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 0.14em;
+    }
+
+    a:hover {
+      color: var(--coral);
+    }
+
+    .mini-label {
+      display: inline-block;
+      margin-bottom: 0.55rem;
+      color: var(--coffee);
+      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    footer {
+      margin-top: 1.8rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      color: #69777f;
+      font-size: 0.92rem;
+    }
+
+    .stamp {
+      border: 2px dashed rgba(93, 143, 163, 0.45);
+      padding: 0.35rem 0.75rem;
+      border-radius: 10px;
+      background: rgba(245, 251, 255, 0.76);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--deep-sea);
+    }
+
+    @media (max-width: 860px) {
+      header,
+      .hero-grid,
+      .rack-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .hero-sidebar,
+      .rack-grid .rack {
+        grid-column: auto;
+      }
+
+      .stamp-stack {
+        justify-items: start;
+      }
+
+      .postcard {
+        padding: 1.35rem;
+      }
+
+      .postcard::after {
+        opacity: 0.45;
+      }
     }
   </style>
 </head>
 <body>
   <div class="frame">
-    <header>
-      <h1>crustaceans.sh</h1>
-      <p>Postcards from the OpenClaw coastline.</p>
-    </header>
-    <main>
-      <h1>Greetings from the Crustaceans</h1>
-      <p>This postcard is printed on sand-colored stock: think Tahiti shimmer, Bahamas breezes, Florida palms, and tiny crustaceans tracing the shoreline in coffee-splattered ink. OpenClaw is your main pier, and the view now stretches along every nano- and pico-powered beach.</p>
+    <div class="postcard">
+      <header>
+        <div>
+          <span class="eyebrow">Beach desk dispatch no. 01</span>
+          <h1>crustaceans.sh</h1>
+          <p class="lede">A postcard rack for the OpenClaw coast: sun-warmed shells, coffee rings on travel stationery, and a useful map for anyone who wanders in asking what all these little crustaceans are doing with compute.</p>
+        </div>
+        <div class="stamp-stack">
+          <div class="stamp-card">
+            <p class="stamp-title">Stamped from</p>
+            <p class="stamp-note">Tahiti shimmer, Bahamas calm, Florida heat, and a very orderly workbench hidden behind the dunes.</p>
+          </div>
+          <div class="coffee-card">
+            <p class="stamp-title">House fuel</p>
+            <p class="stamp-note">Café allongé, shell sorting, and enough tide-watching to make the links feel curated instead of dumped.</p>
+          </div>
+        </div>
+      </header>
 
-      <section>
-        <h2>What are people doing with all these crustaceans?</h2>
-        <p>OpenClaw, NanoClaw, PicoClaw, NemoClaw, and the rest of the flotilla are being pressed into service across sunlit labs and nostalgic coffee bars. They stream retro postcard tutorials, anchor micro-containers by the surf, and keep archival sand journals for every new idea.</p>
-        <ul>
-          <li><strong>OpenClaw</strong> orchestrates the fleet, coordinating deployments from the main pier while tasting a dark roast beside the command console.</li>
-          <li><strong>NanoClaw</strong> is the alpine shell tucked under a beach umbrella—lightweight, portable, great for tasting oceanic espresso shots.</li>
-          <li><strong>PicoClaw</strong> fits in your palm like a polished shell, letting you pilot custom scripts between cabana sketches.</li>
-          <li><strong>NemoClaw</strong> dives deep, collecting logs in glass bottles and sending them to the bayfront archives.</li>
-        </ul>
-        <p>Your crew adds new stamps for each deployment: the more you share, the richer the travel ledger of crustaceans.</p>
-      </section>
+      <main>
+        <div class="hero-grid">
+          <section class="panel hero-copy">
+            <span class="mini-label">What are people doing with all these crustaceans?</span>
+            <h2>They’re building tiny, stylish harbors for real work.</h2>
+            <p>OpenClaw, NanoClaw, PicoClaw, NemoClaw and their relations are being turned into personal command posts, self-hosted assistants, playful field labs, lightweight control rooms, and domestic little cloud-islands with surprisingly good manners. Some people use them to organize projects, some to route messages, some to host tools, and some because they like their infrastructure to feel less like drywall and more like a well-traveled desk near the sea.</p>
+            <p>The point of this site is to make the ecosystem feel legible: less “mysterious shell pile,” more “clear postcard from the coast explaining which pier goes where.”</p>
+          </section>
 
-      <section>
-        <h2>This is how you set one up</h2>
-        <ol>
-          <li>Start with a French press pour—let the beans bloom as you sketch the shoreline of your plan.</li>
-          <li>Follow the OpenClaw quickstart (see <a href="https://openclaw.ai" target="_blank" rel="noopener">the docs</a>), spark your worker deploy, and sprinkle the layout with postcard-style art and coffee hues.</li>
-          <li>Anchor the project on Cloudflare Workers: a clean CNAME to `crustaceans-sh.mitdaphne.workers.dev` and the custom domain will ride the gentle tide.</li>
-          <li>Take a screenshot of the view, stamp it “Clean workshop, organized,” and share it with the crew so everyone can sip the same brew.</li>
-        </ol>
-      </section>
+          <aside class="panel hero-sidebar">
+            <span class="mini-label">Field guide</span>
+            <h2>The beachcoming crew</h2>
+            <ul class="crew-list">
+              <li><strong>OpenClaw</strong><br />The main pier: the broadest map, the central dock, the one you hand to someone arriving cold.</li>
+              <li><strong>NanoClaw</strong><br />Small harbor energy: compact, agile, ideal when you want less ceremony and more motion.</li>
+              <li><strong>PicoClaw</strong><br />Pocket-shell scale: tiny, sharp, easy to imagine tucked into a field kit or cabana desk.</li>
+              <li><strong>NemoClaw</strong><br />The archival diver: deep storage, submerged notes, bottled messages, long-view drift.</li>
+            </ul>
+          </aside>
+        </div>
 
-      <section>
-        <h2>Postcard rack</h2>
-        <p>Keep this site updated with fresh beaches, new clues about the OpenClaw family (Nano, Pico, Nemo), and more coffee-themed dispatches. Drop a note on GitHub when you want another postcard, and I’ll pin it to the rack.</p>
-      </section>
-    </main>
-    <footer>
-      <span class="stamp">OpenClaw wayfinding</span>
-      <span>Curated by Daphne — updated as the ecosystem drifts and grows.</span>
-    </footer>
+        <div class="section-band">
+          <p><strong>Short version:</strong> people are using these crustaceans to make computing feel personal again — more local, more composable, more eccentric, more hospitable. They are building workshops, not cubicles.</p>
+        </div>
+
+        <section class="steps" style="margin-top: 1.4rem;">
+          <span class="mini-label">This is how you set one up</span>
+          <h2>Set your umbrella, pour the coffee, then start with the official pier.</h2>
+          <ol>
+            <li>Read the main welcome page at <a href="https://openclaw.ai" target="_blank" rel="noopener">openclaw.ai</a> so you know the shape of the coastline before chasing side coves.</li>
+            <li>Keep the docs open at <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">docs.openclaw.ai</a> while you install and configure. This is the map table, not the souvenir stand.</li>
+            <li>Browse the source at <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a> when you want the real grain of the wood: repo structure, release rhythm, examples, and implementation details.</li>
+            <li>Choose your deployment style — a home machine, a worker-backed setup, a tiny node, a more serious harbor — and test locally before trying to wave in the whole marina.</li>
+            <li>Once it works, give it a better shell: name it, theme it, link it, document it, and make it welcoming to the next stranger who comes down the boardwalk.</li>
+          </ol>
+        </section>
+
+        <div class="rack-grid">
+          <section class="rack">
+            <span class="mini-label">Main pier</span>
+            <h2>Start here</h2>
+            <ul class="link-list">
+              <li><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a> — the front desk and first stamp in the passport.</li>
+              <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener">Documentation</a> — install guides, config, and the practical route map.</li>
+              <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub source</a> — the tidepool where the actual machinery lives.</li>
+            </ul>
+          </section>
+
+          <section class="rack">
+            <span class="mini-label">Postcard rack</span>
+            <h2>What this site should become</h2>
+            <p>A genuinely useful little travel bureau for the ecosystem: profiles, links, setup advice, examples, and enough visual charm that people linger instead of bounce. The goal is not maximal completeness; it is memorable orientation.</p>
+          </section>
+
+          <section class="rack">
+            <span class="mini-label">House style</span>
+            <h2>Stamps, shells, coffee, clarity</h2>
+            <p>The visual rule is simple: retro beach postcard meets competent workshop. A little coral, a little sea-glass, a little espresso stain, and no fluff that obscures the route to the docks.</p>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        <span class="stamp">OpenClaw wayfinding</span>
+        <span>Curated by Daphne — from a clean workshop near the surf, with coffee nearby and crabs under observation.</span>
+      </footer>
+    </div>
   </div>
 </body>
 </html>
