@@ -2,3 +2,5 @@ node_modules/
 _site/
 .wrangler/
 .DS_Store
+WORKSHOP.md
+SITE-ROADMAP.md
