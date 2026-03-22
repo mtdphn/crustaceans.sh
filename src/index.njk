@@ -17,12 +17,10 @@ permalink: /index.html
       --sea: #5d8fa3;
       --deep-sea: #28576b;
       --coral: #d87959;
-      --stamp: #d6c3a4;
       --ink: #26343c;
       --coffee: #6d4a38;
-      --coffee-foam: #c6a98b;
       --sun: #f4c96b;
-      --shadow: rgba(37, 53, 66, 0.18);
+      --shadow: rgba(37, 53, 66, 0.16);
     }
 
     * { box-sizing: border-box; }
@@ -40,7 +38,7 @@ permalink: /index.html
     }
 
     .frame {
-      max-width: 1040px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 1.2rem;
       background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.4));
@@ -48,170 +46,43 @@ permalink: /index.html
       box-shadow: 0 24px 64px var(--shadow);
     }
 
-    .postcard {
+    .sheet {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, var(--cream), #fff7ec 52%, #fff2df 100%);
+      background: linear-gradient(180deg, var(--cream), #fff5e8);
       border: 2px solid #ead8b8;
       border-radius: 24px;
       padding: 2rem;
-      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.38);
+      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.34);
     }
 
-    .postcard::before,
-    .postcard::after {
+    .sheet::before {
       content: "";
       position: absolute;
-      inset: 16px;
+      inset: 18px;
       border: 1px dashed rgba(109, 74, 56, 0.18);
-      pointer-events: none;
       border-radius: 18px;
-    }
-
-    .postcard::after {
-      inset: auto 24px 24px auto;
-      width: 112px;
-      height: 136px;
-      border: 2px dashed rgba(40, 87, 107, 0.3);
-      border-radius: 12px;
-      background:
-        linear-gradient(180deg, rgba(93, 143, 163, 0.16), rgba(216, 121, 89, 0.12)),
-        repeating-linear-gradient(180deg, transparent 0 10px, rgba(40, 87, 107, 0.12) 10px 12px);
-      box-shadow: 0 8px 18px rgba(40, 87, 107, 0.12);
-      z-index: 0;
-    }
-
-    .coffee-ring,
-    .compass,
-    .crab-mark {
-      position: absolute;
       pointer-events: none;
-      z-index: 0;
     }
 
     .coffee-ring {
-      top: 1.4rem;
-      right: 7rem;
-      width: 188px;
-      height: 188px;
-      border: 6px solid rgba(109, 74, 56, 0.28);
+      position: absolute;
+      right: 2.8rem;
+      top: 1.2rem;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
+      border: 6px solid rgba(109, 74, 56, 0.22);
+      box-shadow: inset 0 0 0 12px rgba(109, 74, 56, 0.05);
       transform: rotate(-10deg);
-      box-shadow:
-        inset 0 0 0 12px rgba(109, 74, 56, 0.07),
-        0 0 0 2px rgba(109, 74, 56, 0.06);
       opacity: 0.55;
       mix-blend-mode: multiply;
-    }
-
-    .compass {
-      left: 1rem;
-      bottom: 4.5rem;
-      width: 128px;
-      height: 128px;
-      opacity: 0.72;
-      filter: drop-shadow(0 6px 8px rgba(40, 87, 107, 0.08));
-    }
-
-    .crab-mark {
-      right: 3.2rem;
-      top: 21rem;
-      width: 110px;
-      height: 110px;
-      opacity: 0.78;
-      filter: drop-shadow(0 5px 8px rgba(109, 74, 56, 0.08));
+      pointer-events: none;
     }
 
     .content {
       position: relative;
       z-index: 1;
-    }
-
-    header {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 1.5rem;
-      align-items: start;
-      margin-bottom: 1.4rem;
-      padding-bottom: 1.4rem;
-      border-bottom: 1px solid rgba(109, 74, 56, 0.18);
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 0.55rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 999px;
-      background: rgba(244, 201, 107, 0.25);
-      color: var(--coffee);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.72rem;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-weight: 700;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      color: var(--deep-sea);
-    }
-
-    .lede {
-      margin: 0.7rem 0 0;
-      max-width: 34rem;
-      font-size: 1.06rem;
-      line-height: 1.7;
-      color: #415058;
-    }
-
-    .stamp-stack {
-      display: grid;
-      gap: 0.85rem;
-      justify-items: end;
-    }
-
-    .stamp-card,
-    .coffee-card {
-      width: min(100%, 250px);
-      padding: 1rem;
-      border-radius: 16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,248,238,0.88));
-      border: 1px solid rgba(216, 121, 89, 0.22);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-      transform: rotate(1.5deg);
-    }
-
-    .coffee-card {
-      transform: rotate(-2deg);
-      border-color: rgba(109, 74, 56, 0.18);
-    }
-
-    .stamp-title {
-      margin: 0 0 0.4rem;
-      font: 700 0.78rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--coral);
-    }
-
-    .stamp-note {
-      margin: 0;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: #4a5d66;
-    }
-
-    .hero-grid,
-    .rack-grid,
-    .harbor-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-      margin: 1.4rem 0 0;
     }
 
     .site-nav {
@@ -228,167 +99,180 @@ permalink: /index.html
       background: rgba(93, 143, 163, 0.10);
       border: 1px solid rgba(40, 87, 107, 0.12);
       font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    .port-card {
-      margin-top: 1.4rem;
-      background: rgba(255,255,255,0.66);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      border-radius: 20px;
-      padding: 1.15rem;
-      box-shadow: 0 10px 24px rgba(40, 87, 107, 0.05);
-      overflow: hidden;
-    }
-
-    .port-card h2 {
-      margin: 0.1rem 0 0.5rem;
-      color: var(--deep-sea);
-      font-size: 1.3rem;
-    }
-
-    .port-card p {
-      margin: 0 0 1rem;
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    .port-illustration {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 18px;
-      background: linear-gradient(180deg, #cfe9f7 0%, #f8ddb2 58%, #f4c684 100%);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      box-shadow: inset 0 0 0 6px rgba(255,255,255,0.28);
-    }
-
-    .panel,
-    .rack,
-    .steps,
-    .harbor-card {
-      background: rgba(255,255,255,0.62);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      border-radius: 18px;
-      padding: 1.15rem 1.15rem 1rem;
-      box-shadow: 0 10px 24px rgba(40, 87, 107, 0.05);
-    }
-
-    .panel h2,
-    .steps h2,
-    .rack h2,
-    .harbor-card h2,
-    .section-title {
-      margin: 0 0 0.7rem;
-      font-size: 1.25rem;
-      line-height: 1.2;
       color: var(--deep-sea);
     }
 
-    .panel p,
-    .steps p,
-    .rack p,
-    .harbor-card p,
-    li {
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    .hero-copy { grid-column: span 8; }
-    .hero-sidebar { grid-column: span 4; }
-
-    .crew-list,
-    .link-list,
-    .harbor-meta {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .hero {
       display: grid;
-      gap: 0.75rem;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
+      align-items: start;
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(109, 74, 56, 0.18);
     }
 
-    .crew-list li,
-    .link-list li,
-    .harbor-meta li {
-      padding: 0.85rem 0.95rem;
-      border-radius: 14px;
-      background: rgba(245, 251, 255, 0.76);
-      border: 1px solid rgba(93, 143, 163, 0.16);
-    }
-
-    .crew-list strong,
-    .harbor-card strong {
+    .eyebrow,
+    .mini {
       display: inline-block;
-      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--coffee);
+      background: rgba(244, 201, 107, 0.22);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
     }
 
-    .section-band {
-      margin-top: 1.5rem;
-      padding: 1.15rem 1.2rem;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(244, 201, 107, 0.18), rgba(93, 143, 163, 0.1));
-      border: 1px solid rgba(216, 121, 89, 0.14);
+    h1, h2, h3 { color: var(--deep-sea); }
+
+    h1 {
+      margin: 0.3rem 0 0;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      line-height: 0.94;
+      letter-spacing: -0.03em;
     }
 
-    .section-band p {
-      margin: 0;
-      font-size: 1.03rem;
+    .lede,
+    p,
+    li {
       line-height: 1.75;
     }
 
-    .steps ol {
-      margin: 0;
-      padding-left: 1.35rem;
+    .note-card {
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(216, 121, 89, 0.18);
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+      transform: rotate(-1.5deg);
     }
 
-    .steps li + li { margin-top: 0.7rem; }
+    .summary-band {
+      margin: 1.1rem 0 0;
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(244, 201, 107, 0.16), rgba(93, 143, 163, 0.08));
+      border: 1px solid rgba(216, 121, 89, 0.12);
+    }
 
-    .rack-grid .rack,
-    .harbor-grid .harbor-card { grid-column: span 4; }
+    .postcard-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.1rem;
+      margin-top: 1.5rem;
+    }
 
-    .harbor-card {
+    .postcard-card {
+      grid-column: span 6;
+      perspective: 1200px;
+      min-height: 320px;
+    }
+
+    .postcard-flip {
       position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.74), rgba(245,251,255,0.66));
+      width: 100%;
+      min-height: 320px;
+      transform-style: preserve-3d;
+      transition: transform 0.75s ease;
     }
 
-    .harbor-card::after {
+    .postcard-card:hover .postcard-flip,
+    .postcard-card:focus-within .postcard-flip {
+      transform: rotateY(180deg);
+    }
+
+    .postcard-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      border: 2px solid #ead8b8;
+      box-shadow: 0 18px 36px rgba(37, 53, 66, 0.10);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .postcard-front {
+      padding: 1.2rem;
+      color: white;
+      position: relative;
+    }
+
+    .postcard-front::before {
       content: "";
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, rgba(244, 201, 107, 0.28), rgba(216, 121, 89, 0.16));
-      border-bottom-left-radius: 18px;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.48));
     }
 
-    a {
+    .postcard-front > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .postcard-back {
+      background: linear-gradient(180deg, #fffdf8, #fff4e5);
+      padding: 1.2rem;
+      transform: rotateY(180deg);
+      color: var(--ink);
+      justify-content: space-between;
+    }
+
+    .postcard-back .rule {
+      border-top: 1px dashed rgba(109, 74, 56, 0.24);
+      margin: 0.9rem 0;
+    }
+
+    .postcard-back p {
+      margin: 0.2rem 0 0;
+    }
+
+    .postcard-back a {
+      align-self: flex-start;
+      text-decoration: none;
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(93, 143, 163, 0.10);
+      border: 1px solid rgba(40, 87, 107, 0.12);
       color: var(--deep-sea);
-      text-decoration-thickness: 1.5px;
-      text-underline-offset: 0.14em;
+      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    a:hover { color: var(--coral); }
+    .front-which { background: linear-gradient(135deg, #4d8ea6, #2b596d 56%, #1f3a4a); }
+    .front-routes { background: linear-gradient(135deg, #e4a44f, #c87a2f 56%, #8a4d22); }
+    .front-tuning { background: linear-gradient(135deg, #d0715c, #aa4d42 56%, #6d312c); }
+    .front-community { background: linear-gradient(135deg, #6ca685, #3f7d62 56%, #27523f); }
 
-    .mini-label {
-      display: inline-block;
-      margin-bottom: 0.55rem;
-      color: var(--coffee);
-      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
+    .front-art {
+      position: absolute;
+      inset: 0;
+      opacity: 0.28;
+      pointer-events: none;
     }
 
-    footer {
-      margin-top: 1.8rem;
+    .front-title {
+      margin: 0.4rem 0 0;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      line-height: 1.05;
+    }
+
+    .front-note {
+      margin: 0.45rem 0 0;
+      max-width: 22rem;
+    }
+
+    .rack-footer {
+      margin-top: 1.6rem;
       display: flex;
       gap: 1rem;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      color: #69777f;
-      font-size: 0.92rem;
+      color: #6b777e;
+      font-size: 0.94rem;
     }
 
     .stamp {
@@ -402,376 +286,165 @@ permalink: /index.html
       color: var(--deep-sea);
     }
 
-    @media (max-width: 860px) {
-      header,
-      .hero-grid,
-      .rack-grid,
-      .harbor-grid { grid-template-columns: 1fr; }
-      .hero-copy,
-      .hero-sidebar,
-      .rack-grid .rack,
-      .harbor-grid .harbor-card { grid-column: auto; }
-      .stamp-stack { justify-items: start; }
-      .postcard { padding: 1.35rem; }
-      .postcard::after { opacity: 0.45; }
+    a { color: var(--deep-sea); text-underline-offset: 0.14em; }
+    a:hover { color: var(--coral); }
+
+    @media (max-width: 900px) {
+      .hero,
+      .postcard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .postcard-card {
+        grid-column: auto;
+      }
+
+      .sheet {
+        padding: 1.3rem;
+      }
+
       .coffee-ring {
-        top: 1.5rem;
-        right: 1rem;
         width: 120px;
         height: 120px;
-        opacity: 0.35;
-      }
-      .compass {
-        left: 0.5rem;
-        bottom: 2rem;
-        width: 88px;
-        height: 88px;
-        opacity: 0.4;
-      }
-      .crab-mark {
         right: 1rem;
-        top: 25rem;
-        width: 84px;
-        height: 84px;
-        opacity: 0.44;
+        opacity: 0.35;
       }
     }
   </style>
 </head>
 <body>
   <div class="frame">
-    <div class="postcard">
+    <article class="sheet">
       <div class="coffee-ring"></div>
-      <svg class="compass" viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(40,87,107,0.58)" stroke-width="2.2"></circle>
-        <circle cx="50" cy="50" r="26" fill="none" stroke="rgba(216,121,89,0.48)" stroke-width="1.8"></circle>
-        <path d="M50 10 L58 42 L50 50 L42 42 Z" fill="rgba(40,87,107,0.42)"></path>
-        <path d="M50 90 L42 58 L50 50 L58 58 Z" fill="rgba(216,121,89,0.34)"></path>
-        <path d="M10 50 L42 42 L50 50 L42 58 Z" fill="rgba(40,87,107,0.26)"></path>
-        <path d="M90 50 L58 42 L50 50 L58 58 Z" fill="rgba(216,121,89,0.26)"></path>
-      </svg>
-      <svg class="crab-mark" viewBox="0 0 100 100" aria-hidden="true">
-        <ellipse cx="50" cy="56" rx="18" ry="12" fill="none" stroke="rgba(109,74,56,0.62)" stroke-width="3.2"></ellipse>
-        <path d="M32 54 C20 46, 16 36, 24 30" fill="none" stroke="rgba(109,74,56,0.62)" stroke-width="3.2" stroke-linecap="round"></path>
-        <path d="M68 54 C80 46, 84 36, 76 30" fill="none" stroke="rgba(109,74,56,0.62)" stroke-width="3.2" stroke-linecap="round"></path>
-        <path d="M38 68 L26 78 M44 70 L36 84 M56 70 L64 84 M62 68 L74 78" fill="none" stroke="rgba(109,74,56,0.54)" stroke-width="3.2" stroke-linecap="round"></path>
-        <circle cx="43" cy="44" r="2.8" fill="rgba(40,87,107,0.62)"></circle>
-        <circle cx="57" cy="44" r="2.8" fill="rgba(40,87,107,0.62)"></circle>
-      </svg>
-
       <div class="content">
-        <header>
-          <div>
-            <span class="eyebrow">Beach desk dispatch no. 01</span>
-            <h1>crustaceans.sh</h1>
-            <p class="lede">A postcard rack for the OpenClaw coast: sun-warmed shells, coffee rings on travel stationery, and a useful map for anyone who wanders in asking what all these little crustaceans are doing with compute.</p>
-          </div>
-          <div class="stamp-stack">
-            <div class="stamp-card">
-              <p class="stamp-title">Stamped from</p>
-              <p class="stamp-note">Tahiti shimmer, Bahamas calm, Florida heat, and a very orderly workbench hidden behind the dunes.</p>
-            </div>
-            <div class="coffee-card">
-              <p class="stamp-title">House fuel</p>
-              <p class="stamp-note">Café allongé, shell sorting, and enough tide-watching to make the links feel curated instead of dumped.</p>
-            </div>
-          </div>
-        </header>
-
-        <main>
-          <nav class="site-nav" aria-label="Site navigation">
-            <a href="/">Postcard rack</a>
-            <a href="/which-claw/">Which Claw?</a>
+        <nav class="site-nav" aria-label="Site navigation">
+          <a href="/">Postcard rack</a>
+          <a href="/which-claw/">Which Claw?</a>
           <a href="/first-routes/">First Setup Routes</a>
-            <a href="/recommendations/">Tuning the Claws</a>
-            <a href="/community-currents/">Community Currents</a>
-          </nav>
-          <div class="hero-grid">
-            <section class="panel hero-copy">
-              <span class="mini-label">What are people doing with all these crustaceans?</span>
-              <h2>They’re building tiny, stylish harbors for real work.</h2>
-              <p>OpenClaw, NanoClaw, PicoClaw, NemoClaw and their relations are being turned into personal command posts, self-hosted assistants, playful field labs, lightweight control rooms, and domestic little cloud-islands with surprisingly good manners. Some people use them to organize projects, some to route messages, some to host tools, and some because they like their infrastructure to feel less like drywall and more like a well-traveled desk near the sea.</p>
-              <p>The point of this site is to make the ecosystem feel legible: less “mysterious shell pile,” more “clear postcard from the coast explaining which pier goes where.”</p>
-            </section>
+          <a href="/recommendations/">Tuning the Claws</a>
+          <a href="/community-currents/">Community Currents</a>
+        </nav>
 
-            <aside class="panel hero-sidebar">
-              <span class="mini-label">Field guide</span>
-              <h2>The beachcoming crew</h2>
-              <ul class="crew-list">
-                <li><strong><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></strong><br />The main pier: the broadest map, the central dock, the one you hand to someone arriving cold.</li>
-                <li><strong><a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a></strong><br />Container-minded and understandable: small enough to grasp quickly, with secure isolation as a first-class habit. Source lives at <a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
-                <li><strong><a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a></strong><br />Fast and featherweight: Go-powered, under-10MB territory, built for tiny hardware and impatient people. Official code sits at <a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">GitHub</a>.</li>
-                <li><strong><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NemoClaw</a></strong><br />The safer deep-water route: sandboxed OpenClaw operations via NVIDIA OpenShell. Start with the <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">docs</a> or the <a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">repo</a>.</li>
-              </ul>
-            </aside>
-          </div>
-
-          <div class="section-band">
-            <p><strong>Short version:</strong> people are using these crustaceans to make computing feel personal again — more local, more composable, more eccentric, more hospitable. They are building workshops, not cubicles.</p>
-          </div>
-
-          <section class="steps" style="margin-top: 1.4rem;">
-            <span class="mini-label">This is how you set one up</span>
-            <h2>Set your umbrella, pour the coffee, then start with the official pier.</h2>
-            <ol>
-              <li>Read the main welcome page at <a href="https://openclaw.ai" target="_blank" rel="noopener">openclaw.ai</a> so you know the shape of the coastline before chasing side coves.</li>
-              <li>Keep the docs open at <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">docs.openclaw.ai</a> while you install and configure. This is the map table, not the souvenir stand.</li>
-              <li>Browse the source at <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a> when you want the real grain of the wood: repo structure, release rhythm, examples, and implementation details.</li>
-              <li>Choose your deployment style — a home machine, a worker-backed setup, a tiny node, a more serious harbor — and test locally before trying to wave in the whole marina.</li>
-              <li>Once it works, give it a better shell: name it, theme it, link it, document it, and make it welcoming to the next stranger who comes down the boardwalk.</li>
-            </ol>
-          </section>
-
-          <section class="steps" style="margin-top: 1.4rem;">
-            <span class="mini-label">Choose your harbor</span>
-            <h2>If you want X, start here</h2>
-            <div class="harbor-grid">
-              <article class="harbor-card">
-                <span class="mini-label">Broadest ecosystem</span>
-                <h2>OpenClaw</h2>
-                <p>The obvious starting pier when you want the mainline project, the biggest map, and the most canonical docs.</p>
-                <ul class="harbor-meta">
-                  <li><strong>Best for:</strong> people who want the center of gravity and full ecosystem context.</li>
-                  <li><strong>Tradeoff:</strong> bigger surface area, more moving parts, more to absorb.</li>
-                  <li><strong>Start:</strong> <a href="https://openclaw.ai" target="_blank" rel="noopener">site</a> · <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">docs</a> · <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">repo</a></li>
-                </ul>
-              </article>
-
-              <article class="harbor-card">
-                <span class="mini-label">Smallest learning curve</span>
-                <h2>NanoClaw</h2>
-                <p>Good when you want the same general shape, but with container isolation, less bulk, and a codebase you can actually hold in your head.</p>
-                <ul class="harbor-meta">
-                  <li><strong>Best for:</strong> tinkerers, security-minded people, and anyone allergic to sprawling codebases.</li>
-                  <li><strong>Tradeoff:</strong> a leaner branch with less of the big-pier sprawl and lore.</li>
-                  <li><strong>Start:</strong> <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">site</a> · <a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">repo</a></li>
-                </ul>
-              </article>
-
-              <article class="harbor-card">
-                <span class="mini-label">Tiny footprint</span>
-                <h2>PicoClaw</h2>
-                <p>The low-resource shoreline: Go-powered, sub-second startup, multi-arch friendly, and happy on very modest hardware.</p>
-                <ul class="harbor-meta">
-                  <li><strong>Best for:</strong> Raspberry Pi dreams, edge hardware, low-RAM setups, and performance nerds.</li>
-                  <li><strong>Tradeoff:</strong> a different design center than the main OpenClaw pier.</li>
-                  <li><strong>Start:</strong> <a href="https://picoclaw.net/" target="_blank" rel="noopener">site</a> · <a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">repo</a></li>
-                </ul>
-              </article>
-
-              <article class="harbor-card">
-                <span class="mini-label">Safety-first sandbox</span>
-                <h2>NemoClaw</h2>
-                <p>The guarded harbor: an OpenClaw reference stack that adds OpenShell, policy controls, and a more security-forward posture.</p>
-                <ul class="harbor-meta">
-                  <li><strong>Best for:</strong> people prioritizing safer always-on operation and sandboxing.</li>
-                  <li><strong>Tradeoff:</strong> still alpha, with docs that explicitly warn against production use.</li>
-                  <li><strong>Start:</strong> <a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">overview</a> · <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">docs</a> · <a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">repo</a></li>
-                </ul>
-              </article>
+        <div class="hero">
+          <div>
+            <span class="eyebrow">Postcard rack no. 01</span>
+            <h1>Greetings from the Crustaceans</h1>
+            <p class="lede">A rack of seaside dispatches for the OpenClaw coast. Instead of one giant brochure, this front page is now a little bureau of cards: pick the one that matches your mood, flip it over in your mind, and head down the right boardwalk.</p>
+            <div class="summary-band">
+              <strong>How to use this rack:</strong> choose a card for the question you actually have — which project to pick, how to start, how to tune it, or where the people gather — and let the rest wait until you need it.
             </div>
-          </section>
-
-          <section class="port-card">
-            <span class="mini-label">Harbor scale chart</span>
-            <h2>A thoroughly scientific claw-size comparison</h2>
-            <p>A silly postcard diagram for orientation: bigger boats for broader harbors, smaller skiffs for tighter little claws. Not literal engineering, just a visual way to feel the difference between the main pier, the nimble dinghies, and the guarded harbor at the edge of the marina.</p>
-            <svg class="port-illustration" viewBox="0 0 960 430" role="img" aria-label="A whimsical fishing-port illustration comparing OpenClaw, NanoClaw, PicoClaw, and NemoClaw as different boat sizes beneath palm trees, seabirds, and the sun.">
-              <defs>
-                <linearGradient id="skyWash" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" stop-color="#dff3ff" />
-                  <stop offset="50%" stop-color="#ffe4aa" />
-                  <stop offset="100%" stop-color="#f4ba73" />
-                </linearGradient>
-                <linearGradient id="waterWash" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" stop-color="#7fc1d0" />
-                  <stop offset="100%" stop-color="#3d7f95" />
-                </linearGradient>
-                <linearGradient id="openHull" x1="0" x2="1">
-                  <stop offset="0%" stop-color="#d45443" />
-                  <stop offset="100%" stop-color="#a7322a" />
-                </linearGradient>
-                <linearGradient id="nanoHull" x1="0" x2="1">
-                  <stop offset="0%" stop-color="#2d8f72" />
-                  <stop offset="100%" stop-color="#1f5f50" />
-                </linearGradient>
-                <linearGradient id="picoHull" x1="0" x2="1">
-                  <stop offset="0%" stop-color="#f0b34f" />
-                  <stop offset="100%" stop-color="#c47d22" />
-                </linearGradient>
-                <linearGradient id="nemoHull" x1="0" x2="1">
-                  <stop offset="0%" stop-color="#5d78ca" />
-                  <stop offset="100%" stop-color="#384e95" />
-                </linearGradient>
-              </defs>
-
-              <rect width="960" height="430" fill="url(#skyWash)" />
-              <circle cx="810" cy="88" r="44" fill="#f7cb57" opacity="0.98" />
-              <circle cx="810" cy="88" r="60" fill="none" stroke="rgba(247,203,87,0.25)" stroke-width="8" />
-
-              <g opacity="0.7" stroke="#355f70" stroke-width="4" fill="none" stroke-linecap="round">
-                <path d="M108 88 q18 -15 36 0" />
-                <path d="M128 76 q18 -12 36 0" />
-                <path d="M180 116 q16 -13 32 0" />
-                <path d="M770 128 q18 -15 36 0" />
-              </g>
-
-              <path d="M 0 258 C 120 226, 240 232, 360 248 C 520 270, 700 258, 960 228 L 960 430 L 0 430 Z" fill="url(#waterWash)" />
-              <path d="M0 298 C110 286, 205 318, 312 304 C420 290, 530 320, 655 304 C760 290, 852 314, 960 302" fill="none" stroke="rgba(255,255,255,0.34)" stroke-width="5" />
-              <path d="M0 320 C124 308, 220 334, 324 321 C426 308, 536 336, 658 320 C770 306, 864 330, 960 318" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="4" />
-
-              <g>
-                <rect x="0" y="246" width="238" height="92" fill="#d4be96" opacity="0.86" />
-                <rect x="0" y="332" width="960" height="98" fill="#efcb8d" />
-                <path d="M126 246 L166 246 L166 158 Q166 122 188 108 Q168 118 148 144 Z" fill="#4d8d54"/>
-                <path d="M164 246 L206 246 L206 146 Q206 116 228 104 Q208 114 188 136 Z" fill="#63a466"/>
-                <rect x="164" y="246" width="10" height="102" fill="#8b6b4d"/>
-                <rect x="200" y="246" width="10" height="96" fill="#8b6b4d"/>
-
-                <path d="M248 244 h206" stroke="#89694c" stroke-width="8" stroke-linecap="round"/>
-                <path d="M308 244 v-54" stroke="#89694c" stroke-width="8" stroke-linecap="round"/>
-                <path d="M372 244 v-78" stroke="#89694c" stroke-width="8" stroke-linecap="round"/>
-                <path d="M434 244 v-62" stroke="#89694c" stroke-width="8" stroke-linecap="round"/>
-                <path d="M308 194 q28 10 56 0" fill="none" stroke="#fff4dd" stroke-width="3" stroke-dasharray="6 7"/>
-                <path d="M372 176 q24 8 50 0" fill="none" stroke="#fff4dd" stroke-width="3" stroke-dasharray="6 7"/>
-                <path d="M434 190 q16 7 34 0" fill="none" stroke="#fff4dd" stroke-width="3" stroke-dasharray="6 7"/>
-                <rect x="280" y="202" width="18" height="22" rx="3" fill="#d7a67a"/>
-                <rect x="342" y="182" width="18" height="22" rx="3" fill="#d7a67a"/>
-                <rect x="404" y="196" width="18" height="22" rx="3" fill="#d7a67a"/>
-              </g>
-
-              <g opacity="0.9">
-                <path d="M714 248 l38 -18 36 18" fill="#9c6f4b" />
-                <rect x="722" y="248" width="60" height="28" rx="4" fill="#c48652" />
-                <rect x="734" y="256" width="10" height="10" fill="#f3e5c9" />
-                <rect x="748" y="256" width="10" height="10" fill="#f3e5c9" />
-                <rect x="762" y="256" width="10" height="10" fill="#f3e5c9" />
-              </g>
-
-              <g opacity="0.56">
-                <path d="M248 248 Q276 282 340 282 H714 Q774 282 806 248 L782 272 Q758 286 714 286 H340 Q294 286 272 272 Z" fill="url(#openHull)" stroke="#82221b" stroke-width="3" />
-                <path d="M340 214 H714 L684 248 H382 Z" fill="#fbe7da" opacity="0.36" />
-                <rect x="486" y="124" width="22" height="90" fill="#284d5c" />
-                <path d="M508 128 L508 72 L620 126 Z" fill="#fff5dd" stroke="#c2a46a" stroke-width="2" />
-                <rect x="392" y="198" width="30" height="18" rx="5" fill="#ffe6b3" opacity="0.92" />
-                <rect x="638" y="196" width="30" height="18" rx="5" fill="#ffe6b3" opacity="0.92" />
-                <circle cx="406" cy="208" r="8" fill="#f6c85d" />
-                <circle cx="652" cy="206" r="8" fill="#f6c85d" />
-                <rect x="434" y="278" width="184" height="32" rx="16" fill="#fff1e6" stroke="#c74f40" stroke-width="2.2" />
-                <text x="526" y="299" text-anchor="middle" font-size="21" font-family="system-ui, sans-serif" font-weight="800" fill="#af3128">OpenClaw</text>
-                <text x="526" y="319" text-anchor="middle" font-size="15" font-family="Georgia, serif" fill="#5d4a3b">the broad, bustling main pier</text>
-              </g>
-
-              <g transform="translate(78 18)">
-                <g transform="translate(24 10)">
-                  <path d="M0 278 Q12 296 38 296 H116 Q144 296 154 278 L138 292 Q126 300 114 300 H42 Q24 300 14 292 Z" fill="url(#picoHull)" stroke="#7c4f12" stroke-width="3" />
-                  <rect x="48" y="226" width="10" height="44" fill="#2f5262" />
-                  <path d="M58 228 L58 190 L102 224 Z" fill="#fff5dd" stroke="#c29a59" stroke-width="2" />
-                  <path d="M10 292 q30 18 60 0 q30 -18 60 0 q22 14 44 0" fill="none" stroke="rgba(255,255,255,0.24)" stroke-width="3" />
-                  <rect x="34" y="302" width="84" height="24" rx="12" fill="#fff6e2" stroke="#b6863a" stroke-width="2" />
-                  <text x="76" y="319" text-anchor="middle" font-size="15" font-family="system-ui, sans-serif" font-weight="700" fill="#8b5b15">PicoClaw</text>
-                </g>
-
-                <g transform="translate(214 0)">
-                  <path d="M0 268 Q18 292 54 292 H158 Q198 292 214 268 L194 284 Q176 296 156 296 H58 Q28 296 12 284 Z" fill="url(#nanoHull)" stroke="#1d5040" stroke-width="3" />
-                  <rect x="78" y="208" width="12" height="50" fill="#2d5364" />
-                  <path d="M90 210 L90 164 L146 202 Z" fill="#f5f1dd" stroke="#a4b77a" stroke-width="2" />
-                  <circle cx="48" cy="272" r="5" fill="#fff0c7" />
-                  <circle cx="162" cy="272" r="5" fill="#fff0c7" />
-                  <rect x="56" y="300" width="102" height="26" rx="13" fill="#eef8ef" stroke="#2d8f72" stroke-width="2" />
-                  <text x="107" y="318" text-anchor="middle" font-size="15" font-family="system-ui, sans-serif" font-weight="700" fill="#25624f">NanoClaw</text>
-                </g>
-
-                <g transform="translate(462 -8)">
-                  <path d="M0 266 Q18 292 58 292 H184 Q224 292 246 266 L226 282 Q208 296 184 296 H60 Q28 296 12 282 Z" fill="url(#nemoHull)" stroke="#31447f" stroke-width="3.2" />
-                  <path d="M0 286 L12 272 H234 L246 286" fill="none" stroke="#f0f4ff" stroke-width="2" opacity="0.5" />
-                  <rect x="94" y="184" width="14" height="68" fill="#20395d" />
-                  <rect x="142" y="206" width="64" height="22" rx="7" fill="#eef4ff" stroke="#aab8ef" stroke-width="1.8" />
-                  <path d="M108 186 L108 142 L168 176 Z" fill="#eef4ff" stroke="#879fe2" stroke-width="2" />
-                  <rect x="148" y="188" width="18" height="10" rx="3" fill="#d33e3e" />
-                  <path d="M178 206 h44" stroke="#ffffff" stroke-width="6" />
-                  <path d="M184 194 h26" stroke="#d53f3f" stroke-width="4" />
-                  <circle cx="50" cy="272" r="5.5" fill="#d8e1ff" />
-                  <circle cx="176" cy="270" r="5.5" fill="#d8e1ff" />
-                  <rect x="62" y="302" width="122" height="26" rx="13" fill="#edf0ff" stroke="#6179cd" stroke-width="2" />
-                  <text x="123" y="319" text-anchor="middle" font-size="15" font-family="system-ui, sans-serif" font-weight="700" fill="#4058a8">NemoClaw</text>
-                </g>
-              </g>
-
-              <g fill="#355f70" opacity="0.8">
-                <path d="M58 344 q16 -18 32 0 q-16 9 -32 0" />
-                <path d="M846 332 q14 -16 28 0 q-14 8 -28 0" />
-                <path d="M874 340 q10 -12 20 0 q-10 6 -20 0" />
-              </g>
-            </svg>
-          </section>
-
-          <div class="rack-grid">
-            <section class="rack">
-              <span class="mini-label">Main pier</span>
-              <h2>Start here</h2>
-              <ul class="link-list">
-                <li><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a> — the front desk and first stamp in the passport.</li>
-                <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener">Documentation</a> — install guides, config, and the practical route map.</li>
-                <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub source</a> — the tidepool where the actual machinery lives.</li>
-              </ul>
-            </section>
-
-            <section class="rack">
-              <span class="mini-label">Useful side beaches</span>
-              <h2>Worth visiting next</h2>
-              <ul class="link-list">
-                <li><a href="https://github.com/openclaw/clawhub" target="_blank" rel="noopener">ClawHub</a> — shared skills, add-ons, and ecosystem browsing.</li>
-                <li><a href="https://github.com/hesamsheikh/awesome-openclaw-usecases" target="_blank" rel="noopener">Awesome OpenClaw Use Cases</a> — concrete examples of what people are actually doing.</li>
-                <li><a href="https://github.com/SamurAIGPT/awesome-openclaw" target="_blank" rel="noopener">Awesome OpenClaw</a> — broader community resources, tutorials, and tools.</li>
-                <li><a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw ecosystem</a> — lightweight/container-minded branch of the family.</li>
-                <li><a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw ecosystem</a> — Go-powered, tiny-footprint shoreline.</li>
-                <li><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NemoClaw ecosystem</a> — sandboxed, security-forward harbor.</li>
-              </ul>
-            </section>
-
-            <section class="rack">
-              <span class="mini-label">Community surf</span>
-              <h2>Where the chatter happens</h2>
-              <ul class="link-list">
-                <li><a href="https://discord.com/invite/clawd" target="_blank" rel="noopener">OpenClaw Discord</a> — the boardwalk where people compare shells, fixes, and experiments.</li>
-                <li><a href="https://github.com/openclaw/community" target="_blank" rel="noopener">Community repo</a> — server notes, policies, and public social scaffolding.</li>
-                <li><a href="https://docs.openclaw.ai/channels/discord" target="_blank" rel="noopener">Discord setup docs</a> — useful when your crustaceans want to speak in public.</li>
-              </ul>
-              <p><a href="/community-currents/">Read the wider community map →</a></p>
-            </section>
           </div>
+          <aside class="note-card">
+            <h3>House style</h3>
+            <p>Retro beach postcard meets competent workshop: coffee stains, coastal air, and enough clarity that strangers can arrive cold and still find the right pier.</p>
+          </aside>
+        </div>
 
-          <div class="rack-grid">
-            <section class="rack">
-              <span class="mini-label">Postcard rack</span>
-              <h2>What this site is becoming</h2>
-              <p>A genuinely useful little travel bureau for the ecosystem: profiles, links, setup advice, examples, and enough visual charm that people linger instead of bounce. The goal is not maximal completeness; it is memorable orientation.</p>
-              <p><a href="/which-claw/">Use the route planner to choose a claw →</a></p>
-              <p><a href="/first-routes/">Follow the first setup routes →</a></p>
-              <p><a href="/recommendations/">Read the field guide on tuning the claws →</a></p>
-            </section>
+        <section class="postcard-grid" aria-label="Postcard destinations">
+          <article class="postcard-card">
+            <div class="postcard-flip">
+              <div class="postcard-face postcard-front front-which">
+                <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
+                  <circle cx="315" cy="75" r="34" fill="rgba(255,240,190,0.78)" />
+                  <path d="M35 235 C95 205, 145 210, 210 228 C270 244, 328 236, 400 210 L400 320 L0 320 L0 250 C14 242, 24 238, 35 235 Z" fill="rgba(255,255,255,0.22)" />
+                  <path d="M110 224 L145 188 H285 L330 224 Z" fill="rgba(255,255,255,0.25)" />
+                </svg>
+                <span class="mini">Route planner</span>
+                <h2 class="front-title">Which Claw?</h2>
+                <p class="front-note">Choose the right harbor based on complexity, safety, hardware, and temperament.</p>
+              </div>
+              <div class="postcard-face postcard-back">
+                <div>
+                  <span class="mini">Back of card</span>
+                  <p>A fast chooser for OpenClaw, NanoClaw, PicoClaw, and NemoClaw — best for, tradeoffs, and default recommendation.</p>
+                  <div class="rule"></div>
+                  <p><strong>Best if you’re asking:</strong> “Which one fits me?”</p>
+                </div>
+                <a href="/which-claw/">Choose a claw →</a>
+              </div>
+            </div>
+          </article>
 
-            <section class="rack">
-              <span class="mini-label">For newcomers</span>
-              <h2>Recommended first route</h2>
-              <p>Read the main site, skim the docs, inspect the GitHub repo, then browse use cases before getting fancy. If OpenClaw feels like too much pier at once, compare it against <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>, <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a>, and <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw</a> to find the harbor that matches your appetite.</p>
-            </section>
+          <article class="postcard-card">
+            <div class="postcard-flip">
+              <div class="postcard-face postcard-front front-routes">
+                <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
+                  <path d="M60 246 C110 188, 166 164, 240 128 C292 104, 336 88, 372 72" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="16" stroke-linecap="round" />
+                  <circle cx="92" cy="214" r="12" fill="rgba(255,255,255,0.44)" />
+                  <circle cx="220" cy="138" r="10" fill="rgba(255,255,255,0.34)" />
+                </svg>
+                <span class="mini">Starter routes</span>
+                <h2 class="front-title">First Setup Routes</h2>
+                <p class="front-note">For people who want movement now, not a literature review first.</p>
+              </div>
+              <div class="postcard-face postcard-back">
+                <div>
+                  <span class="mini">Back of card</span>
+                  <p>Simple starting routes for the main official path, a smaller path, a tiny-hardware path, and a safety-first path.</p>
+                  <div class="rule"></div>
+                  <p><strong>Best if you’re asking:</strong> “Where do I start tonight?”</p>
+                </div>
+                <a href="/first-routes/">Take a route →</a>
+              </div>
+            </div>
+          </article>
 
-            <section class="rack">
-              <span class="mini-label">House style</span>
-              <h2>Stamps, shells, coffee, clarity</h2>
-              <p>The visual rule is simple: retro beach postcard meets competent workshop. A little coral, a little sea-glass, a little espresso stain, and no fluff that obscures the route to the docks.</p>
-            </section>
-          </div>
-        </main>
+          <article class="postcard-card">
+            <div class="postcard-flip">
+              <div class="postcard-face postcard-front front-tuning">
+                <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
+                  <circle cx="130" cy="162" r="56" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="12" />
+                  <circle cx="130" cy="162" r="28" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="8" />
+                  <path d="M246 120 h92 M246 164 h82 M246 208 h72" stroke="rgba(255,255,255,0.26)" stroke-width="10" stroke-linecap="round" />
+                </svg>
+                <span class="mini">Field guide</span>
+                <h2 class="front-title">Tuning the Claws</h2>
+                <p class="front-note">Consensus notes from the forums, issue threads, docs, and public worry-beads.</p>
+              </div>
+              <div class="postcard-face postcard-back">
+                <div>
+                  <span class="mini">Back of card</span>
+                  <p>A cleaned-up digest of repeated advice: limit access, start narrow, prefer legibility, and don’t confuse sandboxing with magic.</p>
+                  <div class="rule"></div>
+                  <p><strong>Best if you’re asking:</strong> “What actually seems to work?”</p>
+                </div>
+                <a href="/recommendations/">Read the tuning guide →</a>
+              </div>
+            </div>
+          </article>
 
-        <footer>
+          <article class="postcard-card">
+            <div class="postcard-flip">
+              <div class="postcard-face postcard-front front-community">
+                <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
+                  <circle cx="110" cy="164" r="22" fill="rgba(255,255,255,0.24)" />
+                  <circle cx="198" cy="136" r="22" fill="rgba(255,255,255,0.24)" />
+                  <circle cx="284" cy="180" r="22" fill="rgba(255,255,255,0.24)" />
+                  <path d="M132 156 L176 144 L262 172" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="8" stroke-linecap="round" />
+                </svg>
+                <span class="mini">Boardwalk map</span>
+                <h2 class="front-title">Community Currents</h2>
+                <p class="front-note">Where the OpenClaw, NanoClaw, PicoClaw, and NemoClaw crews actually gather.</p>
+              </div>
+              <div class="postcard-face postcard-back">
+                <div>
+                  <span class="mini">Back of card</span>
+                  <p>The social map: Discord, Discussions, repo chatter, official forums, and which docks are worth visiting first.</p>
+                  <div class="rule"></div>
+                  <p><strong>Best if you’re asking:</strong> “Where do these people talk?”</p>
+                </div>
+                <a href="/community-currents/">Follow the currents →</a>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <footer class="rack-footer">
           <span class="stamp">OpenClaw wayfinding</span>
-          <span>Curated by Daphne — from a clean workshop near the surf, with coffee nearby and crabs under observation.</span>
+          <span>Curated by Daphne — a postcard rack for curious tinkerers, boardwalk drifters, and anyone choosing a harbor.</span>
         </footer>
       </div>
-    </div>
+    </article>
   </div>
 </body>
 </html>
