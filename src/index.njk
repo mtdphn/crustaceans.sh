@@ -205,12 +205,26 @@ permalink: /index.html
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.48));
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.42));
+      z-index: 0;
+    }
+
+    .postcard-front::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.24), transparent 18%),
+        radial-gradient(circle at 82% 24%, rgba(255,255,255,0.18), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.10));
+      mix-blend-mode: screen;
+      opacity: 0.45;
+      z-index: 0;
     }
 
     .postcard-front > * {
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .postcard-back {
@@ -241,16 +255,19 @@ permalink: /index.html
       font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    .front-which { background: linear-gradient(135deg, #4d8ea6, #2b596d 56%, #1f3a4a); }
-    .front-routes { background: linear-gradient(135deg, #e4a44f, #c87a2f 56%, #8a4d22); }
-    .front-tuning { background: linear-gradient(135deg, #d0715c, #aa4d42 56%, #6d312c); }
-    .front-community { background: linear-gradient(135deg, #6ca685, #3f7d62 56%, #27523f); }
+    .front-which { background: linear-gradient(135deg, #6ba9bd, #3c7389 50%, #274455); }
+    .front-routes { background: linear-gradient(135deg, #efbf77, #d28a40 50%, #92522a); }
+    .front-tuning { background: linear-gradient(135deg, #d78872, #b15d51 50%, #743934); }
+    .front-community { background: linear-gradient(135deg, #8ab79b, #5e9274 50%, #345945); }
 
     .front-art {
       position: absolute;
       inset: 0;
-      opacity: 0.28;
+      opacity: 0.42;
       pointer-events: none;
+      filter: blur(1.2px) saturate(0.85);
+      transform: scale(1.04);
+      z-index: 1;
     }
 
     .front-title {
@@ -345,9 +362,12 @@ permalink: /index.html
             <div class="postcard-flip">
               <div class="postcard-face postcard-front front-which">
                 <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
-                  <circle cx="315" cy="75" r="34" fill="rgba(255,240,190,0.78)" />
-                  <path d="M35 235 C95 205, 145 210, 210 228 C270 244, 328 236, 400 210 L400 320 L0 320 L0 250 C14 242, 24 238, 35 235 Z" fill="rgba(255,255,255,0.22)" />
-                  <path d="M110 224 L145 188 H285 L330 224 Z" fill="rgba(255,255,255,0.25)" />
+                  <circle cx="300" cy="86" r="38" fill="rgba(255,241,198,0.88)" />
+                  <path d="M0 230 C50 208, 106 212, 164 228 C224 244, 300 240, 400 210 L400 320 L0 320 Z" fill="rgba(255,255,255,0.22)" />
+                  <path d="M54 232 L116 194 H284 L342 232 Z" fill="rgba(255,255,255,0.22)" />
+                  <path d="M118 194 L284 194 L254 214 H144 Z" fill="rgba(255,245,230,0.18)" />
+                  <rect x="184" y="148" width="10" height="46" fill="rgba(255,255,255,0.24)" />
+                  <path d="M194 150 L194 118 L236 146 Z" fill="rgba(255,255,255,0.24)" />
                 </svg>
                 <span class="mini">Route planner</span>
                 <h2 class="front-title">Which Claw?</h2>
@@ -369,9 +389,11 @@ permalink: /index.html
             <div class="postcard-flip">
               <div class="postcard-face postcard-front front-routes">
                 <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
-                  <path d="M60 246 C110 188, 166 164, 240 128 C292 104, 336 88, 372 72" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="16" stroke-linecap="round" />
-                  <circle cx="92" cy="214" r="12" fill="rgba(255,255,255,0.44)" />
-                  <circle cx="220" cy="138" r="10" fill="rgba(255,255,255,0.34)" />
+                  <circle cx="78" cy="92" r="28" fill="rgba(255,245,210,0.55)" />
+                  <path d="M44 244 C102 184, 156 160, 218 130 C286 96, 330 74, 376 54" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="18" stroke-linecap="round" />
+                  <circle cx="88" cy="214" r="15" fill="rgba(255,255,255,0.30)" />
+                  <circle cx="214" cy="138" r="12" fill="rgba(255,255,255,0.24)" />
+                  <circle cx="330" cy="82" r="11" fill="rgba(255,255,255,0.22)" />
                 </svg>
                 <span class="mini">Starter routes</span>
                 <h2 class="front-title">First Setup Routes</h2>
@@ -393,9 +415,10 @@ permalink: /index.html
             <div class="postcard-flip">
               <div class="postcard-face postcard-front front-tuning">
                 <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
-                  <circle cx="130" cy="162" r="56" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="12" />
-                  <circle cx="130" cy="162" r="28" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="8" />
-                  <path d="M246 120 h92 M246 164 h82 M246 208 h72" stroke="rgba(255,255,255,0.26)" stroke-width="10" stroke-linecap="round" />
+                  <circle cx="124" cy="164" r="62" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="14" />
+                  <circle cx="124" cy="164" r="34" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="9" />
+                  <path d="M228 120 h102 M228 164 h92 M228 208 h82" stroke="rgba(255,255,255,0.24)" stroke-width="12" stroke-linecap="round" />
+                  <path d="M118 102 L130 86 L142 102" fill="rgba(255,255,255,0.18)" />
                 </svg>
                 <span class="mini">Field guide</span>
                 <h2 class="front-title">Tuning the Claws</h2>
@@ -417,10 +440,11 @@ permalink: /index.html
             <div class="postcard-flip">
               <div class="postcard-face postcard-front front-community">
                 <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
-                  <circle cx="110" cy="164" r="22" fill="rgba(255,255,255,0.24)" />
-                  <circle cx="198" cy="136" r="22" fill="rgba(255,255,255,0.24)" />
-                  <circle cx="284" cy="180" r="22" fill="rgba(255,255,255,0.24)" />
-                  <path d="M132 156 L176 144 L262 172" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="8" stroke-linecap="round" />
+                  <circle cx="118" cy="164" r="26" fill="rgba(255,255,255,0.22)" />
+                  <circle cx="204" cy="132" r="26" fill="rgba(255,255,255,0.22)" />
+                  <circle cx="292" cy="182" r="26" fill="rgba(255,255,255,0.22)" />
+                  <path d="M144 156 L184 142 L268 174" fill="none" stroke="rgba(255,255,255,0.26)" stroke-width="10" stroke-linecap="round" />
+                  <path d="M96 210 C142 244, 208 246, 312 214" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="14" stroke-linecap="round" />
                 </svg>
                 <span class="mini">Boardwalk map</span>
                 <h2 class="front-title">Community Currents</h2>
