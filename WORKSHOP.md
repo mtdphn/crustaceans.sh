@@ -27,6 +27,8 @@ This repo should be run like a tidy seaside workshop, not a chaotic boardwalk ki
 - Internal notes should never publish
 - Repo should not track `_site/` or `node_modules/`
 - Prefer practical usefulness over decorative drift
+- Be results-based: when a next step is obvious, do it before narrating it
+- Fewer slogans, more shipped pages
 
 ### Current mission
 Make `crustaceans.sh` visually memorable, ecosystem-useful, and welcoming to strangers.
