@@ -1,0 +1,182 @@
+---
+title: Community Currents
+permalink: /community-currents/index.html
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} | crustaceans.sh</title>
+  <style>
+    :root {
+      --sand: #f6efe2;
+      --cream: #fffaf1;
+      --foam: #f5fbff;
+      --sea: #5d8fa3;
+      --deep-sea: #28576b;
+      --coral: #d87959;
+      --ink: #26343c;
+      --coffee: #6d4a38;
+      --sun: #f4c96b;
+      --shadow: rgba(37, 53, 66, 0.16);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem 1rem 3rem;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(244, 201, 107, 0.22), transparent 24%),
+        radial-gradient(circle at top right, rgba(93, 143, 163, 0.14), transparent 28%),
+        linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%);
+    }
+    .frame {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1.2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42));
+      border-radius: 28px;
+      box-shadow: 0 24px 64px var(--shadow);
+    }
+    .sheet {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--cream), #fff5e8);
+      border: 2px solid #ead8b8;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.34);
+    }
+    .sheet::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px dashed rgba(109, 74, 56, 0.18);
+      border-radius: 18px;
+      pointer-events: none;
+    }
+    h1, h2, h3 { color: var(--deep-sea); }
+    h1 {
+      margin: 0.25rem 0 0;
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+    .eyebrow, .mini {
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--coffee);
+      background: rgba(244, 201, 107, 0.22);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+    }
+    .lede, p, li { line-height: 1.75; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
+      align-items: start;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(109, 74, 56, 0.18);
+    }
+    .note-card, .card {
+      background: rgba(255,255,255,0.68);
+      border: 1px solid rgba(40, 87, 107, 0.12);
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 0 10px 24px rgba(40, 87, 107, 0.05);
+    }
+    .note-card { transform: rotate(-1.2deg); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .card { grid-column: span 6; }
+    .full { grid-column: span 12; }
+    a { color: var(--deep-sea); text-underline-offset: 0.14em; }
+    a:hover { color: var(--coral); }
+    ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+    .backlink { margin-top: 1.5rem; }
+    @media (max-width: 860px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+      .card, .full { grid-column: auto; }
+      .sheet { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <article class="sheet">
+      <div class="hero">
+        <div>
+          <span class="eyebrow">Boardwalk field guide</span>
+          <h1>Community currents</h1>
+          <p class="lede">Where the various Claw crews actually gather, what kind of talk happens there, and which public docks are worth visiting first. This is the social map, not the install map.</p>
+        </div>
+        <aside class="note-card">
+          <h3>Short read</h3>
+          <p>OpenClaw has the strongest centralized public community. NanoClaw and PicoClaw lean more heavily on GitHub Discussions and repo-centric chatter. NemoClaw is still young enough that the official NVIDIA channels matter more than grassroots folklore.</p>
+        </aside>
+      </div>
+
+      <div class="grid">
+        <section class="card">
+          <span class="mini">OpenClaw</span>
+          <h2>Main boardwalk</h2>
+          <ul>
+            <li><a href="https://discord.com/invite/clawd" target="_blank" rel="noopener">Discord</a> — the primary community dock.</li>
+            <li><a href="https://github.com/openclaw/community" target="_blank" rel="noopener">Community repo</a> — governance and public scaffolding.</li>
+            <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">Main repo</a> — code, issues, releases.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <span class="mini">NanoClaw</span>
+          <h2>Where the tinkerers gather</h2>
+          <ul>
+            <li><a href="https://github.com/qwibitai/nanoclaw/discussions" target="_blank" rel="noopener">GitHub Discussions</a> — best public question-and-answer dock.</li>
+            <li><a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">Main repo</a> — source, issues, README, releases.</li>
+            <li>Conversation also spills into self-hosting threads and comparison posts.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <span class="mini">PicoClaw</span>
+          <h2>Tiny-hardware harbor</h2>
+          <ul>
+            <li><a href="https://github.com/sipeed/picoclaw/discussions" target="_blank" rel="noopener">GitHub Discussions</a> — the cleanest public square.</li>
+            <li><a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">Main repo</a> — where performance-minded discussion lives.</li>
+            <li>The culture feels more code-first and less socially centralized than OpenClaw.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <span class="mini">NemoClaw</span>
+          <h2>Official channels first</h2>
+          <ul>
+            <li><a href="https://forums.developer.nvidia.com/t/introducing-nvidia-nemoclaw/363701" target="_blank" rel="noopener">NVIDIA forum thread</a> — official public launch thread.</li>
+            <li><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NVIDIA overview</a> — points people toward the community/Discord path.</li>
+            <li><a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">Main repo</a> — issues, code, docs.</li>
+          </ul>
+        </section>
+
+        <section class="card full">
+          <span class="mini">How to use this</span>
+          <h2>What to click first</h2>
+          <p>If you’re new, start with the biggest clearest public dock for the project you care about. For OpenClaw, that usually means Discord plus docs. For NanoClaw and PicoClaw, start with Discussions and the repo itself. For NemoClaw, stay close to the official NVIDIA channels until the grassroots shoreline gets more defined.</p>
+        </section>
+      </div>
+
+      <p class="backlink"><a href="/">← Back to the postcard rack</a></p>
+    </article>
+  </div>
+</body>
+</html>
