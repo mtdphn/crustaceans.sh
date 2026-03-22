@@ -192,11 +192,11 @@ permalink: /index.html
       box-shadow: 0 18px 36px rgba(37, 53, 66, 0.10);
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: space-between;
     }
 
     .postcard-front {
-      padding: 1.35rem;
+      padding: 1.15rem 1.15rem 1.05rem;
       color: white;
       position: relative;
     }
@@ -229,7 +229,7 @@ permalink: /index.html
 
     .postcard-back {
       background: linear-gradient(180deg, #fffdf8, #fff4e5);
-      padding: 1.2rem;
+      padding: 1.15rem 1.15rem 1.05rem;
       transform: rotateY(180deg);
       color: var(--ink);
       justify-content: space-between;
@@ -260,14 +260,32 @@ permalink: /index.html
     .front-tuning { background: linear-gradient(135deg, #d78872, #b15d51 50%, #743934); }
     .front-community { background: linear-gradient(135deg, #8ab79b, #5e9274 50%, #345945); }
 
+    .front-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .front-illustration {
+      position: relative;
+      z-index: 2;
+      margin-top: 1rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      min-height: 150px;
+      display: flex;
+      align-items: flex-end;
+    }
+
     .front-art {
-      position: absolute;
-      inset: 0;
-      opacity: 0.42;
+      width: 100%;
+      height: auto;
+      opacity: 0.62;
       pointer-events: none;
-      filter: blur(1.2px) saturate(0.85);
-      transform: scale(1.04);
-      z-index: 1;
+      filter: blur(0.4px) saturate(0.86);
+      transform: scale(1.02);
+      display: block;
     }
 
     .front-title {
@@ -361,18 +379,18 @@ permalink: /index.html
           <article class="postcard-card">
             <div class="postcard-flip">
               <div class="postcard-face postcard-front front-which">
-                <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
+                <div class="front-copy">
                   <circle cx="300" cy="86" r="38" fill="rgba(255,241,198,0.88)" />
                   <path d="M0 230 C50 208, 106 212, 164 228 C224 244, 300 240, 400 210 L400 320 L0 320 Z" fill="rgba(255,255,255,0.22)" />
                   <path d="M54 232 L116 194 H284 L342 232 Z" fill="rgba(255,255,255,0.22)" />
                   <path d="M118 194 L284 194 L254 214 H144 Z" fill="rgba(255,245,230,0.18)" />
                   <rect x="184" y="148" width="10" height="46" fill="rgba(255,255,255,0.24)" />
                   <path d="M194 150 L194 118 L236 146 Z" fill="rgba(255,255,255,0.24)" />
-                </svg>
                 <span class="mini">Route planner</span>
                 <h2 class="front-title">Which Claw?</h2>
                 <p class="front-note">Best for comparing the four main harbors by complexity, safety, hardware, and temperament.</p>
-              </div>
+                </div>
+                <div class="front-illustration"><svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
               <div class="postcard-face postcard-back">
                 <div>
                   <span class="mini">Back of card</span>
@@ -388,16 +406,13 @@ permalink: /index.html
           <article class="postcard-card">
             <div class="postcard-flip">
               <div class="postcard-face postcard-front front-routes">
-                <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
+                <div class="front-copy">
                   <circle cx="78" cy="92" r="28" fill="rgba(255,245,210,0.55)" />
                   <path d="M44 244 C102 184, 156 160, 218 130 C286 96, 330 74, 376 54" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="18" stroke-linecap="round" />
                   <circle cx="88" cy="214" r="15" fill="rgba(255,255,255,0.30)" />
                   <circle cx="214" cy="138" r="12" fill="rgba(255,255,255,0.24)" />
                   <circle cx="330" cy="82" r="11" fill="rgba(255,255,255,0.22)" />
-                </svg>
-                <span class="mini">Starter routes</span>
-                <h2 class="front-title">First Setup Routes</h2>
-                <p class="front-note">Best for getting moving quickly without reading the whole coastline first.</p>
+                </svg></div>
               </div>
               <div class="postcard-face postcard-back">
                 <div>
@@ -414,15 +429,12 @@ permalink: /index.html
           <article class="postcard-card">
             <div class="postcard-flip">
               <div class="postcard-face postcard-front front-tuning">
-                <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
+                <div class="front-copy">
                   <circle cx="124" cy="164" r="62" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="14" />
                   <circle cx="124" cy="164" r="34" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="9" />
                   <path d="M228 120 h102 M228 164 h92 M228 208 h82" stroke="rgba(255,255,255,0.24)" stroke-width="12" stroke-linecap="round" />
                   <path d="M118 102 L130 86 L142 102" fill="rgba(255,255,255,0.18)" />
-                </svg>
-                <span class="mini">Field guide</span>
-                <h2 class="front-title">Tuning the Claws</h2>
-                <p class="front-note">Best for practical caution, tuning habits, and the advice that keeps repeating in public.</p>
+                </svg></div>
               </div>
               <div class="postcard-face postcard-back">
                 <div>
@@ -439,16 +451,13 @@ permalink: /index.html
           <article class="postcard-card">
             <div class="postcard-flip">
               <div class="postcard-face postcard-front front-community">
-                <svg class="front-art" viewBox="0 0 400 320" aria-hidden="true">
+                <div class="front-copy">
                   <circle cx="118" cy="164" r="26" fill="rgba(255,255,255,0.22)" />
                   <circle cx="204" cy="132" r="26" fill="rgba(255,255,255,0.22)" />
                   <circle cx="292" cy="182" r="26" fill="rgba(255,255,255,0.22)" />
                   <path d="M144 156 L184 142 L268 174" fill="none" stroke="rgba(255,255,255,0.26)" stroke-width="10" stroke-linecap="round" />
                   <path d="M96 210 C142 244, 208 246, 312 214" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="14" stroke-linecap="round" />
-                </svg>
-                <span class="mini">Boardwalk map</span>
-                <h2 class="front-title">Community Currents</h2>
-                <p class="front-note">Best for finding the docks, discussion boards, Discords, and repo chatter around each project.</p>
+                </svg></div>
               </div>
               <div class="postcard-face postcard-back">
                 <div>
