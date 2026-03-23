@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx @11ty/eleventy",
+    "build": "npx @11ty/eleventy && mkdir -p _site/assets && cp -R assets/* _site/assets/",
     "dev": "npx @11ty/eleventy --serve",
     "start": "npm run dev",
     "check": "npm run build && test -f _site/index.html",
