@@ -1,0 +1,274 @@
+---
+title: NemoClaw — NVIDIA's Claw
+permalink: /nemoclaw/index.html
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} | crustaceans.sh</title>
+  <style>
+    :root {
+      --sand: #f6efe2;
+      --cream: #fffaf1;
+      --foam: #f5fbff;
+      --sea: #5d8fa3;
+      --deep-sea: #28576b;
+      --coral: #d87959;
+      --ink: #26343c;
+      --coffee: #6d4a38;
+      --sun: #f4c96b;
+      --shadow: rgba(37, 53, 66, 0.16);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sand: #1a1f24;
+        --cream: #232a30;
+        --foam: #2d353d;
+        --sea: #5d8fa3;
+        --deep-sea: #8ab4c7;
+        --coral: #d87959;
+        --ink: #e8ebe8;
+        --coffee: #b8a595;
+        --sun: #f4c96b;
+        --shadow: rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 2rem 1rem 3rem;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(244, 201, 107, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(93, 143, 163, 0.1), transparent 30%),
+        linear-gradient(180deg, var(--sand) 0%, #2a3038 42%, #1f242a 100%);
+      transition: background 0.3s ease;
+    }
+
+    .frame {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.4));
+      border-radius: 28px;
+      box-shadow: 0 24px 64px var(--shadow);
+    }
+
+    .sheet {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--cream), var(--foam));
+      border: 2px solid rgba(109, 74, 56, 0.2);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.08);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .coffee-ring {
+      position: absolute;
+      right: 2.8rem;
+      top: 1.2rem;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 6px solid rgba(109, 74, 56, 0.22);
+      box-shadow: inset 0 0 0 12px rgba(109, 74, 56, 0.05);
+      transform: rotate(-10deg);
+      opacity: 0.55;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    .content { position: relative; z-index: 1; }
+
+    .theme-toggle {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: var(--cream);
+      border: 1px solid rgba(109, 74, 56, 0.2);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, background 0.3s ease;
+      z-index: 10;
+    }
+    .theme-toggle:hover { transform: scale(1.1); }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0 0 1.2rem;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      padding: 0.42rem 0.78rem;
+      border-radius: 999px;
+      background: rgba(93, 143, 163, 0.10);
+      border: 1px solid rgba(40, 87, 107, 0.12);
+      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--deep-sea);
+    }
+
+    h1, h2, h3 { color: var(--deep-sea); margin-top: 0; }
+    h1 { font-size: 2.4rem; letter-spacing: -0.02em; }
+    h2 { font-size: 1.5rem; margin-top: 1.5rem; }
+    p, li { line-height: 1.75; color: var(--ink); }
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+
+    code {
+      background: rgba(93, 143, 163, 0.12);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font: 0.9em "SF Mono", Monaco, monospace;
+      color: var(--deep-sea);
+    }
+
+    a { color: var(--sea); }
+
+    .stamp {
+      display: inline-block;
+      background: rgba(244, 201, 107, 0.28);
+      padding: 0.25rem 0.7rem;
+      border-radius: 4px;
+      font: 700 0.75rem/1 system-ui, sans-serif;
+      color: var(--coffee);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .highlight-box {
+      background: rgba(93, 143, 163, 0.08);
+      border-left: 4px solid var(--sea);
+      padding: 1rem 1.2rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .highlight-box strong { color: var(--deep-sea); }
+
+    .backlink {
+      display: inline-block;
+      margin-top: 2rem;
+      color: var(--sea);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .backlink:hover { text-decoration: underline; }
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed rgba(109,74,56,0.15);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--coffee);
+    }
+    footer a { color: var(--sea); }
+
+    @media (prefers-color-scheme: dark) {
+      html.dark body { background: linear-gradient(180deg, #1a1f24 0%, #1f242a 100%); }
+      html.dark .frame { background: linear-gradient(180deg, rgba(35,42,48,0.8), rgba(35,42,48,0.5)); }
+      html.dark .sheet { background: linear-gradient(180deg, #232a30, #2d353d); border-color: rgba(184,165,149,0.2); }
+      html.dark .site-nav a { background: rgba(93,143,163,0.15); color: #8ab4c7; }
+      html.dark h1, html.dark h2, html.dark h3 { color: #8ab4c7; }
+      html.dark .theme-toggle { background: #232a30; }
+      html.dark code { background: rgba(93,143,163,0.2); }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <article class="sheet">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+      <div class="coffee-ring"></div>
+      <div class="content">
+        <nav class="site-nav" aria-label="Site navigation">
+          <a href="/">Postcard rack</a>
+          <a href="/which-claw/">Which Claw?</a>
+          <a href="/first-routes/">First Setup Routes</a>
+          <a href="/recommendations/">Tuning the Claws</a>
+          <a href="/community-currents/">Community Currents</a>
+          <a href="/about/">About</a>
+        </nav>
+
+        <span class="stamp">GTC 2026</span>
+        <h1>NemoClaw</h1>
+        <p class="lede">NVIDIA's enterprise wrapper for OpenClaw — sandboxed, guarded, managed. This is the signal that NVIDIA isn't just supporting the claw ecosystem, they're building the production path.</p>
+
+        <div class="highlight-box">
+          <strong>The headline:</strong> Jensen Huang called OpenClaw "the next ChatGPT" at GTC 2026. NemoClaw launched March 16 as an alpha preview — a sandboxed OpenClaw environment with policy-based security guardrails.
+        </div>
+
+        <h2>What it does</h2>
+        <p>NemoClaw runs OpenClaw inside NVIDIA OpenShell with multiple layers of isolation:</p>
+        <ul>
+          <li><strong>Sandboxing:</strong> Landlock + seccomp + network namespaces</li>
+          <li><strong>Policy guardrails:</strong> Every network request, file access, and inference call is governed by declarative policy</li>
+          <li><strong>Managed inference:</strong> Routes through OpenShell gateway — supports NVIDIA Endpoints, OpenAI, Anthropic, and other OpenAI-compatible providers</li>
+          <li>Single-command deploy: <code>curl -fsSL https://www.nvidia.com/nemoclaw.sh | bash</code></li>
+        </ul>
+
+        <h2>Who it's for</h2>
+        <p>If you want to run OpenClaw in an enterprise context — with corporate security policies, audit trails, and managed inference — NemoClaw is the path. It's not replacing the open ecosystem, it's wrapping it for production use cases.</p>
+
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">GitHub repo</a> — issues, code, docs</li>
+          <li><a href="https://www.nvidia.com/en-us/ai/nemoclaw/" target="_blank" rel="noopener">NVIDIA overview</a></li>
+          <li><a href="https://forums.developer.nvidia.com/t/introducing-nvidia-nemoclaw/363701" target="_blank" rel="noopener">NVIDIA forum thread</a></li>
+        </ul>
+
+        <p><em>This page will grow as the NemoClaw story develops. For now, it's the newest player on the claw boardwalk — watch this space.</em></p>
+
+        <a href="/community-currents/" class="backlink">← Back to Community Currents</a>
+
+        <footer>
+          <p>🌊 crabbing since 2025 · <a href="/changelog/">changelog</a> · <a href="https://github.com/mtdphn/crustaceans.sh">source</a></p>
+        </footer>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.querySelector('.theme-toggle');
+      const isDark = html.classList.contains('dark');
+      if (isDark) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        btn.textContent = '☀️';
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        btn.textContent = '🌙';
+      }
+    }
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+    if (document.querySelector('.theme-toggle')) {
+      document.querySelector('.theme-toggle').textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
+    }
+  </script>
+</body>
+</html>
