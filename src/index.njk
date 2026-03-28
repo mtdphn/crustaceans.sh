@@ -431,6 +431,21 @@ permalink: /index.html
       background: rgba(244, 201, 107, 0.15);
       color: #b8a595;
     }
+
+    @media (hover: none) and (pointer: coarse) {
+      .postcard-face { -webkit-tap-highlight-color: transparent; }
+      .postcard-front:hover, .postcard-front:focus-within { transform: none; }
+      .postcard-back { 
+        transform: rotateY(180deg); 
+        opacity: 1; 
+      }
+      .postcard:hover .postcard-back { opacity: 1; }
+      .postcard.is-flipped .postcard-front { transform: rotateY(180deg); }
+      .postcard.is-flipped .postcard-back { transform: rotateY(0); opacity: 1; }
+    }
+    
+    /* Make sure tap works */
+    .postcard-front { cursor: pointer; }
 </style>
 </head>
 <body>
@@ -597,6 +612,13 @@ permalink: /index.html
         document.querySelector('.theme-toggle').textContent = '🌙';
       }
       // Also add .dark class support to CSS
-    </script>
+    
+      // Touch flip support
+      document.querySelectorAll('.postcard-front').forEach(card => {
+        card.addEventListener('click', function(e) {
+          this.closest('.postcard').classList.toggle('is-flipped');
+        });
+      });
+</script>
 </body>
 </html>
