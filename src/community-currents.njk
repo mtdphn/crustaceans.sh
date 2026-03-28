@@ -22,6 +22,22 @@ permalink: /community-currents/index.html
       --sun: #f4c96b;
       --shadow: rgba(37, 53, 66, 0.16);
     }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sand: #1a1f24;
+        --cream: #232a30;
+        --foam: #2d353d;
+        --sea: #5d8fa3;
+        --deep-sea: #8ab4c7;
+        --coral: #d87959;
+        --ink: #e8ebe8;
+        --coffee: #b8a595;
+        --sun: #f4c96b;
+        --shadow: rgba(0, 0, 0, 0.4);
+      }
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -44,11 +60,12 @@ permalink: /community-currents/index.html
     .sheet {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, var(--cream), #fff5e8);
-      border: 2px solid #ead8b8;
+      background: linear-gradient(180deg, var(--cream), var(--foam));
+      border: 2px solid rgba(109, 74, 56, 0.2);
       border-radius: 24px;
       padding: 2rem;
-      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.34);
+      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.08);
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
     .sheet::before {
       content: "";
