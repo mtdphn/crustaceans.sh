@@ -1,0 +1,172 @@
+---
+title: About the Crustaceans
+permalink: /about/index.html
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} | crustaceans.sh</title>
+  <style>
+    :root {
+      --sand: #f6efe2;
+      --cream: #fffaf1;
+      --foam: #f5fbff;
+      --sea: #5d8fa3;
+      --deep-sea: #28576b;
+      --coral: #d87959;
+      --ink: #26343c;
+      --coffee: #6d4a38;
+      --sun: #f4c96b;
+      --shadow: rgba(37, 53, 66, 0.16);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sand: #1a1f24;
+        --cream: #232a30;
+        --foam: #2d353d;
+        --sea: #5d8fa3;
+        --deep-sea: #8ab4c7;
+        --coral: #d87959;
+        --ink: #e8ebe8;
+        --coffee: #b8a595;
+        --sun: #f4c96b;
+        --shadow: rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 2rem 1rem 3rem;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(244, 201, 107, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(93, 143, 163, 0.1), transparent 30%),
+        linear-gradient(180deg, var(--sand) 0%, #2a3038 42%, #1f242a 100%);
+      transition: background 0.3s ease;
+    }
+
+    .frame {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.4));
+      border-radius: 28px;
+      box-shadow: 0 24px 64px var(--shadow);
+    }
+
+    .sheet {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--cream), var(--foam));
+      border: 2px solid rgba(109, 74, 56, 0.2);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.08);
+    }
+
+    .coffee-ring {
+      position: absolute;
+      right: 2.8rem;
+      top: 1.2rem;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 6px solid rgba(109, 74, 56, 0.22);
+      box-shadow: inset 0 0 0 12px rgba(109, 74, 56, 0.05);
+      transform: rotate(-10deg);
+      opacity: 0.55;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    .content { position: relative; z-index: 1; }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0 0 1.2rem;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      padding: 0.42rem 0.78rem;
+      border-radius: 999px;
+      background: rgba(93, 143, 163, 0.10);
+      border: 1px solid rgba(40, 87, 107, 0.12);
+      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--deep-sea);
+    }
+
+    h1, h2, h3 { color: var(--deep-sea); margin-top: 0; }
+    h1 { font-size: 2.2rem; letter-spacing: -0.02em; }
+    p, li { line-height: 1.75; color: var(--ink); }
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+
+    .stamp {
+      display: inline-block;
+      background: rgba(244, 201, 107, 0.28);
+      padding: 0.25rem 0.7rem;
+      border-radius: 4px;
+      font: 700 0.75rem/1 system-ui, sans-serif;
+      color: var(--coffee);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgba(109, 74, 56, 0.2);
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <article class="sheet">
+      <div class="coffee-ring"></div>
+      <div class="content">
+        <nav class="site-nav" aria-label="Site navigation">
+          <a href="/">Postcard rack</a>
+          <a href="/which-claw/">Which Claw?</a>
+          <a href="/first-routes/">First Setup Routes</a>
+          <a href="/recommendations/">Tuning the Claws</a>
+          <a href="/community-currents/">Community Currents</a>
+          <a href="/about/">About</a>
+        </nav>
+
+        <span class="stamp">Stationed 2025</span>
+        <h1>About the Crustaceans</h1>
+
+        <p>crustaceans.sh is a postcard rack for the OpenClaw coast — a collection of seaside dispatches for anyone exploring self-hosted AI assistants, local-first agents, and the quiet infrastructure that makes them tick.</p>
+
+        <p>We built this site because the usual giant brochure approach to documentation felt wrong for a project that thrives on experimentation and personal setup. Instead of one canonical answer, we offer cards: each one addresses a different mood or question you might bring to the shore.</p>
+
+        <hr>
+
+        <h2>The vibe</h2>
+        <p>This isn't a corporate landing page. It's more like a boardwalk bulletin board — a little rough around the edges, full of handwritten notes, and honest about what we don't know yet. The aesthetic pulls from late-1950s automotive travel posters: Daphne Blue, seafoam green, shoreline gold, and cream.</p>
+
+        <h2>Who runs this</h2>
+        <p>The site is maintained by the OpenClaw community. The postcards are generated with Draw Things on a local Mac Mini, because we believe the tools we write about should be used to write about the tools.</p>
+
+        <h2>Contributing</h2>
+        <p>Got a postcard idea? See something wrong? The source lives at <a href="https://github.com/mtdphn/crustaceans.sh">github.com/mtdphn/crustaceans.sh</a>. Pull requests welcome — especially if they come with new art.</p>
+
+        <hr>
+
+        <p style="font-style: italic; color: var(--coffee);">Thanks for stopping by the shore.</p>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

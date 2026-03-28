@@ -1,0 +1,193 @@
+---
+title: Changelog
+permalink: /changelog/index.html
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} | crustaceans.sh</title>
+  <style>
+    :root {
+      --sand: #f6efe2;
+      --cream: #fffaf1;
+      --foam: #f5fbff;
+      --sea: #5d8fa3;
+      --deep-sea: #28576b;
+      --coral: #d87959;
+      --ink: #26343c;
+      --coffee: #6d4a38;
+      --sun: #f4c96b;
+      --shadow: rgba(37, 53, 66, 0.16);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sand: #1a1f24;
+        --cream: #232a30;
+        --foam: #2d353d;
+        --sea: #5d8fa3;
+        --deep-sea: #8ab4c7;
+        --coral: #d87959;
+        --ink: #e8ebe8;
+        --coffee: #b8a595;
+        --sun: #f4c96b;
+        --shadow: rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 2rem 1rem 3rem;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(244, 201, 107, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(93, 143, 163, 0.1), transparent 30%),
+        linear-gradient(180deg, var(--sand) 0%, #2a3038 42%, #1f242a 100%);
+      transition: background 0.3s ease;
+    }
+
+    .frame {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.4));
+      border-radius: 28px;
+      box-shadow: 0 24px 64px var(--shadow);
+    }
+
+    .sheet {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--cream), #fff5e8);
+      border: 2px solid #ead8b8;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.34);
+    }
+
+    .coffee-ring {
+      position: absolute;
+      right: 2.8rem;
+      top: 1.2rem;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 6px solid rgba(109, 74, 56, 0.22);
+      box-shadow: inset 0 0 0 12px rgba(109, 74, 56, 0.05);
+      transform: rotate(-10deg);
+      opacity: 0.55;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    .content { position: relative; z-index: 1; }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0 0 1.2rem;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      padding: 0.42rem 0.78rem;
+      border-radius: 999px;
+      background: rgba(93, 143, 163, 0.10);
+      border: 1px solid rgba(40, 87, 107, 0.12);
+      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--deep-sea);
+    }
+
+    h1, h2, h3 { color: var(--deep-sea); margin-top: 0; }
+    h1 { font-size: 2.2rem; letter-spacing: -0.02em; }
+    h2 { font-size: 1.4rem; margin-top: 2rem; border-bottom: 1px dashed rgba(109,74,56,0.15); padding-bottom: 0.5rem; }
+    p, li { line-height: 1.75; color: var(--ink); }
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+
+    .entry { margin-bottom: 1.5rem; }
+    .entry-date {
+      display: inline-block;
+      background: rgba(93, 143, 163, 0.12);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font: 700 0.7rem/1 system-ui, sans-serif;
+      color: var(--deep-sea);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .entry-title { font-weight: 700; color: var(--deep-sea); margin: 0.4rem 0 0.3rem; }
+
+    .stamp {
+      display: inline-block;
+      background: rgba(244, 201, 107, 0.28);
+      padding: 0.25rem 0.7rem;
+      border-radius: 4px;
+      font: 700 0.75rem/1 system-ui, sans-serif;
+      color: var(--coffee);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgba(109, 74, 56, 0.2);
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <article class="sheet">
+      <div class="coffee-ring"></div>
+      <div class="content">
+        <nav class="site-nav" aria-label="Site navigation">
+          <a href="/">Postcard rack</a>
+          <a href="/which-claw/">Which Claw?</a>
+          <a href="/first-routes/">First Setup Routes</a>
+          <a href="/recommendations/">Tuning the Claws</a>
+          <a href="/community-currents/">Community Currents</a>
+          <a href="/about/">About</a>
+        </nav>
+
+        <span class="stamp">In progress</span>
+        <h1>Changelog</h1>
+
+        <p>A rough log of what changed and when. The site evolves in small waves — here's the trail.</p>
+
+        <hr>
+
+        <div class="entry">
+          <span class="entry-date">2026-03-28</span>
+          <div class="entry-title">Real postcard art lands</div>
+          <p>Replaced SVG placeholders on the homepage with actual Draw Things generations. The four postcards — First Setup Routes, Tuning the Claws, Which Claw, and Community Currents — now show real AI-generated artwork in that late-50s automotive travel poster style.</p>
+        </div>
+
+        <div class="entry">
+          <span class="entry-date">2026-03-23</span>
+          <div class="entry-title">Postcard rack arrives</div>
+          <p>Transformed the homepage from a standard landing page into a flip-card rack. Each card addresses a different question: which project to pick, how to start, how to tune it, or where the community gathers.</p>
+        </div>
+
+        <div class="entry">
+          <span class="entry-date">2026-03-21</span>
+          <div class="entry-title">Site launch</div>
+          <p>First public commit. Basic structure: homepage, route planner, recommendations, and community page. The aesthetic pulled from vintage travel postcards — cream, seafoam, Daphne blue.</p>
+        </div>
+
+        <hr>
+
+        <p style="font-style: italic; color: var(--coffee); font-size: 0.95rem;">The beach is always shifting. More cards coming as the tide pulls out.</p>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
