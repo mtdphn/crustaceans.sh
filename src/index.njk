@@ -72,7 +72,7 @@ permalink: /index.html
       background:
         radial-gradient(circle at top left, rgba(244, 201, 107, 0.12), transparent 24%),
         radial-gradient(circle at top right, rgba(93, 143, 163, 0.1), transparent 30%),
-        linear-gradient(180deg, var(--sand) 0%, #2a3038 42%, #1f242a 100%);
+        linear-gradient(180deg, var(--sand) 0%, var(--cream) 42%, var(--foam) 100%);
       transition: background 0.3s ease;
     }
 
@@ -475,7 +475,7 @@ permalink: /index.html
     html.dark .postcard-front::after { mix-blend-mode: overlay; }
 
     /* Explicit light mode */
-    html:not(.dark) body { background: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
+    html:not(.dark) body { background: #f6efe2; background-image: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
     html:not(.dark) .frame { background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42)); }
     html:not(.dark) .sheet { background: linear-gradient(180deg, #fffaf1, #f5fbff); border-color: rgba(109, 74, 56, 0.2); color: #26343c; }
     html:not(.dark) .postcard-front { color: #26343c; background: linear-gradient(180deg, #fffaf1, #f5fbff); }
@@ -533,7 +533,8 @@ permalink: /index.html
           <a href="/first-routes/">First Setup Routes</a>
           <a href="/recommendations/">Tuning the Claws</a>
           <a href="/community-currents/">Community Currents</a>
-          <a href="/nemoclaw/">NemoClaw</a>
+                  <a href="/about/">About</a>
+        <a href="/nemoclaw/">NemoClaw</a>
         </nav>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
 
