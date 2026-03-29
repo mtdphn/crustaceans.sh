@@ -183,17 +183,26 @@ permalink: /nemoclaw/index.html
     }
     footer a { color: var(--sea); }
 
-    @media (prefers-color-scheme: dark) {
-      html.dark body {
-    html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
-    html.dark strong { color: #e8ebe8; }
+    html.dark { color: #c8cbc8; background: #1a1f24; }
+    html.dark h1, html.dark h2, html.dark h3, html.dark h4 { color: #8ab4c7; }
     html.dark a { color: #8ab4c7; }
     html.dark a:hover { color: #d87959; }
- background: linear-gradient(180deg, #1a1f24 0%, #1f242a 100%); }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sand: #1a1f24;
+        --cream: #232a30;
+        --foam: #2d353d;
+        --sea: #5d8fa3;
+        --deep-sea: #8ab4c7;
+        --coral: #d87959;
+        --ink: #e8ebe8;
+        --coffee: #b8a595;
+        --sun: #f4c96b;
+      }
+      html.dark body { background: linear-gradient(180deg, #1a1f24 0%, #1f242a 100%); }
       html.dark .frame { background: linear-gradient(180deg, rgba(35,42,48,0.8), rgba(35,42,48,0.5)); }
       html.dark .sheet { background: linear-gradient(180deg, #232a30, #2d353d); border-color: rgba(184,165,149,0.2); }
       html.dark .site-nav a { background: rgba(93,143,163,0.15); color: #8ab4c7; }
-      html.dark h1, html.dark h2, html.dark h3 { color: #8ab4c7; }
       html.dark .theme-toggle { background: #232a30; }
       html.dark code { background: rgba(93,143,163,0.2); }
     }
