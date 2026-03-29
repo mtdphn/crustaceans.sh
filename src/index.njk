@@ -31,6 +31,21 @@ permalink: /index.html
       --shadow: rgba(37, 53, 66, 0.16);
     }
 
+    @media (prefers-color-scheme: light) {
+      :root {
+        --sand: #f6efe2;
+        --cream: #fffaf1;
+        --foam: #f5fbff;
+        --sea: #5d8fa3;
+        --deep-sea: #28576b;
+        --coral: #d87959;
+        --ink: #26343c;
+        --coffee: #6d4a38;
+        --sun: #f4c96b;
+        --shadow: rgba(37, 53, 66, 0.16);
+      }
+    }
+
     @media (prefers-color-scheme: dark) {
       :root {
         --sand: #1a1f24;
@@ -458,6 +473,17 @@ permalink: /index.html
     html.dark .postcard-front { color: #e8ebe8; background: linear-gradient(180deg, #2d353d, #232a30); }
     html.dark .postcard-front::before { background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3)); }
     html.dark .postcard-front::after { mix-blend-mode: overlay; }
+
+    /* Explicit light mode */
+    html:not(.dark) body { background: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
+    html:not(.dark) .frame { background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42)); }
+    html:not(.dark) .sheet { background: linear-gradient(180deg, #fffaf1, #f5fbff); border-color: rgba(109, 74, 56, 0.2); color: #26343c; }
+    html:not(.dark) .postcard-front { color: #26343c; background: linear-gradient(180deg, #fffaf1, #f5fbff); }
+    html:not(.dark) .postcard-front::before { background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(244, 201, 107, 0.1)); }
+    html:not(.dark) .postcard-front::after { mix-blend-mode: normal; }
+    html:not(.dark) .postcard-back { background: linear-gradient(180deg, #fffaf1, #f5fbff); color: #26343c; }
+    html:not(.dark) .front-title { color: #28576b; }
+    html:not(.dark) .front-note { color: #6d4a38; }
 
     html.dark .postcard-back ul li::marker { color: #5d8fa3; }
     html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
