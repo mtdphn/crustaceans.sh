@@ -49,12 +49,12 @@ permalink: /changelog/index.html
       background:
         radial-gradient(circle at top left, rgba(244, 201, 107, 0.12), transparent 24%),
         radial-gradient(circle at top right, rgba(93, 143, 163, 0.1), transparent 30%),
-        linear-gradient(180deg, var(--sand) 0%, #2a3038 42%, #1f242a 100%);
+        linear-gradient(180deg, var(--sand) 0%, var(--cream) 42%, var(--foam) 100%);
       transition: background 0.3s ease;
     }
 
     .frame {
-      max-width: 1200px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 1.2rem;
       background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.4));
@@ -91,7 +91,6 @@ permalink: /changelog/index.html
       z-index: 10;
     }
     .theme-toggle:hover { transform: scale(1.1); }
-
 .coffee-ring {
       position: absolute;
       right: 2.8rem;
@@ -106,3 +105,181 @@ permalink: /changelog/index.html
       mix-blend-mode: multiply;
       pointer-events: none;
     }
+
+    .content { position: relative; z-index: 1; }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0 0 1.2rem;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      padding: 0.42rem 0.78rem;
+      border-radius: 999px;
+      background: rgba(93, 143, 163, 0.10);
+      border: 1px solid rgba(40, 87, 107, 0.12);
+      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--deep-sea);
+    }
+
+    h1, h2, h3 { color: var(--deep-sea); margin-top: 0; }
+    h1 { font-size: 2.2rem; letter-spacing: -0.02em; }
+    h2 { font-size: 1.4rem; margin-top: 2rem; border-bottom: 1px dashed rgba(109,74,56,0.15); padding-bottom: 0.5rem; }
+    p, li { line-height: 1.75; color: var(--ink); }
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+
+    .entry { margin-bottom: 1.5rem; }
+    .entry-date {
+      display: inline-block;
+      background: rgba(93, 143, 163, 0.12);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font: 700 0.7rem/1 system-ui, sans-serif;
+      color: var(--deep-sea);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .entry-title { font-weight: 700; color: var(--deep-sea); margin: 0.4rem 0 0.3rem; }
+
+    .stamp {
+      display: inline-block;
+      background: rgba(244, 201, 107, 0.28);
+      padding: 0.25rem 0.7rem;
+      border-radius: 4px;
+      font: 700 0.75rem/1 system-ui, sans-serif;
+      color: var(--coffee);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgba(109, 74, 56, 0.2);
+      margin: 2rem 0;
+    }
+  
+    html.dark body {
+    html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
+    html.dark strong { color: #e8ebe8; }
+    html.dark a { color: #8ab4c7; }
+    html.dark a:hover { color: #d87959; }
+
+      background:
+        radial-gradient(circle at top left, rgba(244, 201, 107, 0.08), transparent 24%),
+        radial-gradient(circle at top right, rgba(93, 143, 163, 0.06), transparent 30%),
+        linear-gradient(180deg, #1a1f24 0%, #1f242a 100%);
+    }
+
+    /* Explicit light mode */
+    html:not(.dark) body { background: #f6efe2; background-image: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
+    html:not(.dark) .frame { background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42)); }
+    html:not(.dark) .sheet { background: linear-gradient(180deg, #fffaf1, #f5fbff); border-color: rgba(109, 74, 56, 0.2); color: #26343c; }
+    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 { color: #28576b; }
+    html.dark .frame {
+      background: linear-gradient(180deg, rgba(35, 42, 48, 0.8), rgba(35, 42, 48, 0.5));
+    }
+    html.dark .sheet {
+      background: linear-gradient(180deg, #232a30, #2d353d);
+      border-color: rgba(184, 165, 149, 0.2);
+    }
+    html.dark .site-nav a {
+      background: rgba(93, 143, 163, 0.15);
+      border-color: rgba(138, 180, 199, 0.2);
+      color: #8ab4c7;
+    }
+    html.dark h1, html.dark h2, html.dark h3 { color: #8ab4c7; }
+    html.dark .eyebrow, html.dark .mini {
+      background: rgba(244, 201, 107, 0.15);
+      color: #b8a595;
+    }
+    html.dark .theme-toggle { background: rgba(35, 42, 48, 0.95); border: 1px solid rgba(138, 180, 199, 0.35); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <article class="sheet">
+      <div class="coffee-ring"></div>
+      <div class="content">
+        <nav class="site-nav" aria-label="Site navigation">
+          <a href="/">Postcard rack</a>
+          <a href="/which-claw/">Which Claw?</a>
+          <a href="/first-routes/">First Setup Routes</a>
+          <a href="/recommendations/">Tuning the Claws</a>
+          <a href="/community-currents/">Community Currents</a>
+          <a href="/nemoclaw/">NemoClaw</a>
+          <a href="/about/">About</a>
+        </nav>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+
+
+        <span class="stamp">In progress</span>
+        <h1>Changelog</h1>
+
+        <p>A rough log of what changed and when. The site evolves in small waves — here's the trail.</p>
+
+        <hr>
+
+        <div class="entry">
+          <span class="entry-date">2026-03-28</span>
+          <div class="entry-title">Dark mode, theme toggle, mobile touch, NemoClaw update</div>
+          <p>Full dark mode support with manual toggle across all pages. Touch-friendly flip on mobile postcards. Fixed font colors in dark mode. Added footer with crab date to all pages. Added 404, sitemap.xml, robots.txt. Updated Community Currents page with full NemoClaw / NVIDIA GTC 2026 details — Jensen called OpenClaw "the next ChatGPT."</p>
+        </div>
+
+        <div class="entry">
+          <span class="entry-date">2026-03-28</span>
+          <div class="entry-title">Real postcard art lands</div>
+          <p>Replaced SVG placeholders on the homepage with actual Draw Things generations. The four postcards — First Setup Routes, Tuning the Claws, Which Claw, and Community Currents — now show real AI-generated artwork in that late-50s automotive travel poster style.</p>
+        </div>
+
+        <div class="entry">
+          <span class="entry-date">2026-03-23</span>
+          <div class="entry-title">Postcard rack arrives</div>
+          <p>Transformed the homepage from a standard landing page into a flip-card rack. Each card addresses a different question: which project to pick, how to start, how to tune it, or where the community gathers.</p>
+        </div>
+
+        <div class="entry">
+          <span class="entry-date">2026-03-21</span>
+          <div class="entry-title">Site launch</div>
+          <p>First public commit. Basic structure: homepage, route planner, recommendations, and community page. The aesthetic pulled from vintage travel postcards — cream, seafoam, Daphne blue.</p>
+        </div>
+
+        <hr>
+
+        <p style="font-style: italic; color: var(--coffee); font-size: 0.95rem;">The beach is always shifting. More cards coming as the tide pulls out.</p>
+      
+        <footer style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed rgba(109,74,56,0.15); text-align: center; font-size: 0.85rem; color: var(--coffee);">
+          <p>🌊 crabbing since 2025 · <a href="/changelog/" style="color: var(--sea);">changelog</a> · <a href="https://github.com/mtdphn/crustaceans.sh" style="color: var(--sea);">source</a></p>
+        </footer>
+
+    </article>
+  </div>
+
+    <script>
+      function toggleTheme() {
+        const html = document.documentElement;
+        const btn = document.querySelector('.theme-toggle');
+        const isDark = html.classList.contains('dark');
+        if (isDark) {
+          html.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+          btn.textContent = '☀️';
+        } else {
+          html.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+          btn.textContent = '🌙';
+        }
+      }
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+      if (document.querySelector('.theme-toggle')) {
+        document.querySelector('.theme-toggle').textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
+      }
+    </script>
+</body>
+</html>
