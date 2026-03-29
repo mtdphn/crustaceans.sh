@@ -184,7 +184,12 @@ permalink: /nemoclaw/index.html
     footer a { color: var(--sea); }
 
     @media (prefers-color-scheme: dark) {
-      html.dark body { background: linear-gradient(180deg, #1a1f24 0%, #1f242a 100%); }
+      html.dark body {
+    html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
+    html.dark strong { color: #e8ebe8; }
+    html.dark a { color: #8ab4c7; }
+    html.dark a:hover { color: #d87959; }
+ background: linear-gradient(180deg, #1a1f24 0%, #1f242a 100%); }
       html.dark .frame { background: linear-gradient(180deg, rgba(35,42,48,0.8), rgba(35,42,48,0.5)); }
       html.dark .sheet { background: linear-gradient(180deg, #232a30, #2d353d); border-color: rgba(184,165,149,0.2); }
       html.dark .site-nav a { background: rgba(93,143,163,0.15); color: #8ab4c7; }

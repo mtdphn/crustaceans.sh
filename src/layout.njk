@@ -8,19 +8,45 @@ permalink: false
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title }} | crustaceans.sh</title>
   <style>
+    :root {
+      --bg: #f4f0e8;
+      --text: #222;
+      --text-muted: #555;
+      --frame-bg: #f6efe2;
+      --frame-border: #e0d2b8;
+      --frame-inner: #d0c3a3;
+      --link: #006699;
+      --link-hover: #d87959;
+      --stamp-border: #b0c4de;
+      --footer: #777;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1f24;
+        --text: #c8cbc8;
+        --text-muted: #8a9298;
+        --frame-bg: #232a30;
+        --frame-border: rgba(184, 165, 149, 0.25);
+        --frame-inner: rgba(184, 165, 149, 0.15);
+        --link: #8ab4c7;
+        --link-hover: #d87959;
+        --stamp-border: rgba(184, 165, 149, 0.4);
+        --footer: #6b777e;
+      }
+    }
     body {
       margin: 0;
       padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f4f0e8;
-      color: #222;
+      background: var(--bg);
+      color: var(--text);
     }
     .frame {
       max-width: 900px;
       margin: 2rem auto;
       padding: 2rem;
-      background: var(--sand);
-      border: 2px solid #e0d2b8;
+      background: var(--frame-bg);
+      border: 2px solid var(--frame-border);
       box-shadow: 0 4px 18px rgba(0,0,0,0.08);
       position: relative;
     }
@@ -28,7 +54,7 @@ permalink: false
       content: "";
       position: absolute;
       inset: 12px;
-      border: 1px dashed #d0c3a3;
+      border: 1px dashed var(--frame-inner);
       pointer-events: none;
     }
     header {
@@ -40,7 +66,7 @@ permalink: false
     }
     header p {
       margin: 0.35rem 0 0;
-      color: #555;
+      color: var(--text-muted);
     }
     main h1 {
       font-size: 1.6rem;
@@ -51,10 +77,11 @@ permalink: false
       font-size: 1.2rem;
     }
     a {
-      color: #006699;
+      color: var(--link);
       text-decoration: none;
     }
     a:hover {
+      color: var(--link-hover);
       text-decoration: underline;
     }
     ul {
@@ -63,13 +90,13 @@ permalink: false
     footer {
       margin-top: 2rem;
       font-size: 0.85rem;
-      color: #777;
+      color: var(--footer);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .stamp {
-      border: 2px dashed #b0c4de;
+      border: 2px dashed var(--stamp-border);
       padding: 0.25rem 0.6rem;
       text-transform: uppercase;
       font-size: 0.75rem;
