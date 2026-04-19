@@ -149,16 +149,15 @@ permalink: /about/index.html
     }
   
     html.dark body {
-    html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
-    html.dark strong { color: #e8ebe8; }
-    html.dark a { color: #8ab4c7; }
-    html.dark a:hover { color: #d87959; }
-
       background:
         radial-gradient(circle at top left, rgba(244, 201, 107, 0.08), transparent 24%),
         radial-gradient(circle at top right, rgba(93, 143, 163, 0.06), transparent 30%),
         linear-gradient(180deg, #1a1f24 0%, #1f242a 100%);
     }
+    html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
+    html.dark strong { color: #e8ebe8; }
+    html.dark a { color: #8ab4c7; }
+    html.dark a:hover { color: #d87959; }
 
     /* Explicit light mode */
     html:not(.dark) body { background: #f6efe2; background-image: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
@@ -183,6 +182,13 @@ permalink: /about/index.html
       color: #b8a595;
     }
     html.dark .theme-toggle { background: rgba(35, 42, 48, 0.95); border: 1px solid rgba(138, 180, 199, 0.35); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    html.dark .site-nav a {
+      background: rgba(93, 143, 163, 0.15);
+      border-color: rgba(138, 180, 199, 0.2);
+      color: #8ab4c7;
+    }
+    html.dark .stamp { background: rgba(244, 201, 107, 0.15); color: #b8a595; }
+    html.dark .stamp { color: #b8a595; }
   </style>
 </head>
 <body>

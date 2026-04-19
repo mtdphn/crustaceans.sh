@@ -109,21 +109,6 @@ permalink: /nemoclaw/index.html
     }
     .theme-toggle:hover { transform: scale(1.1); }
 
-.coffee-ring {
-      position: absolute;
-      right: 2.8rem;
-      top: 1.2rem;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 6px solid rgba(109, 74, 56, 0.22);
-      box-shadow: inset 0 0 0 12px rgba(109, 74, 56, 0.05);
-      transform: rotate(-10deg);
-      opacity: 0.55;
-      mix-blend-mode: multiply;
-      pointer-events: none;
-    }
-
     .site-nav {
       display: flex;
       flex-wrap: wrap;
@@ -220,6 +205,10 @@ permalink: /nemoclaw/index.html
       html.dark .site-nav a { background: rgba(93,143,163,0.15); color: #8ab4c7; }
       html.dark .theme-toggle { background: #232a30; }
       html.dark code { background: rgba(93,143,163,0.2); }
+      html.dark .highlight-box { background: rgba(93, 143, 163, 0.15); border-color: #8ab4c7; }
+      html.dark .highlight-box strong { color: #8ab4c7; }
+      html.dark .backlink { color: #8ab4c7; }
+      html.dark .backlink:hover { color: #d87959; }
     }
 
     html:not(.dark) body { background: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
@@ -235,7 +224,6 @@ permalink: /nemoclaw/index.html
     <article class="sheet">
       <div class="coffee-ring"></div>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
-      <div class="coffee-ring"></div>
       <div class="content">
         <nav class="site-nav" aria-label="Site navigation">
           <a href="/">Postcard rack</a>
@@ -245,7 +233,6 @@ permalink: /nemoclaw/index.html
           <a href="/community-currents/">Community Currents</a>
           <a href="/about/">About</a>
         <a href="/nemoclaw/">NemoClaw</a>
-          <a href="/about/">About</a>
         </nav>
 
         <span class="stamp">GTC 2026</span>
@@ -286,7 +273,7 @@ permalink: /nemoclaw/index.html
     </article>
   </div>
 
-  <script>
+    <script>
     function toggleTheme() {
       const html = document.documentElement;
       const btn = document.querySelector('.theme-toggle');
