@@ -7,25 +7,11 @@ permalink: /index.html
 {% block extraCSS %}
 <style>
   /* ====== Homepage-specific: front-card gradient backgrounds ====== */
-  .front-which     { background: linear-gradient(135deg, #6ba9bd, #3c7389 50%, #274455); }
-  .front-routes    { background: linear-gradient(135deg, #efbf77, #d28a40 50%, #92522a); }
-  .front-tuning    { background: linear-gradient(135deg, #d78872, #b15d51 50%, #743934); }
-  .front-community { background: linear-gradient(135deg, #8ab79b, #5e9274 50%, #345945); }
-  .front-clawwatch { background: linear-gradient(135deg, #7ec8d6, #3e8e9f 50%, #225a6e); }
-  .front-nemoclaw  { background: linear-gradient(135deg, #e06830, #a84418 50%, #6e2a0e); }
-
-  /* ====== Horizontal scroll strip (postcard rack) ====== */
-  .postcard-grid {
-    display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem;
-    scrollbar-width: thin;
-  }
-  .postcard-grid::-webkit-scrollbar { height: 6px; }
-  .postcard-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 3px; }
-  .postcard-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
-  .postcard-grid > .postcard-card {
-    flex: 0 0 min(320px, 70vw); scroll-snap-align: start; min-height: 380px;
-  }
+  .front-which    { background: linear-gradient(135deg, #6ba9bd, #3c7389 50%, #274455); }
+  .front-routes   { background: linear-gradient(135deg, #efbf77, #d28a40 50%, #92522a); }
+  .front-tuning   { background: linear-gradient(135deg, #d78872, #b15d51 50%, #743934); }
+  .front-community{ background: linear-gradient(135deg, #8ab79b, #5e9274 50%, #345945); }
+  .front-clawwatch{ background: linear-gradient(135deg, #7ec8d6, #3e8e9f 50%, #225a6e); }
 
   /* ====== Summary band (homepage only) ====== */
   .summary-band {
@@ -51,6 +37,57 @@ permalink: /index.html
     min-height: 150px; display: flex; align-items: flex-end; justify-content: center;
   }
   .art-jaunty svg { width: 74%; transform: rotate(-6deg) translateY(10px); transform-origin: center bottom; }
+
+  /* ====== Quick links under description ====== */
+  .quick-links {
+    margin: 1rem 0 0; padding: 0.5rem 0 0;
+    border-top: 1px solid rgba(216,121,89,0.15);
+  }
+  .quick-links ul {
+    margin: 0; padding: 0 0 0 1.2rem;
+    list-style: disc;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.25rem 1.5rem;
+  }
+  .quick-links li {
+    margin: 0.2rem 0;
+  }
+  .quick-links a {
+    color: var(--coffee);
+    text-decoration: none;
+  }
+  .quick-links a:hover {
+    text-decoration: underline;
+  }
+  html.dark .quick-links a { color: #8ab4c7; }
+
+  /* ====== Image generation note ====== */
+  .img-note {
+    margin-top: 1.5rem;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    background: rgba(93,143,163,0.08);
+    border: 1px solid rgba(93,143,163,0.15);
+    font-size: 0.85rem;
+    color: #5e9274;
+    line-height: 1.5;
+  }
+  .img-note code {
+    background: rgba(93,143,163,0.12);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-family: "SF Mono", "Fira Code", monospace;
+  }
+  html.dark .img-note {
+    background: rgba(93,143,163,0.1);
+    border-color: rgba(93,143,163,0.2);
+    color: #8abd9e;
+  }
+  html.dark .img-note code {
+    background: rgba(93,143,163,0.18);
+  }
 </style>
 {% endblock %}
 
@@ -67,12 +104,21 @@ permalink: /index.html
   </aside>
 </div>
 
+<div class="quick-links">
+  <ul>
+    <li><a href="/which-claw/">Which Claw?</a></li>
+    <li><a href="/first-routes/">First Setup Routes</a></li>
+    <li><a href="/recommendations/">Tuning the Claws</a></li>
+    <li><a href="/community-currents/">Community Currents</a></li>
+    <li><a href="/claw-watch/">Claw Watch</a></li>
+  </ul>
+</div>
+
 <div class="summary-band">
   <strong>Consensus in one breath:</strong> if you're new to this coast, start with <a href="/first-routes/">First Setup Routes</a>, read <a href="/which-claw/">Which Claw?</a> for the lay of the land, then browse the rest when you're ready to dip your toes in.
 </div>
 
 <div class="postcard-grid">
-  <!-- 1. Which Claw? -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-which">
@@ -94,7 +140,6 @@ permalink: /index.html
     </div>
   </div>
 
-  <!-- 2. First Setup Routes -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-routes">
@@ -116,7 +161,6 @@ permalink: /index.html
     </div>
   </div>
 
-  <!-- 3. Tuning the Claws -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-tuning">
@@ -138,7 +182,6 @@ permalink: /index.html
     </div>
   </div>
 
-  <!-- 4. Community Currents -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-community">
@@ -160,7 +203,6 @@ permalink: /index.html
     </div>
   </div>
 
-  <!-- 5. Claw Watch -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-clawwatch">
@@ -181,28 +223,13 @@ permalink: /index.html
       </div>
     </div>
   </div>
+</div>
 
-  <!-- 6. NemoClaw — Halloween Edition -->
-  <div class="postcard-card">
-    <div class="postcard-flip">
-      <div class="postcard-face postcard-front front-nemoclaw">
-        <div class="front-copy">
-          <span class="mini" style="margin-bottom:0.5rem;">NemoClaw 🦀</span>
-          <h2 class="front-title">NemoClaw</h2>
-        </div>
-        <div class="front-illustration">
-          <img src="/assets/postcards/nemoclaw.png" alt="Postcard art for NemoClaw — Halloween Edition" class="front-art" />
-        </div>
-      </div>
-      <div class="postcard-face postcard-back">
-        <div>
-          <h3>NemoClaw — Halloween Edition 🦀</h3>
-          <p>NVIDIA's enterprise wrapper for OpenClaw — sandboxed, guarded, managed. Even Nemo needs a little crab costume on Halloween.</p>
-        </div>
-        <a href="/nemoclaw/">Read the card →</a>
-      </div>
-    </div>
-  </div>
+<div class="img-note">
+  <strong>🎨 Generating postcard images on Mac</strong><br/>
+  SVGs are generated with an inline Node script using the <code>canvas</code> package (v3.x).<br/>
+  <code>npm i canvas</code> then run: <code>node -e "const {Canvas, createCanvas} = require('canvas'); const c = createCanvas(1024,768); const ctx = c.getContext('2d'); /* draw here */; const buf = c.toBuffer('image/png'); require('fs').writeFileSync('postcard.png', buf);"</code><br/>
+  This uses the native <code>node-canvas</code> bindings which compile with Cairo/SVG support. No external API needed — it's all local on the Mac.
 </div>
 
 <div class="rack-footer">
