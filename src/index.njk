@@ -7,11 +7,25 @@ permalink: /index.html
 {% block extraCSS %}
 <style>
   /* ====== Homepage-specific: front-card gradient backgrounds ====== */
-  .front-which    { background: linear-gradient(135deg, #6ba9bd, #3c7389 50%, #274455); }
-  .front-routes   { background: linear-gradient(135deg, #efbf77, #d28a40 50%, #92522a); }
-  .front-tuning   { background: linear-gradient(135deg, #d78872, #b15d51 50%, #743934); }
-  .front-community{ background: linear-gradient(135deg, #8ab79b, #5e9274 50%, #345945); }
-  .front-clawwatch{ background: linear-gradient(135deg, #7ec8d6, #3e8e9f 50%, #225a6e); }
+  .front-which     { background: linear-gradient(135deg, #6ba9bd, #3c7389 50%, #274455); }
+  .front-routes    { background: linear-gradient(135deg, #efbf77, #d28a40 50%, #92522a); }
+  .front-tuning    { background: linear-gradient(135deg, #d78872, #b15d51 50%, #743934); }
+  .front-community { background: linear-gradient(135deg, #8ab79b, #5e9274 50%, #345945); }
+  .front-clawwatch { background: linear-gradient(135deg, #7ec8d6, #3e8e9f 50%, #225a6e); }
+  .front-nemoclaw  { background: linear-gradient(135deg, #e06830, #a84418 50%, #6e2a0e); }
+
+  /* ====== Horizontal scroll strip (postcard rack) ====== */
+  .postcard-grid {
+    display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+  }
+  .postcard-grid::-webkit-scrollbar { height: 6px; }
+  .postcard-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 3px; }
+  .postcard-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+  .postcard-grid > .postcard-card {
+    flex: 0 0 min(320px, 70vw); scroll-snap-align: start; min-height: 380px;
+  }
 
   /* ====== Summary band (homepage only) ====== */
   .summary-band {
@@ -58,6 +72,7 @@ permalink: /index.html
 </div>
 
 <div class="postcard-grid">
+  <!-- 1. Which Claw? -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-which">
@@ -79,6 +94,7 @@ permalink: /index.html
     </div>
   </div>
 
+  <!-- 2. First Setup Routes -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-routes">
@@ -100,6 +116,7 @@ permalink: /index.html
     </div>
   </div>
 
+  <!-- 3. Tuning the Claws -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-tuning">
@@ -121,6 +138,7 @@ permalink: /index.html
     </div>
   </div>
 
+  <!-- 4. Community Currents -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-community">
@@ -142,6 +160,7 @@ permalink: /index.html
     </div>
   </div>
 
+  <!-- 5. Claw Watch -->
   <div class="postcard-card">
     <div class="postcard-flip">
       <div class="postcard-face postcard-front front-clawwatch">
@@ -150,7 +169,7 @@ permalink: /index.html
           <h2 class="front-title">Claw Watch</h2>
         </div>
         <div class="front-illustration">
-          <img src="/assets/postcards/claw-watch.svg" alt="Postcard art for Claw Watch" class="front-art" />
+          <img src="/assets/postcards/claw-watch.png" alt="Postcard art for Claw Watch" class="front-art" />
         </div>
       </div>
       <div class="postcard-face postcard-back">
@@ -159,6 +178,28 @@ permalink: /index.html
           <p>GPU releases, market shifts, and whatever else washes up on the crustacean coast.</p>
         </div>
         <a href="/claw-watch/">Read the card →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. NemoClaw — Halloween Edition -->
+  <div class="postcard-card">
+    <div class="postcard-flip">
+      <div class="postcard-face postcard-front front-nemoclaw">
+        <div class="front-copy">
+          <span class="mini" style="margin-bottom:0.5rem;">NemoClaw 🦀</span>
+          <h2 class="front-title">NemoClaw</h2>
+        </div>
+        <div class="front-illustration">
+          <img src="/assets/postcards/nemoclaw.png" alt="Postcard art for NemoClaw — Halloween Edition" class="front-art" />
+        </div>
+      </div>
+      <div class="postcard-face postcard-back">
+        <div>
+          <h3>NemoClaw — Halloween Edition 🦀</h3>
+          <p>NVIDIA's enterprise wrapper for OpenClaw — sandboxed, guarded, managed. Even Nemo needs a little crab costume on Halloween.</p>
+        </div>
+        <a href="/nemoclaw/">Read the card →</a>
       </div>
     </div>
   </div>
