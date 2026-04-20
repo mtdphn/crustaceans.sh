@@ -2,300 +2,78 @@
 title: First Setup Routes
 permalink: /first-routes/index.html
 ---
+{% extends "_includes/layouts/base.njk" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title }} | crustaceans.sh</title>
-  <style>
-    :root {
-      --sand: #f6efe2;
-      --cream: #fffaf1;
-      --foam: #f5fbff;
-      --sea: #5d8fa3;
-      --deep-sea: #28576b;
-      --coral: #d87959;
-      --ink: #26343c;
-      --coffee: #6d4a38;
-      --shadow: rgba(37,53,66,0.16);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --sand: #1a1f24;
-        --cream: #232a30;
-        --foam: #2d353d;
-        --sea: #5d8fa3;
-        --deep-sea: #8ab4c7;
-        --coral: #d87959;
-        --ink: #e8ebe8;
-        --coffee: #b8a595;
-        --sun: #f4c96b;
-        --shadow: rgba(0, 0, 0, 0.4);
-      }
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 2rem 1rem 3rem;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(244, 201, 107, 0.22), transparent 24%),
-        radial-gradient(circle at top right, rgba(93, 143, 163, 0.14), transparent 28%),
-        linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%);
-    }
-    .frame {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.2rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42));
-      border-radius: 28px;
-      box-shadow: 0 24px 64px var(--shadow);
-    }
-    .sheet {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, var(--cream), var(--foam));
-      border: 2px solid rgba(109, 74, 56, 0.2);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.08);
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-    .sheet::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px dashed rgba(109, 74, 56, 0.18);
-      border-radius: 18px;
-      pointer-events: none;
-    }
-    h1, h2, h3 { color: var(--deep-sea); }
-    h1 { margin: 0.25rem 0 0; font-size: clamp(2.3rem, 5vw, 3.8rem); line-height: 0.95; letter-spacing: -0.03em; }
-    .eyebrow, .mini {
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--coffee);
-      background: rgba(244, 201, 107, 0.22);
-      padding: 0.3rem 0.65rem;
-      border-radius: 999px;
-    }
-    .site-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin: 0 0 1.2rem;
-    }
-    .site-nav a {
-      text-decoration: none;
-      padding: 0.42rem 0.78rem;
-      border-radius: 999px;
-      background: rgba(93, 143, 163, 0.10);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 1rem;
-      align-items: start;
-      margin-bottom: 1.25rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(109, 74, 56, 0.18);
-    }
-    .lede, p, li { line-height: 1.75; }
-    .note-card, .card {
-      background: rgba(255,255,255,0.68);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      border-radius: 18px;
-      padding: 1rem;
-      box-shadow: 0 10px 24px rgba(40, 87, 107, 0.05);
-    }
-    .note-card { transform: rotate(-1.2deg); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-      margin-top: 1.25rem;
-    }
-    .card { grid-column: span 6; }
-    .full { grid-column: span 12; }
-    a { color: var(--deep-sea); text-underline-offset: 0.14em; }
-    a:hover { color: var(--coral); }
-    ul, ol { margin: 0.5rem 0 0; padding-left: 1.2rem; }
-    .backlink { margin-top: 1.5rem; }
-    @media (max-width: 860px) {
-      .hero, .grid { grid-template-columns: 1fr; }
-      .card, .full { grid-column: auto; }
-      .sheet { padding: 1.3rem; }
-    }
-  
-    html.dark body {
-      background:
-        radial-gradient(circle at top left, rgba(244, 201, 107, 0.08), transparent 24%),
-        radial-gradient(circle at top right, rgba(93, 143, 163, 0.06), transparent 30%),
-        linear-gradient(180deg, #1a1f24 0%, #1f242a 100%);
-    }
-    html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
-    html.dark strong { color: #e8ebe8; }
-    html.dark a { color: #8ab4c7; }
-    html.dark a:hover { color: #d87959; }
-    html.dark .frame {
-      background: linear-gradient(180deg, rgba(35, 42, 48, 0.8), rgba(35, 42, 48, 0.5));
-    }
-    html.dark .sheet {
-      background: linear-gradient(180deg, #232a30, #2d353d);
-      border-color: rgba(184, 165, 149, 0.2);
-    }
-
-    html:not(.dark) body { background: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
-    html:not(.dark) .frame { background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42)); }
-    html:not(.dark) .sheet { background: linear-gradient(180deg, #fffaf1, #f5fbff); border-color: rgba(109, 74, 56, 0.2); color: #26343c; }
-    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 { color: #28576b; }
-    html:not(.dark) a { color: #5d8fa3; }
-    html:not(.dark) a:hover { color: #d87959; }
-    html.dark .site-nav a {
-      background: rgba(93, 143, 163, 0.15);
-      border-color: rgba(138, 180, 199, 0.2);
-      color: #8ab4c7;
-    }
-    html.dark h1, html.dark h2, html.dark h3 { color: #8ab4c7; }
-    html.dark .eyebrow, html.dark .mini {
-      background: rgba(244, 201, 107, 0.15);
-      color: #b8a595;
-    }
-    html.dark .theme-toggle { background: rgba(35, 42, 48, 0.95); border: 1px solid rgba(138, 180, 199, 0.35); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    html.dark .card, html.dark .note-card {
-      background: rgba(45, 53, 61, 0.6);
-      border-color: rgba(93, 143, 163, 0.2);
-      color: #e8ebe8;
-    }
-    html.dark .note-card { border-color: rgba(216, 121, 89, 0.2); }
-    html.dark .card h2 { color: #8ab4c7; }
-    html.dark .card span { color: #b8a595; }
-    html.dark .backlink a { color: #8ab4c7; }
-    html.dark .backlink a:hover { color: #d87959; }
-  </style>
-</head>
-<body>
-  <div class="frame">
-    <article class="sheet">
-      <div class="coffee-ring"></div>
-      <div class="content">
-      <nav class="site-nav" aria-label="Site navigation">
-        <a href="/">Postcard rack</a>
-        <a href="/which-claw/">Which Claw?</a>
-        <a href="/first-routes/">First Setup Routes</a>
-        <a href="/recommendations/">Tuning the Claws</a>
-        <a href="/community-currents/">Community Currents</a>
-          <a href="/about/">About</a>
-        <a href="/nemoclaw/">NemoClaw</a>
-      </nav>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
-
-      <div class="hero">
-        <div>
-          <span class="eyebrow">Route planner</span>
-          <h1>First setup routes</h1>
-          <p class="lede">If you do not want to read everything first, start here. Pick the route that sounds most like your actual life, then follow the smallest set of links that gets you moving without drowning in docks, ropes, and seagull noise.</p>
-        </div>
-        <aside class="note-card">
-          <h3>General rule</h3>
-          <p>Start with one boring, useful workflow. The people who enjoy these systems most are usually the ones who begin with a single real job instead of a fantasy of total life automation.</p>
-        </aside>
-      </div>
-
-      <div class="grid">
-        <section class="card">
-          <span class="mini">Route 1</span>
-          <h2>I want the main official path</h2>
-          <ol>
-            <li>Read <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>.</li>
-            <li>Keep <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">the docs</a> open while you install.</li>
-            <li>Use the GitHub repo when you need implementation detail.</li>
-          </ol>
-          <p><strong>Best for:</strong> people who want the canonical coastline.</p>
-        </section>
-
-        <section class="card">
-          <span class="mini">Route 2</span>
-          <h2>I want something smaller and clearer</h2>
-          <ol>
-            <li>Start with <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>.</li>
-            <li>Read the repo and Discussions before overcomplicating the setup.</li>
-            <li>Keep the first use case narrow and local.</li>
-          </ol>
-          <p><strong>Best for:</strong> cautious tinkerers and people who value legibility.</p>
-        </section>
-
-        <section class="card">
-          <span class="mini">Route 3</span>
-          <h2>I want tiny hardware and low overhead</h2>
-          <ol>
-            <li>Go to <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a>.</li>
-            <li>Read the repo with hardware constraints in mind.</li>
-            <li>Choose one compact workflow and prove it on modest hardware.</li>
-          </ol>
-          <p><strong>Best for:</strong> Pi projects, edge experiments, and resource discipline.</p>
-        </section>
-
-        <section class="card">
-          <span class="mini">Route 4</span>
-          <h2>I mainly care about stronger rails</h2>
-          <ol>
-            <li>Start with <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw docs</a>.</li>
-            <li>Read the warnings and alpha status before getting attached.</li>
-            <li>Treat it as a security-forward experiment, not a finished domestic appliance.</li>
-          </ol>
-          <p><strong>Best for:</strong> people asking safety questions first.</p>
-        </section>
-
-        <section class="card full">
-          <span class="mini">First useful jobs</span>
-          <h2>Good beginner workflows</h2>
-          <ul>
-            <li>daily reminders that actually matter</li>
-            <li>message routing and triage</li>
-            <li>local code assistance</li>
-            <li>a narrow self-hosted helper for one recurring problem</li>
-          </ul>
-          <p>Start here, then add complexity only when the first little harbor is already serving you well.</p>
-        </section>
-      </div>
-
-      <p class="backlink"><a href="/">← Back to the postcard rack</a></p>
-          </div>
-    </article>
+{% block body %}
+<div class="hero">
+  <div>
+    <span class="eyebrow">Route planner</span>
+    <h1>First setup routes</h1>
+    <p class="lede">If you do not want to read everything first, start here. Pick the route that sounds most like your actual life, then follow the smallest set of links that gets you moving without drowning in docks, ropes, and seagull noise.</p>
   </div>
+  <aside class="note-card">
+    <h3>General rule</h3>
+    <p>Start with one boring, useful workflow. The people who enjoy these systems most are usually the ones who begin with a single real job instead of a fantasy of total life automation.</p>
+  </aside>
+</div>
 
-    <script>
-      function toggleTheme() {
-        const html = document.documentElement;
-        const btn = document.querySelector('.theme-toggle');
-        const isDark = html.classList.contains('dark');
-        if (isDark) {
-          html.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
-          btn.textContent = '☀️';
-        } else {
-          html.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
-          btn.textContent = '🌙';
-        }
-      }
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      }
-      if (document.querySelector('.theme-toggle')) {
-        document.querySelector('.theme-toggle').textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
-      }
-    </script>
-</body>
-</html>
+<div class="grid">
+  <section class="card">
+    <span class="mini">Route 1</span>
+    <h2>I want the main official path</h2>
+    <ol>
+      <li>Read <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>.</li>
+      <li>Keep <a href="https://docs.openclaw.ai" target="_blank" rel="noopener">the docs</a> open while you install.</li>
+      <li>Use the GitHub repo when you need implementation detail.</li>
+    </ol>
+    <p><strong>Best for:</strong> people who want the canonical coastline.</p>
+  </section>
+
+  <section class="card">
+    <span class="mini">Route 2</span>
+    <h2>I want something smaller and clearer</h2>
+    <ol>
+      <li>Start with <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>.</li>
+      <li>Read the repo and Discussions before overcomplicating the setup.</li>
+      <li>Keep the first use case narrow and local.</li>
+    </ol>
+    <p><strong>Best for:</strong> cautious tinkerers and people who value legibility.</p>
+  </section>
+
+  <section class="card">
+    <span class="mini">Route 3</span>
+    <h2>I want tiny hardware and low overhead</h2>
+    <ol>
+      <li>Go to <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a>.</li>
+      <li>Read the repo with hardware constraints in mind.</li>
+      <li>Choose one compact workflow and prove it on modest hardware.</li>
+    </ol>
+    <p><strong>Best for:</strong> Pi projects, edge experiments, and resource discipline.</p>
+  </section>
+
+  <section class="card">
+    <span class="mini">Route 4</span>
+    <h2>I mainly care about stronger rails</h2>
+    <ol>
+      <li>Start with <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw docs</a>.</li>
+      <li>Read the warnings and alpha status before getting attached.</li>
+      <li>Treat it as a security-forward experiment, not a finished domestic appliance.</li>
+    </ol>
+    <p><strong>Best for:</strong> people asking safety questions first.</p>
+  </section>
+
+  <section class="card full">
+    <span class="mini">First useful jobs</span>
+    <h2>Good beginner workflows</h2>
+    <ul>
+      <li>daily reminders that actually matter</li>
+      <li>message routing and triage</li>
+      <li>local code assistance</li>
+      <li>a narrow self-hosted helper for one recurring problem</li>
+    </ul>
+    <p>Start here, then add complexity only when the first little harbor is already serving you well.</p>
+  </section>
+</div>
+
+<p class="backlink"><a href="/">← Back to the postcard rack</a></p>
+{% endblock %}

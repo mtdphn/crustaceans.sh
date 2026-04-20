@@ -1,8 +1,3 @@
----
-title: Lost at Sea
-permalink: /404.html
-layout: false
----
 <!DOCTYPE html>
 <html lang="en" class="">
 <head>
@@ -10,23 +5,25 @@ layout: false
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title }} | crustaceans.sh</title>
   <link rel="stylesheet" href="/css/shared.css" />
-  <style>
-    .frame { max-width: 600px; }
-    .sheet { text-align: center; padding: 3rem 2rem; }
-    h1 { font-size: 6rem; margin: 0; color: var(--sea); line-height: 1; }
-    h2 { color: var(--deep-sea); margin-top: 0.5rem; }
-    .crab { font-size: 4rem; margin: 1rem 0; }
-  </style>
+  {% block extraCSS %}{% endblock %}
 </head>
 <body>
   <div class="frame">
     <article class="sheet">
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
-      <div class="crab">🦀</div>
-      <h1>404</h1>
-      <h2>Lost at Sea</h2>
-      <p>This page drifted away with the tide. No worries — the shore has more boardwalks.</p>
-      <p><a href="/">← Back to the postcard rack</a></p>
+      {% if coffeeRing !== false %}<div class="coffee-ring"></div>{% endif %}
+      <div class="content">
+        <nav class="site-nav" aria-label="Site navigation">
+          <a href="/">Postcard rack</a>
+          <a href="/which-claw/">Which Claw?</a>
+          <a href="/first-routes/">First Setup Routes</a>
+          <a href="/recommendations/">Tuning the Claws</a>
+          <a href="/community-currents/">Community Currents</a>
+          <a href="/about/">About</a>
+          <a href="/nemoclaw/">NemoClaw</a>
+        </nav>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+        {% block body %}{% endblock %}
+      </div>
     </article>
   </div>
   <script>
@@ -48,7 +45,14 @@ layout: false
       document.documentElement.classList.add('dark');
     }
     var btn = document.querySelector('.theme-toggle');
-    if (btn) btn.textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
+    if (btn) {
+      btn.textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
+    }
+    document.querySelectorAll('.postcard-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        card.classList.toggle('is-flipped');
+      });
+    });
   </script>
 </body>
 </html>

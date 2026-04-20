@@ -2,701 +2,148 @@
 title: Greetings from the Crustaceans
 permalink: /index.html
 ---
+{% extends "_includes/layouts/base.njk" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% block extraCSS %}
+<style>
+  /* ====== Homepage-specific: front-card gradient backgrounds ====== */
+  .front-which    { background: linear-gradient(135deg, #6ba9bd, #3c7389 50%, #274455); }
+  .front-routes   { background: linear-gradient(135deg, #efbf77, #d28a40 50%, #92522a); }
+  .front-tuning   { background: linear-gradient(135deg, #d78872, #b15d51 50%, #743934); }
+  .front-community{ background: linear-gradient(135deg, #8ab79b, #5e9274 50%, #345945); }
 
-  <meta property="og:title" content="Greetings from the Crustaceans" />
-  <meta property="og:description" content="A rack of seaside dispatches for the OpenClaw coast." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://crustaceans.sh/" />
-  <meta property="og:image" content="https://crustaceans.sh/assets/postcards/first-routes.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+  /* ====== Summary band (homepage only) ====== */
+  .summary-band {
+    margin: 1.1rem 0 0; padding: 1rem 1.1rem; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(244, 201, 107, 0.16), rgba(93, 143, 163, 0.08));
+    border: 1px solid rgba(216, 121, 89, 0.12);
+  }
+  html.dark .summary-band {
+    background: rgba(93,143,163,0.1);
+    border-color: rgba(93,143,163,0.2);
+    color: #e8ebe8;
+  }
+  html.dark .summary-band strong { color: #e8ebe8; }
+  html.dark .summary-band a { color: #8ab4c7; }
+  html.dark .summary-band a:hover { color: #d87959; }
 
-  <title>{{ title }} | crustaceans.sh</title>
-  <style>
-    :root {
-      --sand: #f6efe2;
-      --cream: #fffaf1;
-      --foam: #f5fbff;
-      --sea: #5d8fa3;
-      --deep-sea: #28576b;
-      --coral: #d87959;
-      --ink: #26343c;
-      --coffee: #6d4a38;
-      --sun: #f4c96b;
-      --shadow: rgba(37, 53, 66, 0.16);
-    }
-
-    @media (prefers-color-scheme: light) {
-      :root {
-        --sand: #f6efe2;
-        --cream: #fffaf1;
-        --foam: #f5fbff;
-        --sea: #5d8fa3;
-        --deep-sea: #28576b;
-        --coral: #d87959;
-        --ink: #26343c;
-        --coffee: #6d4a38;
-        --sun: #f4c96b;
-        --shadow: rgba(37, 53, 66, 0.16);
-      }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --sand: #1a1f24;
-        --cream: #232a30;
-        --foam: #2d353d;
-        --sea: #5d8fa3;
-        --deep-sea: #8ab4c7;
-        --coral: #d87959;
-        --ink: #e8ebe8;
-        --coffee: #b8a595;
-        --sun: #f4c96b;
-        --shadow: rgba(0, 0, 0, 0.4);
-      }
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      padding: 2rem 1rem 3rem;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(244, 201, 107, 0.12), transparent 24%),
-        radial-gradient(circle at top right, rgba(93, 143, 163, 0.1), transparent 30%),
-        linear-gradient(180deg, var(--sand) 0%, var(--cream) 42%, var(--foam) 100%);
-      transition: background 0.3s ease;
-    }
-
-    .frame {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.2rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.4));
-      border-radius: 28px;
-      box-shadow: 0 24px 64px var(--shadow);
-    }
-
-    .sheet {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, var(--cream), var(--foam));
-      border: 2px solid rgba(109, 74, 56, 0.2);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.08);
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-
-    .sheet::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px dashed rgba(109, 74, 56, 0.18);
-      border-radius: 18px;
-      pointer-events: none;
-    }
-
-    
-    .theme-toggle {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: var(--cream);
-      border: 1px solid rgba(109, 74, 56, 0.2);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease, background 0.3s ease;
-      z-index: 10;
-    }
-    .theme-toggle:hover { transform: scale(1.1); }
-.coffee-ring {
-      position: absolute;
-      right: 2.8rem;
-      top: 1.2rem;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 6px solid rgba(109, 74, 56, 0.22);
-      box-shadow: inset 0 0 0 12px rgba(109, 74, 56, 0.05);
-      transform: rotate(-10deg);
-      opacity: 0.55;
-      mix-blend-mode: multiply;
-      pointer-events: none;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .site-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin: 0 0 1.2rem;
-    }
-
-    .site-nav a {
-      text-decoration: none;
-      padding: 0.42rem 0.78rem;
-      border-radius: 999px;
-      background: rgba(93, 143, 163, 0.10);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--deep-sea);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 1rem;
-      align-items: start;
-      padding-bottom: 1.2rem;
-      margin-bottom: 1.25rem;
-      border-bottom: 1px solid rgba(109, 74, 56, 0.18);
-    }
-
-    .eyebrow,
-    .mini {
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--coffee);
-      background: rgba(244, 201, 107, 0.22);
-      padding: 0.3rem 0.65rem;
-      border-radius: 999px;
-    }
-
-    h1, h2, h3 { color: var(--deep-sea); }
-
-    h1 {
-      margin: 0.3rem 0 0;
-      font-size: clamp(2.5rem, 5vw, 4.2rem);
-      line-height: 0.94;
-      letter-spacing: -0.03em;
-    }
-
-    .lede,
-    p,
-    li {
-      line-height: 1.75;
-    }
-
-    .note-card {
-      background: rgba(255,255,255,0.76);
-      border: 1px solid rgba(216, 121, 89, 0.18);
-      border-radius: 18px;
-      padding: 1rem;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
-      transform: rotate(-1.5deg);
-    }
-
-    .summary-band {
-      margin: 1.1rem 0 0;
-      padding: 1rem 1.1rem;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(244, 201, 107, 0.16), rgba(93, 143, 163, 0.08));
-      border: 1px solid rgba(216, 121, 89, 0.12);
-    }
-
-    .postcard-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1.2rem;
-      margin-top: 1.5rem;
-    }
-
-    .postcard-card {
-      grid-column: span 6;
-      perspective: 1200px;
-      min-height: 350px;
-    }
-
-    .postcard-flip {
-      position: relative;
-      width: 100%;
-      min-height: 350px;
-      transform-style: preserve-3d;
-      transition: transform 0.75s ease;
-    }
-
-    .postcard-card:hover .postcard-flip,
-    .postcard-card:focus-within .postcard-flip {
-      transform: rotateY(180deg);
-    }
-
-    .postcard-face {
-      position: absolute;
-      inset: 0;
-      border-radius: 22px;
-      overflow: hidden;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      border: 2px solid rgba(109, 74, 56, 0.2);
-      box-shadow: 0 18px 36px rgba(37, 53, 66, 0.10);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .postcard-front {
-      pointer-events: auto;
-    }
-
-    .postcard-back {
-      pointer-events: none;
-    }
-
-    .postcard-card:hover .postcard-front,
-    .postcard-card:focus-within .postcard-front {
-      pointer-events: none;
-    }
-
-    .postcard-card:hover .postcard-back,
-    .postcard-card:focus-within .postcard-back {
-      pointer-events: auto;
-    }
-
-    .postcard-front {
-      padding: 1.15rem 1.15rem 1.05rem;
-      color: var(--ink);
-      position: relative;
-    }
-
-    .postcard-front::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.42));
-      z-index: 0;
-    }
-
-    .postcard-front::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.24), transparent 18%),
-        radial-gradient(circle at 82% 24%, rgba(255,255,255,0.18), transparent 22%),
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.10));
-      mix-blend-mode: screen;
-      opacity: 0.45;
-      z-index: 0;
-    }
-
-    .postcard-front > * {
-      position: relative;
-      z-index: 2;
-    }
-
-    .postcard-back {
-      background: linear-gradient(180deg, var(--cream), var(--foam));
-      padding: 1.15rem 1.15rem 1.05rem;
-      transform: rotateY(180deg);
-      color: var(--ink);
-      justify-content: space-between;
-    }
-
-    .postcard-back .rule {
-      border-top: 1px dashed rgba(109, 74, 56, 0.24);
-      margin: 0.9rem 0;
-    }
-
-    .postcard-back p {
-      margin: 0.2rem 0 0;
-    }
-
-    .postcard-back a {
-      align-self: flex-start;
-      text-decoration: none;
-      padding: 0.5rem 0.8rem;
-      border-radius: 999px;
-      background: rgba(93, 143, 163, 0.10);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      color: var(--deep-sea);
-      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    .front-which { background: linear-gradient(135deg, #6ba9bd, #3c7389 50%, #274455); }
-    .front-routes { background: linear-gradient(135deg, #efbf77, #d28a40 50%, #92522a); }
-    .front-tuning { background: linear-gradient(135deg, #d78872, #b15d51 50%, #743934); }
-    .front-community { background: linear-gradient(135deg, #8ab79b, #5e9274 50%, #345945); }
-
-    .front-copy {
-      position: relative;
-      z-index: 2;
-    }
-
-    .front-illustration {
-      position: relative;
-      z-index: 2;
-      margin-top: 1rem;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.08);
-      min-height: 150px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    .art-jaunty svg {
-      width: 74%;
-      transform: rotate(-6deg) translateY(10px);
-      transform-origin: center bottom;
-    }
-
-    .front-art {
-      width: 100%;
-      height: auto;
-      opacity: 0.62;
-      pointer-events: none;
-      filter: blur(0.4px) saturate(0.86);
-      transform: scale(1.02);
-      display: block;
-    }
-
-    .front-title {
-      margin: 0.4rem 0 0;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      line-height: 1.05;
-    }
-
-    .front-note {
-      margin: 0.45rem 0 0;
-      max-width: 22rem;
-    }
-
-    .rack-footer {
-      margin-top: 1.6rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      color: var(--coffee);
-      font-size: 0.94rem;
-    }
-
-    .stamp {
-      border: 2px dashed rgba(93, 143, 163, 0.45);
-      padding: 0.35rem 0.75rem;
-      border-radius: 10px;
-      background: rgba(245, 251, 255, 0.76);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--deep-sea);
-    }
-
-    a { color: var(--deep-sea); text-underline-offset: 0.14em; }
-    a:hover { color: var(--coral); }
-
-    @media (max-width: 900px) {
-      .hero,
-      .postcard-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .postcard-card {
-        grid-column: auto;
-      }
-
-      .sheet {
-        padding: 1.3rem;
-      }
-
-      .coffee-ring {
-        width: 120px;
-        height: 120px;
-        right: 1rem;
-        opacity: 0.35;
-      }
-    }
-  
-    html.dark {
-      color: #c8cbc8;
-      background: #1a1f24;
-    }
-    html.dark h1, html.dark h2, html.dark h3, html.dark h4 { color: #8ab4c7; }
-    html.dark a { color: #8ab4c7; }
-    html.dark a:hover { color: #d87959; }
-    html.dark body {
-      background:
-        radial-gradient(circle at top left, rgba(244, 201, 107, 0.08), transparent 24%),
-        radial-gradient(circle at top right, rgba(93, 143, 163, 0.06), transparent 30%),
-        linear-gradient(180deg, #1a1f24 0%, #1f242a 100%);
-    }
-    html.dark .frame {
-      background: linear-gradient(180deg, rgba(35, 42, 48, 0.8), rgba(35, 42, 48, 0.5));
-    }
-    html.dark .sheet {
-      background: linear-gradient(180deg, #232a30, #2d353d);
-      border-color: rgba(184, 165, 149, 0.2);
-    }
-    html.dark .site-nav { color: #8a9298; }
-    html.dark .site-nav a {
-      background: rgba(93, 143, 163, 0.15);
-      border-color: rgba(138, 180, 199, 0.2);
-      color: #8ab4c7;
-    }
-    html.dark h1, html.dark h2, html.dark h3 { color: #8ab4c7; }
-    html.dark .eyebrow, html.dark .mini {
-      background: rgba(244, 201, 107, 0.15);
-      color: #b8a595;
-    }
-    html.dark .postcard-front { color: #e8ebe8; }
-    html.dark .postcard-back { background: linear-gradient(180deg, #232a30, #1f242a); color: #e8ebe8; }
-    html.dark .postcard-back h3 { color: #8ab4c7; }
-    html.dark .postcard-back a { color: #5d8fa3; }
-    html.dark .postcard-back a:hover { color: #d87959; }
-    html.dark .summary-band { background: rgba(93, 143, 163, 0.1); border-color: rgba(93, 143, 163, 0.2); color: #e8ebe8; }
-    html.dark .eyebrow, html.dark .mini { color: #b8a595; }
-    html.dark .lede { color: #c8cbc8; }
-    html.dark .postcard-eyebrow { background: rgba(244, 201, 107, 0.2); color: #b8a595; }
-    html.dark li { color: #c8cbc8; }
-    html.dark .postcard-front { color: #e8ebe8; background: linear-gradient(180deg, #2d353d, #232a30); }
-    html.dark .postcard-front::before { background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3)); }
-    html.dark .postcard-front::after { mix-blend-mode: overlay; }
-
-    /* Explicit light mode */
-    html:not(.dark) body { background: #f6efe2; background-image: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
-    html:not(.dark) .frame { background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42)); }
-    html:not(.dark) .sheet { background: linear-gradient(180deg, #fffaf1, #f5fbff); border-color: rgba(109, 74, 56, 0.2); color: #26343c; }
-    html:not(.dark) .postcard-front { color: #26343c; background: linear-gradient(180deg, #fffaf1, #f5fbff); }
-    html:not(.dark) .postcard-front::before { background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(244, 201, 107, 0.1)); }
-    html:not(.dark) .postcard-front::after { mix-blend-mode: normal; }
-    html:not(.dark) .postcard-back { background: linear-gradient(180deg, #fffaf1, #f5fbff); color: #26343c; }
-    html:not(.dark) .front-title { color: #28576b; }
-    html:not(.dark) .front-note { color: #6d4a38; }
-
-    html.dark .postcard-back ul li::marker { color: #5d8fa3; }
-    html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
-    html.dark strong { color: #e8ebe8; }
-    html.dark a { color: #8ab4c7; }
-    html.dark a:hover { color: #d87959; }
-    html.dark .note-card { background: rgba(45, 53, 61, 0.8); border-color: rgba(216, 121, 89, 0.3); color: #c8cbc8; }
-    html.dark .theme-toggle { 
-      background: rgba(35, 42, 48, 0.95); 
-      border: 1px solid rgba(138, 180, 199, 0.35); 
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    html.dark .theme-toggle:hover { background: rgba(45, 53, 61, 0.95); }
-    html.dark .summary-band a { color: #8ab4c7; }
-    html.dark .summary-band a:hover { color: #d87959; }
-
-    html.dark .postcard-card { border-color: rgba(184, 165, 149, 0.25); }
-    html.dark .postcard-card:hover, html.dark .postcard-card:focus-within { border-color: rgba(184, 165, 149, 0.4); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-    html.dark .stamp { background: rgba(244, 201, 107, 0.15); color: #b8a595; border-color: rgba(184,165,149,0.3); }
-    html.dark .summary-band { background: rgba(93, 143, 163, 0.1); border-color: rgba(93, 143, 163, 0.2); color: #e8ebe8; }
-    html.dark .summary-band strong { color: #e8ebe8; }
-    html.dark .summary-band a { color: #8ab4c7; }
-    html.dark .summary-band a:hover { color: #d87959; }
-
-    @media (hover: none) and (pointer: coarse) {
-      .postcard-face { -webkit-tap-highlight-color: transparent; }
-      .postcard-front:hover, .postcard-front:focus-within { transform: none; }
-      .postcard-back { 
-        transform: rotateY(180deg); 
-        opacity: 1; 
-      }
-      .postcard-card:hover .postcard-back { opacity: 1; }
-      .postcard-card.is-flipped .postcard-front { transform: rotateY(180deg); }
-      .postcard-card.is-flipped .postcard-back { transform: rotateY(0); opacity: 1; }
-    }
-    
-    /* Make sure tap works */
-    .postcard-front { cursor: pointer; }
+  /* ====== Front illustration (homepage) ====== */
+  .front-illustration {
+    position: relative; z-index: 2; margin-top: 1rem;
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    min-height: 150px; display: flex; align-items: flex-end; justify-content: center;
+  }
+  .art-jaunty svg { width: 74%; transform: rotate(-6deg) translateY(10px); transform-origin: center bottom; }
 </style>
-</head>
-<body>
-  <div class="frame">
-    <article class="sheet">
-      <div class="coffee-ring"></div>
-      <div class="content">
-        <nav class="site-nav" aria-label="Site navigation">
-          <a href="/">Postcard rack</a>
-          <a href="/which-claw/">Which Claw?</a>
-          <a href="/first-routes/">First Setup Routes</a>
-          <a href="/recommendations/">Tuning the Claws</a>
-          <a href="/community-currents/">Community Currents</a>
-                  <a href="/about/">About</a>
-        <a href="/nemoclaw/">NemoClaw</a>
-        </nav>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+{% endblock %}
 
+{% block body %}
+<div class="hero">
+  <div>
+    <span class="eyebrow">The Crustaceans Postcard Rack</span>
+    <h1>Greetings from the Crustaceans</h1>
+    <p class="lede">A rack of seaside dispatches for the OpenClaw coast. Pick a card, read the postcard, and see what the tide brings up next.</p>
+  </div>
+  <aside class="note-card">
+    <h3>What's this about?</h3>
+    <p>crustaceans.sh is a postcard-themed wayfinding guide to the self-hosted AI assistant ecosystem — OpenClaw, NanoClaw, PicoClaw, NemoClaw, and everything in between.</p>
+  </aside>
+</div>
 
-        <div class="hero">
-          <div>
-            <span class="eyebrow">Postcard rack no. 01</span>
-            <h1>Greetings from the Crustaceans</h1>
-            <p class="lede">A rack of seaside dispatches for the OpenClaw coast. Instead of one giant brochure, this front page is now a little bureau of cards: pick the one that matches your mood, flip it over in your mind, and head down the right boardwalk.</p>
-            <div class="summary-band">
-              <strong>How to use this rack:</strong> choose a card for the question you actually have — which project to pick, how to start, how to tune it, or where the people gather — and let the rest wait until you need it.
-            </div>
-          </div>
-          <aside class="note-card">
-            <h3>House style</h3>
-            <p>Retro beach postcard meets competent workshop: coffee stains, coastal air, and enough clarity that strangers can arrive cold and still find the right pier.</p>
-          </aside>
+<div class="summary-band">
+  <strong>Consensus in one breath:</strong> if you're new to this coast, start with <a href="/first-routes/">First Setup Routes</a>, read <a href="/which-claw/">Which Claw?</a> for the lay of the land, then browse the rest when you're ready to dip your toes in.
+</div>
+
+<div class="postcard-grid">
+  <div class="postcard-card">
+    <div class="postcard-flip">
+      <div class="postcard-face postcard-front front-which">
+        <div class="front-copy">
+          <span class="mini" style="margin-bottom:0.5rem;">Which Claw?</span>
+          <h2 class="front-title">Which Claw?</h2>
         </div>
-
-        <section class="postcard-grid" aria-label="Postcard destinations">
-          <article class="postcard-card">
-            <div class="postcard-flip">
-              <div class="postcard-face postcard-front front-which">
-                <div class="front-copy">
-                  <span class="mini">Route planner</span>
-                  <h2 class="front-title">Which Claw?</h2>
-                  <p class="front-note">Best for comparing the four main harbors by complexity, safety, hardware, and temperament.</p>
-                </div>
-                <div class="front-illustration art-jaunty">
-                  <img class="front-art" src="/assets/postcards/which-claw.png" alt="Faded postcard-style crab harbor scene for Which Claw" />
-                </div>
-              </div>
-              <div class="postcard-face postcard-back">
-                <div>
-                  <span class="mini">Back of card</span>
-                  <p>A fast chooser for OpenClaw, NanoClaw, PicoClaw, and NemoClaw — best for, tradeoffs, and default recommendation.</p>
-                  <div class="rule"></div>
-                  <p><strong>Best if you’re asking:</strong> “Which one fits me?”</p>
-                </div>
-                <a href="/which-claw/">Choose a claw →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="postcard-card">
-            <div class="postcard-flip">
-              <div class="postcard-face postcard-front front-routes">
-                <div class="front-copy">
-                  <span class="mini">Starter routes</span>
-                  <h2 class="front-title">First Setup Routes</h2>
-                  <p class="front-note">Best for getting moving quickly without reading the whole coastline first.</p>
-                </div>
-                <div class="front-illustration">
-                  <img class="front-art" src="/assets/postcards/first-routes.png" alt="Faded postcard-style route planner scene for First Setup Routes" />
-                </div>
-              </div>
-              <div class="postcard-face postcard-back">
-                <div>
-                  <span class="mini">Back of card</span>
-                  <p>Simple starting routes for the main official path, a smaller path, a tiny-hardware path, and a safety-first path.</p>
-                  <div class="rule"></div>
-                  <p><strong>Best if you’re asking:</strong> “Where do I start tonight?”</p>
-                </div>
-                <a href="/first-routes/">Take a route →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="postcard-card">
-            <div class="postcard-flip">
-              <div class="postcard-face postcard-front front-tuning">
-                <div class="front-copy">
-                  <span class="mini">Field guide</span>
-                  <h2 class="front-title">Tuning the Claws</h2>
-                  <p class="front-note">Best for practical caution, tuning habits, and the advice that keeps repeating in public.</p>
-                </div>
-                <div class="front-illustration">
-                  <img class="front-art" src="/assets/postcards/tuning-the-claws.png" alt="Faded postcard-style desk scene for Tuning the Claws" />
-                </div>
-              </div>
-              <div class="postcard-face postcard-back">
-                <div>
-                  <span class="mini">Back of card</span>
-                  <p>A cleaned-up digest of repeated advice: limit access, start narrow, prefer legibility, and don’t confuse sandboxing with magic.</p>
-                  <div class="rule"></div>
-                  <p><strong>Best if you’re asking:</strong> “What actually seems to work?”</p>
-                </div>
-                <a href="/recommendations/">Read the tuning guide →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="postcard-card">
-            <div class="postcard-flip">
-              <div class="postcard-face postcard-front front-community">
-                <div class="front-copy">
-                  <span class="mini">Boardwalk map</span>
-                  <h2 class="front-title">Community Currents</h2>
-                  <p class="front-note">Best for finding the docks, discussion boards, Discords, and repo chatter around each project.</p>
-                </div>
-                <div class="front-illustration">
-                  <img class="front-art" src="/assets/postcards/community-currents.png" alt="Faded postcard-style scene for Community Currents" />
-                </div>
-              </div>
-              <div class="postcard-face postcard-back">
-                <div>
-                  <span class="mini">Back of card</span>
-                  <p>The social map: Discord, Discussions, repo chatter, official forums, and which docks are worth visiting first.</p>
-                  <div class="rule"></div>
-                  <p><strong>Best if you’re asking:</strong> “Where do these people talk?”</p>
-                </div>
-                <a href="/community-currents/">Follow the currents →</a>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <footer class="rack-footer">
-          <span class="stamp">OpenClaw wayfinding</span>
-          <span>Curated by Daphne — a postcard rack for curious tinkerers, boardwalk drifters, and anyone choosing a harbor.</span>
-        </footer>
-      
-        <footer style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed rgba(109,74,56,0.15); text-align: center; font-size: 0.85rem; color: var(--coffee);">
-          <p>🌊 crabbing since 2025 · <a href="/changelog/" style="color: var(--sea);">changelog</a> · <a href="https://github.com/mtdphn/crustaceans.sh" style="color: var(--sea);">source</a></p>
-        </footer>
-
-    </article>
+        <div class="front-illustration">
+          <img src="/assets/postcards/which-claw.png" alt="Postcard art for Which Claw?" class="front-art" />
+        </div>
+      </div>
+      <div class="postcard-face postcard-back">
+        <div>
+          <h3>Which Claw should I choose?</h3>
+          <p>If you're standing on the boardwalk wondering where to begin, here's the short answer.</p>
+        </div>
+        <a href="/which-claw/">Read the card →</a>
+      </div>
+    </div>
   </div>
 
-    <script>
-      function toggleTheme() {
-        const html = document.documentElement;
-        const btn = document.querySelector('.theme-toggle');
-        const isDark = html.classList.contains('dark');
-        if (isDark) {
-          html.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
-          btn.textContent = '☀️';
-        } else {
-          html.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
-          btn.textContent = '🌙';
-        }
-      }
-      // Check saved preference
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-        document.querySelector('.theme-toggle').textContent = '🌙';
-      }
-      // Also add .dark class support to CSS
-    
-      // Touch flip support
-      document.querySelectorAll('.postcard-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-          this.classList.toggle('is-flipped');
-        });
-      });
-</script>
-</body>
-</html>
+  <div class="postcard-card">
+    <div class="postcard-flip">
+      <div class="postcard-face postcard-front front-routes">
+        <div class="front-copy">
+          <span class="mini" style="margin-bottom:0.5rem;">Setup routes</span>
+          <h2 class="front-title">First Setup Routes</h2>
+        </div>
+        <div class="front-illustration">
+          <img src="/assets/postcards/first-routes.png" alt="Postcard art for First Setup Routes" class="front-art" />
+        </div>
+      </div>
+      <div class="postcard-face postcard-back">
+        <div>
+          <h3>First Setup Routes</h3>
+          <p>If you don't want to read everything first, start here. Pick the route that sounds most like your actual life.</p>
+        </div>
+        <a href="/first-routes/">Read the card →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="postcard-card">
+    <div class="postcard-flip">
+      <div class="postcard-face postcard-front front-tuning">
+        <div class="front-copy">
+          <span class="mini" style="margin-bottom:0.5rem;">Tuning</span>
+          <h2 class="front-title">Tuning the Claws</h2>
+        </div>
+        <div class="front-illustration">
+          <img src="/assets/postcards/tuning-the-claws.png" alt="Postcard art for Tuning the Claws" class="front-art" />
+        </div>
+      </div>
+      <div class="postcard-face postcard-back">
+        <div>
+          <h3>Tuning the Claws</h3>
+          <p>Consensus advice from community chatter, issue threads, and a certain amount of public claw-anxiety.</p>
+        </div>
+        <a href="/recommendations/">Read the card →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="postcard-card">
+    <div class="postcard-flip">
+      <div class="postcard-face postcard-front front-community">
+        <div class="front-copy">
+          <span class="mini" style="margin-bottom:0.5rem;">Community</span>
+          <h2 class="front-title">Community Currents</h2>
+        </div>
+        <div class="front-illustration">
+          <img src="/assets/postcards/community-currents.png" alt="Postcard art for Community Currents" class="front-art" />
+        </div>
+      </div>
+      <div class="postcard-face postcard-back">
+        <div>
+          <h3>Community Currents</h3>
+          <p>Where the various Claw crews gather, what kind of talk happens there, and which public docks are worth visiting.</p>
+        </div>
+        <a href="/community-currents/">Read the card →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rack-footer">
+  <span class="stamp">OpenClaw wayfinding</span>
+  <span>Curated by Daphne — updated as the ecosystem drifts and grows.</span>
+</div>
+{% endblock %}

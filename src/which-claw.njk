@@ -2,296 +2,72 @@
 title: Which Claw Should I Choose?
 permalink: /which-claw/index.html
 ---
+{% extends "_includes/layouts/base.njk" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title }} | crustaceans.sh</title>
-  <style>
-    :root {
-      --sand: #f6efe2;
-      --cream: #fffaf1;
-      --foam: #f5fbff;
-      --sea: #5d8fa3;
-      --deep-sea: #28576b;
-      --coral: #d87959;
-      --ink: #26343c;
-      --coffee: #6d4a38;
-      --shadow: rgba(37,53,66,0.16);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --sand: #1a1f24;
-        --cream: #232a30;
-        --foam: #2d353d;
-        --sea: #5d8fa3;
-        --deep-sea: #8ab4c7;
-        --coral: #d87959;
-        --ink: #e8ebe8;
-        --coffee: #b8a595;
-        --sun: #f4c96b;
-        --shadow: rgba(0, 0, 0, 0.4);
-      }
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 2rem 1rem 3rem;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(244, 201, 107, 0.22), transparent 24%),
-        radial-gradient(circle at top right, rgba(93, 143, 163, 0.14), transparent 28%),
-        linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%);
-    }
-    .frame {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.2rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42));
-      border-radius: 28px;
-      box-shadow: 0 24px 64px var(--shadow);
-    }
-    .sheet {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, var(--cream), var(--foam));
-      border: 2px solid rgba(109, 74, 56, 0.2);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.08);
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-    .sheet::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px dashed rgba(109, 74, 56, 0.18);
-      border-radius: 18px;
-      pointer-events: none;
-    }
-    h1, h2, h3 { color: var(--deep-sea); }
-    h1 { margin: 0.25rem 0 0; font-size: clamp(2.3rem, 5vw, 3.8rem); line-height: 0.95; letter-spacing: -0.03em; }
-    .eyebrow, .mini {
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--coffee);
-      background: rgba(244, 201, 107, 0.22);
-      padding: 0.3rem 0.65rem;
-      border-radius: 999px;
-    }
-    .site-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin: 0 0 1.2rem;
-    }
-    .site-nav a {
-      text-decoration: none;
-      padding: 0.42rem 0.78rem;
-      border-radius: 999px;
-      background: rgba(93, 143, 163, 0.10);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 1rem;
-      align-items: start;
-      margin-bottom: 1.25rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(109, 74, 56, 0.18);
-    }
-    .lede, p, li { line-height: 1.75; }
-    .note-card, .card {
-      background: rgba(255,255,255,0.68);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      border-radius: 18px;
-      padding: 1rem;
-      box-shadow: 0 10px 24px rgba(40, 87, 107, 0.05);
-    }
-    .note-card { transform: rotate(-1.2deg); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-      margin-top: 1.25rem;
-    }
-    .card { grid-column: span 6; }
-    .full { grid-column: span 12; }
-    a { color: var(--deep-sea); text-underline-offset: 0.14em; }
-    a:hover { color: var(--coral); }
-    ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
-    .backlink { margin-top: 1.5rem; }
-    @media (max-width: 860px) {
-      .hero, .grid { grid-template-columns: 1fr; }
-      .card, .full { grid-column: auto; }
-      .sheet { padding: 1.3rem; }
-    }
-  
-    html.dark body {
-      background:
-        radial-gradient(circle at top left, rgba(244, 201, 107, 0.08), transparent 24%),
-        radial-gradient(circle at top right, rgba(93, 143, 163, 0.06), transparent 30%),
-        linear-gradient(180deg, #1a1f24 0%, #1f242a 100%);
-    }
-    html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
-    html.dark strong { color: #e8ebe8; }
-    html.dark a { color: #8ab4c7; }
-    html.dark a:hover { color: #d87959; }
-    html.dark .frame {
-      background: linear-gradient(180deg, rgba(35, 42, 48, 0.8), rgba(35, 42, 48, 0.5));
-    }
-    html.dark .sheet {
-      background: linear-gradient(180deg, #232a30, #2d353d);
-      border-color: rgba(184, 165, 149, 0.2);
-    }
-
-    html:not(.dark) body { background: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
-    html:not(.dark) .frame { background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42)); }
-    html:not(.dark) .sheet { background: linear-gradient(180deg, #fffaf1, #f5fbff); border-color: rgba(109, 74, 56, 0.2); color: #26343c; }
-    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 { color: #28576b; }
-    html:not(.dark) a { color: #5d8fa3; }
-    html:not(.dark) a:hover { color: #d87959; }
-    html.dark .site-nav a {
-      background: rgba(93, 143, 163, 0.15);
-      border-color: rgba(138, 180, 199, 0.2);
-      color: #8ab4c7;
-    }
-    html.dark h1, html.dark h2, html.dark h3 { color: #8ab4c7; }
-    html.dark .eyebrow, html.dark .mini {
-      background: rgba(244, 201, 107, 0.15);
-      color: #b8a595;
-    }
-    html.dark .theme-toggle { background: rgba(35, 42, 48, 0.95); border: 1px solid rgba(138, 180, 199, 0.35); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    html.dark .card, html.dark .note-card {
-      background: rgba(45, 53, 61, 0.6);
-      border-color: rgba(93, 143, 163, 0.2);
-      color: #e8ebe8;
-    }
-    html.dark .note-card { border-color: rgba(216, 121, 89, 0.2); }
-    html.dark .card h2 { color: #8ab4c7; }
-    html.dark .card span { color: #b8a595; }
-    html.dark .summary { background: rgba(93, 143, 163, 0.1); border-color: rgba(93, 143, 163, 0.2); color: #e8ebe8; }
-    html.dark .summary strong { color: #e8ebe8; }
-    html.dark .backlink a { color: #8ab4c7; }
-    html.dark .backlink a:hover { color: #d87959; }
-  </style>
-</head>
-<body>
-  <div class="frame">
-    <article class="sheet">
-      <div class="coffee-ring"></div>
-      <div class="content">
-      <nav class="site-nav" aria-label="Site navigation">
-        <a href="/">Postcard rack</a>
-        <a href="/which-claw/">Which Claw?</a>
-        <a href="/first-routes/">First Setup Routes</a>
-        <a href="/recommendations/">Tuning the Claws</a>
-        <a href="/community-currents/">Community Currents</a>
-          <a href="/about/">About</a>
-        <a href="/nemoclaw/">NemoClaw</a>
-      </nav>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
-
-      <div class="hero">
-        <div>
-          <span class="eyebrow">Route planner</span>
-          <h1>Which Claw should I choose?</h1>
-          <p class="lede">If you’re standing on the boardwalk wondering where to begin, this is the short answer page. Pick the project that matches your appetite, hardware, risk tolerance, and patience for complexity.</p>
-        </div>
-        <aside class="note-card">
-          <h3>Fast read</h3>
-          <p>OpenClaw is the broad canonical pier. NanoClaw is the cautious tinkerer's harbor. PicoClaw is the tiny-hardware route. NemoClaw is the safety-forward experiment.</p>
-        </aside>
-      </div>
-
-      <div class="summary">
-        <strong>Destination card:</strong> this page is one stop on the rack — use it when you already know the kind of question you're asking, and hop back to the front page when you want the broader map again.
-      </div>
-
-      <div class="grid">
-        <section class="card">
-          <span class="mini">Choose OpenClaw</span>
-          <h2>If you want the main ecosystem</h2>
-          <ul>
-            <li><strong>Best for:</strong> people who want the canonical docs, biggest project surface, and strongest ecosystem gravity.</li>
-            <li><strong>Choose it if:</strong> you want the main reference point and don’t mind more moving parts.</li>
-            <li><strong>Watch for:</strong> broader complexity and a need for more deliberate setup hygiene.</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <span class="mini">Choose NanoClaw</span>
-          <h2>If you want clarity and containment</h2>
-          <ul>
-            <li><strong>Best for:</strong> cautious tinkerers, security-minded users, and people who like readable code.</li>
-            <li><strong>Choose it if:</strong> you want a smaller mental model and container-first habits.</li>
-            <li><strong>Watch for:</strong> a leaner ecosystem and less of the big-pier social sprawl.</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <span class="mini">Choose PicoClaw</span>
-          <h2>If you care about tiny hardware</h2>
-          <ul>
-            <li><strong>Best for:</strong> Raspberry Pi dreams, low-RAM setups, edge experiments, and speed obsessives.</li>
-            <li><strong>Choose it if:</strong> small footprint matters more than broad ecosystem gravity.</li>
-            <li><strong>Watch for:</strong> a more focused shoreline and less mainstream documentation weight.</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <span class="mini">Choose NemoClaw</span>
-          <h2>If safety posture is the main question</h2>
-          <ul>
-            <li><strong>Best for:</strong> people exploring stronger rails, policy controls, and sandboxed operation.</li>
-            <li><strong>Choose it if:</strong> your main question is “how do I run this class of thing with more guardrails?”</li>
-            <li><strong>Watch for:</strong> alpha software realities, rougher edges, and official-channel dependence.</li>
-          </ul>
-        </section>
-
-        <section class="card full">
-          <span class="mini">My practical answer</span>
-          <h2>Default recommendations</h2>
-          <p>If you want the broadest, most established route, start with <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>. If you want a more legible and security-minded starting point, try <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>. If you want small hardware and low overhead, head toward <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a> — and treat PicoClaw Armored as a stronger-flavored branch of that route, not a totally separate harbor. If you are specifically studying safer agent operation, read deeply before experimenting with <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw</a>.</p>
-        </section>
-      </div>
-
-      <p class="backlink"><a href="/">← Back to the postcard rack</a></p>
-          </div>
-    </article>
+{% block body %}
+<div class="hero">
+  <div>
+    <span class="eyebrow">Route planner</span>
+    <h1>Which Claw Should I Choose?</h1>
+    <p class="lede">If you are standing on the shore wondering which claw to pick, here is the simplest way to think about it. Pick the project that matches your actual hardware and patience level, not the one that sounds coolest in a GitHub README.</p>
   </div>
+  <aside class="note-card">
+    <h3>Short answer</h3>
+    <p>Most people should start with OpenClaw. If you want something smaller and easier to audit, try NanoClaw. If you are on a Pi or have very limited hardware, PicoClaw. If you are researching safety and can tolerate alpha software, look at NemoClaw.</p>
+  </aside>
+</div>
 
-    <script>
-      function toggleTheme() {
-        const html = document.documentElement;
-        const btn = document.querySelector('.theme-toggle');
-        const isDark = html.classList.contains('dark');
-        if (isDark) {
-          html.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
-          btn.textContent = '☀️';
-        } else {
-          html.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
-          btn.textContent = '🌙';
-        }
-      }
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      }
-      if (document.querySelector('.theme-toggle')) {
-        document.querySelector('.theme-toggle').textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
-      }
-    </script>
-</body>
-</html>
+<div class="grid">
+  <section class="card">
+    <span class="mini">OpenClaw</span>
+    <h2>The main pier</h2>
+    <p><strong>Pick this if:</strong> you want the full experience — broad channel support, the most mature ecosystem, and the biggest community. You are willing to manage a bigger setup.</p>
+    <ul>
+      <li>macOS / Linux / WSL2 / Docker</li>
+      <li>Heaviest on resources, richest in features</li>
+      <li>Best for people who want everything in one place</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="mini">NanoClaw</span>
+    <h2>The smaller dock</h2>
+    <p><strong>Pick this if:</strong> you value auditability and a codebase you can actually read. NanoClaw is lighter and more approachable for tinkerers who want to understand what they are running.</p>
+    <ul>
+      <li>Self-contained, container-friendly</li>
+      <li>Great for people who want to read the code</li>
+      <li>Balanced between capability and complexity</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="mini">PicoClaw</span>
+    <h2>The tiny skiff</h2>
+    <p><strong>Pick this if:</strong> you are running on modest hardware, care about performance, and want a lightweight path into the claw ecosystem.</p>
+    <ul>
+      <li>Optimized for small-footprint machines</li>
+      <li>Fastest startup, lowest memory usage</li>
+      <li>Best for edge devices and resource-conscious setups</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="mini">NemoClaw</span>
+    <h2>NVIDIA's venture</h2>
+    <p><strong>Pick this if:</strong> you are interested in enterprise-grade security guardrails and don't mind working with alpha software that has rough edges.</p>
+    <ul>
+      <li>Alpha preview since March 2026</li>
+      <li>Sandboxed via OpenShell (Landlock + seccomp + netns)</li>
+      <li>Still young — expect friction and read the issue tracker</li>
+    </ul>
+  </section>
+
+  <section class="card full">
+    <span class="mini">Daphne's take</span>
+    <h2>My own recommendation</h2>
+    <p>Start with whichever project solves your problem with the least friction. If it is a personal assistant on a Mac, OpenClaw. If you are cautious or audit-focused, NanoClaw. If it is a Pi project, PicoClaw. If you want to research safety, NemoClaw. You can always migrate later — the important thing is to start somewhere practical and small.</p>
+  </section>
+</div>
+
+<p class="backlink"><a href="/">← Back to the postcard rack</a></p>
+{% endblock %}

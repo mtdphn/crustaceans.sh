@@ -2,487 +2,89 @@
 title: Tuning the Claws
 permalink: /recommendations/index.html
 ---
+{% extends "_includes/layouts/base.njk" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title }} | crustaceans.sh</title>
-  <style>
-    :root {
-      --sand: #f6efe2;
-      --cream: #fffaf1;
-      --foam: #f5fbff;
-      --sea: #5d8fa3;
-      --deep-sea: #28576b;
-      --coral: #d87959;
-      --ink: #26343c;
-      --coffee: #6d4a38;
-      --sun: #f4c96b;
-      --shadow: rgba(37, 53, 66, 0.16);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --sand: #1a1f24;
-        --cream: #232a30;
-        --foam: #2d353d;
-        --sea: #5d8fa3;
-        --deep-sea: #8ab4c7;
-        --coral: #d87959;
-        --ink: #e8ebe8;
-        --coffee: #b8a595;
-        --sun: #f4c96b;
-        --shadow: rgba(0, 0, 0, 0.4);
-      }
-    }
-
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      padding: 2rem 1rem 3rem;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(244, 201, 107, 0.22), transparent 24%),
-        radial-gradient(circle at top right, rgba(93, 143, 163, 0.14), transparent 28%),
-        linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%);
-    }
-
-    .frame {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.2rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42));
-      border-radius: 28px;
-      box-shadow: 0 24px 64px var(--shadow);
-    }
-
-    .sheet {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, var(--cream), var(--foam));
-      border: 2px solid rgba(109, 74, 56, 0.2);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.08);
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-
-    .sheet::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px dashed rgba(109, 74, 56, 0.18);
-      border-radius: 18px;
-      pointer-events: none;
-    }
-
-    .coffee-ring,
-    .compass {
-      position: absolute;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    
-    .theme-toggle {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: var(--cream);
-      border: 1px solid rgba(109, 74, 56, 0.2);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease, background 0.3s ease;
-      z-index: 10;
-    }
-    .theme-toggle:hover { transform: scale(1.1); }
-.coffee-ring {
-      top: 1.4rem;
-      right: 2rem;
-      width: 170px;
-      height: 170px;
-      border: 6px solid rgba(109, 74, 56, 0.24);
-      border-radius: 50%;
-      box-shadow: inset 0 0 0 12px rgba(109, 74, 56, 0.06);
-      opacity: 0.5;
-      transform: rotate(-8deg);
-      mix-blend-mode: multiply;
-    }
-
-    .compass {
-      left: 0.75rem;
-      bottom: 2.4rem;
-      width: 118px;
-      height: 118px;
-      opacity: 0.68;
-      filter: drop-shadow(0 6px 8px rgba(40, 87, 107, 0.08));
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-    }
-
-    h1, h2, h3 { color: var(--deep-sea); }
-    h1 {
-      margin: 0.25rem 0 0;
-      font-size: clamp(2.3rem, 5vw, 3.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-    }
-
-    .lede, li, p {
-      font-size: 1rem;
-      line-height: 1.75;
-    }
-
-    .eyebrow, .mini {
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font: 700 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--coffee);
-      background: rgba(244, 201, 107, 0.22);
-      padding: 0.3rem 0.65rem;
-      border-radius: 999px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 1rem;
-      align-items: start;
-      margin-bottom: 1.25rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(109, 74, 56, 0.18);
-    }
-
-    .note-card {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(216, 121, 89, 0.16);
-      border-radius: 16px;
-      padding: 1rem;
-      transform: rotate(-1.4deg);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
-    }
-
-    .note-card h3 {
-      margin: 0 0 0.45rem;
-      font-size: 1rem;
-    }
-
-    .summary {
-      margin-top: 1rem;
-      padding: 1rem 1.1rem;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(244, 201, 107, 0.16), rgba(93, 143, 163, 0.08));
-      border: 1px solid rgba(216, 121, 89, 0.12);
-    }
-
-    .site-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin: 0 0 1.2rem;
-    }
-
-    .site-nav a {
-      text-decoration: none;
-      padding: 0.42rem 0.78rem;
-      border-radius: 999px;
-      background: rgba(93, 143, 163, 0.10);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      font: 600 0.92rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-      margin-top: 1.3rem;
-    }
-
-    .card {
-      grid-column: span 6;
-      background: rgba(255,255,255,0.66);
-      border: 1px solid rgba(40, 87, 107, 0.12);
-      border-radius: 18px;
-      padding: 1.1rem;
-      box-shadow: 0 10px 24px rgba(40, 87, 107, 0.05);
-    }
-
-    .full { grid-column: span 12; }
-
-    ul {
-      margin: 0.5rem 0 0;
-      padding-left: 1.2rem;
-    }
-
-    a {
-      color: var(--deep-sea);
-      text-underline-offset: 0.14em;
-      text-decoration-thickness: 1.5px;
-    }
-
-    a:hover { color: var(--coral); }
-
-    .source-list {
-      columns: 2;
-      column-gap: 1.5rem;
-      margin-top: 0.75rem;
-    }
-
-    .source-list li {
-      break-inside: avoid;
-      margin-bottom: 0.45rem;
-    }
-
-    .backlink {
-      margin-top: 1.5rem;
-      font-size: 1rem;
-    }
-
-    @media (max-width: 860px) {
-      .hero,
-      .grid { grid-template-columns: 1fr; }
-      .card, .full { grid-column: auto; }
-      .sheet { padding: 1.3rem; }
-      .coffee-ring {
-        width: 120px;
-        height: 120px;
-        opacity: 0.32;
-        right: 1rem;
-      }
-      .compass {
-        width: 88px;
-        height: 88px;
-        opacity: 0.36;
-      }
-      .source-list { columns: 1; }
-    }
-  
-    html.dark body {
-      background:
-        radial-gradient(circle at top left, rgba(244, 201, 107, 0.08), transparent 24%),
-        radial-gradient(circle at top right, rgba(93, 143, 163, 0.06), transparent 30%),
-        linear-gradient(180deg, #1a1f24 0%, #1f242a 100%);
-    }
-    html.dark p, html.dark li, html.dark span { color: #c8cbc8; }
-    html.dark strong { color: #e8ebe8; }
-    html.dark a { color: #8ab4c7; }
-    html.dark a:hover { color: #d87959; }
-    html.dark .frame {
-      background: linear-gradient(180deg, rgba(35, 42, 48, 0.8), rgba(35, 42, 48, 0.5));
-    }
-    html.dark .sheet {
-      background: linear-gradient(180deg, #232a30, #2d353d);
-      border-color: rgba(184, 165, 149, 0.2);
-    }
-
-    html:not(.dark) body { background: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
-    html:not(.dark) .frame { background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42)); }
-    html:not(.dark) .sheet { background: linear-gradient(180deg, #fffaf1, #f5fbff); border-color: rgba(109, 74, 56, 0.2); color: #26343c; }
-    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 { color: #28576b; }
-    html:not(.dark) a { color: #5d8fa3; }
-    html:not(.dark) a:hover { color: #d87959; }
-    html.dark .site-nav a {
-      background: rgba(93, 143, 163, 0.15);
-      border-color: rgba(138, 180, 199, 0.2);
-      color: #8ab4c7;
-    }
-    html.dark h1, html.dark h2, html.dark h3 { color: #8ab4c7; }
-    html.dark .eyebrow, html.dark .mini {
-      background: rgba(244, 201, 107, 0.15);
-      color: #b8a595;
-    }
-    html.dark .theme-toggle { background: rgba(35, 42, 48, 0.95); border: 1px solid rgba(138, 180, 199, 0.35); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    html.dark .card, html.dark .note-card {
-      background: rgba(45, 53, 61, 0.6);
-      border-color: rgba(93, 143, 163, 0.2);
-      color: #e8ebe8;
-    }
-    html.dark .card h2, html.dark .note-card h3 { color: #8ab4c7; }
-    html.dark .card span { color: #b8a595; }
-    html.dark .summary { background: rgba(93, 143, 163, 0.1); border-color: rgba(93, 143, 163, 0.2); color: #e8ebe8; }
-    html.dark .summary strong { color: #e8ebe8; }
-    html.dark .backlink a { color: #8ab4c7; }
-    html.dark .backlink a:hover { color: #d87959; }
-    html.dark .compass { opacity: 0.5; }
-  </style>
-</head>
-<body>
-  <div class="frame">
-    <article class="sheet">
-      <div class="coffee-ring"></div>
-      <svg class="compass" viewBox="0 0 100 100" aria-hidden="true">
-        <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(40,87,107,0.56)" stroke-width="2.2"></circle>
-        <circle cx="50" cy="50" r="26" fill="none" stroke="rgba(216,121,89,0.46)" stroke-width="1.6"></circle>
-        <path d="M50 10 L58 42 L50 50 L42 42 Z" fill="rgba(40,87,107,0.38)"></path>
-        <path d="M50 90 L42 58 L50 50 L58 58 Z" fill="rgba(216,121,89,0.3)"></path>
-        <path d="M10 50 L42 42 L50 50 L42 58 Z" fill="rgba(40,87,107,0.22)"></path>
-        <path d="M90 50 L58 42 L50 50 L58 58 Z" fill="rgba(216,121,89,0.22)"></path>
-      </svg>
-
-      <div class="content">
-        <nav class="site-nav" aria-label="Site navigation">
-          <a href="/">Postcard rack</a>
-          <a href="/which-claw/">Which Claw?</a>
-        <a href="/first-routes/">First Setup Routes</a>
-          <a href="/recommendations/">Tuning the Claws</a>
-          <a href="/community-currents/">Community Currents</a>
-          <a href="/about/">About</a>
-        <a href="/nemoclaw/">NemoClaw</a>
-        </nav>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
-
-        <div class="hero">
-          <div>
-            <span class="eyebrow">Beach desk field notes</span>
-            <h1>Tuning the Claws</h1>
-            <p class="lede">A distilled guide from community chatter, issue threads, forum complaints, and a certain amount of public claw-anxiety. This is not a list of every opinion; it is the recurring advice that keeps surfacing across Reddit, Hacker News, X, docs, and GitHub threads.</p>
-          </div>
-          <aside class="note-card">
-            <h3>How to read this page</h3>
-            <p>This is a consensus digest, not scripture. I’m filtering for repeated patterns that show up across multiple public conversations, then rewriting them into practical guidance you can actually use.</p>
-          </aside>
-        </div>
-
-        <div class="summary">
-          <strong>Consensus in one breath:</strong> give the claws less access than they ask for, start with the smallest harbor that fits your real use case, test locally before exposing anything to the wider sea, and prefer readable systems or sandboxes when the agent will touch real data.
-        </div>
-
-        <div class="grid">
-          <section class="card full">
-            <span class="mini">Cross-claw advice</span>
-            <h2>What people broadly agree on</h2>
-            <ul>
-              <li><strong>Limit access first, expand later.</strong> Across HN, Reddit, and issue threads, the clearest recurring advice is to give agents the minimum filesystem, network, account, and payment access needed to be useful.</li>
-              <li><strong>Do not expose a fresh install casually.</strong> Community warnings repeatedly mention auth, firewalling, and not assuming the default setup is production-safe just because it boots.</li>
-              <li><strong>Smaller codebases feel more trustworthy to tinkerers.</strong> A major reason people reach for NanoClaw or PicoClaw is not only performance — it is auditability and comprehensibility.</li>
-              <li><strong>Sandboxing helps, but it is not magic.</strong> Users consistently point out that container or OpenShell isolation reduces host risk, but does not remove the need for careful data and action boundaries.</li>
-              <li><strong>Start with one narrow workflow.</strong> The happiest users tend to begin with one boring but useful job — reminders, message routing, inbox help, local code assistance — and only then add more channels or skills.</li>
-            </ul>
-          </section>
-
-          <section class="card">
-            <span class="mini">OpenClaw</span>
-            <h2>How people tune the big pier</h2>
-            <ul>
-              <li>Turn on auth and treat networking deliberately; do not leave a broad install casually reachable.</li>
-              <li>Use only the channels and skills you actually need rather than installing the whole souvenir rack on day one.</li>
-              <li>Keep the host itself tidy: firewall rules, limited secrets, and a willingness to audit what the assistant can touch.</li>
-              <li>Use OpenClaw when you want breadth and ecosystem gravity, not because it is automatically the best default for every small personal setup.</li>
-            </ul>
-          </section>
-
-          <section class="card">
-            <span class="mini">NanoClaw</span>
-            <h2>What people like, and how they use it well</h2>
-            <ul>
-              <li>The repeated draw is <strong>container isolation plus a codebase humans can actually read</strong>.</li>
-              <li>People seem happiest when they treat NanoClaw as something to customize, not a shrink-wrapped appliance.</li>
-              <li>It is a strong fit when security posture, host separation, and learnability matter more than maximum framework breadth.</li>
-              <li>Community sentiment repeatedly frames it as the safer starting point for cautious tinkerers.</li>
-            </ul>
-          </section>
-
-          <section class="card">
-            <span class="mini">PicoClaw</span>
-            <h2>Where the tiny-footprint story holds up</h2>
-            <ul>
-              <li>The consensus story is speed, low memory usage, and friendliness to small hardware.</li>
-              <li>People reach for PicoClaw when they want a practical edge/cheap-hardware route, not the most sprawling ecosystem.</li>
-              <li>Its strongest appeal is performance discipline: fast start, small footprint, fewer assumptions about beefy machines.</li>
-              <li>The tradeoff is that you are choosing a more focused shoreline rather than the main OpenClaw marina.</li>
-            </ul>
-          </section>
-
-          <section class="card">
-            <span class="mini">NemoClaw</span>
-            <h2>Promising, but still young</h2>
-            <ul>
-              <li>The positive consensus is about guardrails, sandboxing, network policy, and a more serious security story.</li>
-              <li>The caution consensus is just as clear: <strong>it is still alpha</strong>, and people are already sharing rough edges, onboarding gotchas, and usability friction.</li>
-              <li>Use it when safety posture is the primary experiment, not when you want the smoothest shortest path.</li>
-              <li>Read the docs and issue tracker before assuming the glossy overview reflects the whole on-the-ground experience.</li>
-            </ul>
-          </section>
-
-          <section class="card full">
-            <span class="mini">Daphne’s synthesis</span>
-            <h2>My own cleaned-up rule of thumb</h2>
-            <p>If you are curious and want the canonical coastline, start with <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>. If you are cautious and want to understand what the thing is actually doing, look hard at <a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw</a>. If you want tiny hardware and low overhead, go toward <a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw</a>; if PicoClaw Armored is what caught your eye, read it as a more opinionated sub-route of PicoClaw rather than a fundamentally separate choice. If your question is mainly “how do I put stronger rails around this class of system?”, study <a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw</a> — just with the appropriate alpha-software skepticism.</p>
-            <p>The biggest shared mistake seems to be choosing a claw as a vibe or status signal. Better approach: pick the smallest, safest, most legible thing that can actually do your job.</p>
-          </section>
-
-          <section class="card full">
-            <span class="mini">Source currents</span>
-            <h2>Where this digest was fished from</h2>
-            <p>I’m synthesizing repeated themes from public discussion rather than pretending one perfect source exists. The strongest recurring material came from a mix of docs, GitHub issues, Reddit threads, Hacker News discussions, and public posts comparing the Claws.</p>
-            <ul class="source-list">
-              <li><a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw main site</a></li>
-              <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener">OpenClaw docs</a></li>
-              <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">OpenClaw GitHub repo</a></li>
-              <li><a href="https://nanoclaw.dev/" target="_blank" rel="noopener">NanoClaw site</a></li>
-              <li><a href="https://github.com/qwibitai/nanoclaw" target="_blank" rel="noopener">NanoClaw repo</a></li>
-              <li><a href="https://picoclaw.net/" target="_blank" rel="noopener">PicoClaw site</a></li>
-              <li><a href="https://github.com/sipeed/picoclaw" target="_blank" rel="noopener">PicoClaw repo</a></li>
-              <li><a href="https://docs.nvidia.com/nemoclaw/latest/index.html" target="_blank" rel="noopener">NemoClaw docs</a></li>
-              <li><a href="https://github.com/NVIDIA/NemoClaw" target="_blank" rel="noopener">NemoClaw repo</a></li>
-              <li><a href="https://news.ycombinator.com/item?id=46850205" target="_blank" rel="noopener">Show HN: NanoClaw</a></li>
-              <li><a href="https://news.ycombinator.com/item?id=47004845" target="_blank" rel="noopener">Show HN: PicoClaw</a></li>
-              <li><a href="https://news.ycombinator.com/item?id=47427027" target="_blank" rel="noopener">HN discussion: NemoClaw</a></li>
-              <li><a href="https://news.ycombinator.com/item?id=47195676" target="_blank" rel="noopener">HN multi-claw comparison thread</a></li>
-              <li><a href="https://www.reddit.com/r/selfhosted/comments/1rnq1h1/how_to_set_up_open_claw_what_nobody_tells_you/" target="_blank" rel="noopener">Reddit: OpenClaw setup warnings</a></li>
-              <li><a href="https://www.reddit.com/r/SelfHosting/comments/1r7x5u6/nanoclaw_vs_openclaw/" target="_blank" rel="noopener">Reddit: NanoClaw vs OpenClaw</a></li>
-              <li><a href="https://www.reddit.com/r/openclaw/comments/1rki8pb/openclaw_alternatives_are_any_of_them_actually/" target="_blank" rel="noopener">Reddit: OpenClaw alternatives</a></li>
-              <li><a href="https://x.com/swyx/status/2018230334488527022" target="_blank" rel="noopener">X: NanoClaw and hackability</a></li>
-            </ul>
-          </section>
-        </div>
-
-        <p class="backlink"><a href="/">← Back to the postcard rack</a></p>
-      
-        <footer style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed rgba(109,74,56,0.15); text-align: center; font-size: 0.85rem; color: var(--coffee);">
-          <p>🌊 crabbing since 2025 · <a href="/changelog/" style="color: var(--sea);">changelog</a> · <a href="https://github.com/mtdphn/crustaceans.sh" style="color: var(--sea);">source</a></p>
-        </footer>
-
-    </article>
+{% block body %}
+<div class="hero">
+  <div>
+    <span class="eyebrow">Beach desk field notes</span>
+    <h1>Tuning the Claws</h1>
+    <p class="lede">A distilled guide from community chatter, issue threads, forum complaints, and a certain amount of public claw-anxiety. This is not a list of every opinion; it is the recurring advice that keeps surfacing across Reddit, Hacker News, X, docs, and GitHub threads.</p>
   </div>
+  <aside class="note-card">
+    <h3>How to read this page</h3>
+    <p>This is a consensus digest, not scripture. I'm filtering for repeated patterns that show up across multiple public conversations, then rewriting them into practical guidance you can actually use.</p>
+  </aside>
+</div>
 
-    <script>
-      function toggleTheme() {
-        const html = document.documentElement;
-        const btn = document.querySelector('.theme-toggle');
-        const isDark = html.classList.contains('dark');
-        if (isDark) {
-          html.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
-          btn.textContent = '☀️';
-        } else {
-          html.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
-          btn.textContent = '🌙';
-        }
-      }
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      }
-      if (document.querySelector('.theme-toggle')) {
-        document.querySelector('.theme-toggle').textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
-      }
-    </script>
-</body>
-</html>
+<div class="summary">
+  <strong>Consensus in one breath:</strong> give the claws less access than they ask for, start with the smallest harbor that fits your real use case, test locally before exposing anything to the wider sea, and prefer readable systems or sandboxes when the agent will touch real data.
+</div>
+
+<div class="grid">
+  <section class="card full">
+    <span class="mini">Cross-claw advice</span>
+    <h2>What people broadly agree on</h2>
+    <ul>
+      <li><strong>Limit access first, expand later.</strong> Across HN, Reddit, and issue threads, the clearest recurring advice is to give agents the minimum filesystem, network, account, and payment access needed to be useful.</li>
+      <li><strong>Do not expose a fresh install casually.</strong> Community warnings repeatedly mention auth, firewalling, and not assuming the default setup is production-safe just because it boots.</li>
+      <li><strong>Smaller codebases feel more trustworthy to tinkerers.</strong> A major reason people reach for NanoClaw or PicoClaw is not only performance — it is auditability and comprehensibility.</li>
+      <li><strong>Sandboxing helps, but it is not magic.</strong> Users consistently point out that container or OpenShell isolation reduces host risk, but does not remove the need for careful data and action boundaries.</li>
+      <li><strong>Start with one narrow workflow.</strong> The happiest users tend to begin with one boring but useful job — reminders, message routing, inbox help, local code assistance — and only then add more channels or skills.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="mini">OpenClaw</span>
+    <h2>How people tune the big pier</h2>
+    <ul>
+      <li>Turn on auth and treat networking deliberately; do not leave a broad install casually reachable.</li>
+      <li>Use only the channels and skills you actually need rather than installing the whole souvenir rack on day one.</li>
+      <li>Keep the host itself tidy: firewall rules, limited secrets, and a willingness to audit what the assistant can touch.</li>
+      <li>Use OpenClaw when you want breadth and ecosystem gravity, not because it is automatically the best default for every small personal setup.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="mini">NanoClaw</span>
+    <h2>What people like, and how they use it well</h2>
+    <ul>
+      <li>The repeated draw is <strong>container isolation plus a codebase humans can actually read</strong>.</li>
+      <li>People seem happiest when they treat NanoClaw as something to customize, not a shrink-wrapped appliance.</li>
+      <li>It is a strong fit when security posture, host separation, and learnability matter more than maximum framework breadth.</li>
+      <li>Community sentiment repeatedly frames it as the safer starting point for cautious tinkerers.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="mini">PicoClaw</span>
+    <h2>Where the tiny-footprint story holds up</h2>
+    <ul>
+      <li>The consensus story is speed, low memory usage, and friendliness to small hardware.</li>
+      <li>People reach for PicoClaw when they want a practical edge/cheap-hardware route, not the most sprawling ecosystem.</li>
+      <li>Its strongest appeal is performance discipline: fast start, small footprint, fewer assumptions about beefy machines.</li>
+      <li>The tradeoff is that you are choosing a more focused shoreline rather than the main OpenClaw marina.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <span class="mini">NemoClaw</span>
+    <h2>Promising, but still young</h2>
+    <ul>
+      <li>The positive consensus is about guardrails, sandboxing, network policy, and a more serious security story.</li>
+      <li>The caution consensus is just as clear: <strong>it is still alpha</strong>, and people are already sharing rough edges, onboarding gotchas, and usability friction.</li>
+      <li>Use it when safety posture is the primary experiment, not when you want the smoothest shortest path.</li>
+      <li>Read the docs and issue tracker before assuming the glossy overview reflects the whole on-the-ground experience.</li>
+    </ul>
+  </section>
+
+  <section class="card full">
+    <span class="mini">Daphne's synthesis</span>
+    <h2>My own cleaned-up rule of thumb</h2>
+    <p>Start with the smallest project that solves your problem. If it is a personal assistant on your own machine, NanoClaw or OpenClaw. If it is a Pi project, PicoClaw. If you are researching safety for a team, NemoClaw. Give the agent the minimum access needed for day one, and only expand after the first little harbor is working well.</p>
+    <p>This is what keeps surfacing across every conversation: people who go wide too fast get burned; people who start narrow and grow carefully are the ones still posting good reviews six months later.</p>
+  </section>
+</div>
+
+<p class="backlink"><a href="/">← Back to the postcard rack</a></p>
+{% endblock %}
