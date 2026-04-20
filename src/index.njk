@@ -38,30 +38,6 @@ permalink: /index.html
   }
   .art-jaunty svg { width: 74%; transform: rotate(-6deg) translateY(10px); transform-origin: center bottom; }
 
-  /* ====== Quick links under description ====== */
-  .quick-links {
-    margin: 1rem 0 0; padding: 0.5rem 0 0;
-    border-top: 1px solid rgba(216,121,89,0.15);
-  }
-  .quick-links ul {
-    margin: 0; padding: 0 0 0 1.2rem;
-    list-style: disc;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.25rem 1.5rem;
-  }
-  .quick-links li {
-    margin: 0.2rem 0;
-  }
-  .quick-links a {
-    color: var(--coffee);
-    text-decoration: none;
-  }
-  .quick-links a:hover {
-    text-decoration: underline;
-  }
-  html.dark .quick-links a { color: #8ab4c7; }
-
   /* ====== Image generation note ====== */
   .img-note {
     margin-top: 1.5rem;
@@ -102,16 +78,6 @@ permalink: /index.html
     <h3>What's this about?</h3>
     <p>crustaceans.sh is a postcard-themed wayfinding guide to the self-hosted AI assistant ecosystem — OpenClaw, NanoClaw, PicoClaw, NemoClaw, and everything in between.</p>
   </aside>
-</div>
-
-<div class="quick-links">
-  <ul>
-    <li><a href="/which-claw/">Which Claw?</a></li>
-    <li><a href="/first-routes/">First Setup Routes</a></li>
-    <li><a href="/recommendations/">Tuning the Claws</a></li>
-    <li><a href="/community-currents/">Community Currents</a></li>
-    <li><a href="/claw-watch/">Claw Watch</a></li>
-  </ul>
 </div>
 
 <div class="summary-band">
@@ -226,10 +192,14 @@ permalink: /index.html
 </div>
 
 <div class="img-note">
-  <strong>🎨 Generating postcard images on Mac</strong><br/>
-  SVGs are generated with an inline Node script using the <code>canvas</code> package (v3.x).<br/>
-  <code>npm i canvas</code> then run: <code>node -e "const {Canvas, createCanvas} = require('canvas'); const c = createCanvas(1024,768); const ctx = c.getContext('2d'); /* draw here */; const buf = c.toBuffer('image/png'); require('fs').writeFileSync('postcard.png', buf);"</code><br/>
-  This uses the native <code>node-canvas</code> bindings which compile with Cairo/SVG support. No external API needed — it's all local on the Mac.
+  <strong>🎨 Generating postcard images with Draw Things</strong><br/>
+  Run Draw Things on your Mac with its <strong>Local Server</strong> mode enabled (defaults to <code>http://127.0.0.1:7860</code>).<br/>
+  Then POST to its Stable Diffusion API:
+  <pre style="margin:0.5rem 0 0; background:rgba(93,143,163,0.06); padding:0.75rem; border-radius:8px; font-size:0.78rem; overflow-x:auto;">curl http://127.0.0.1:7860/sdapi/v1/txt2img \
+  -d '{"prompt":"vintage postcard...","width":1024,"height":768,"steps":20,"cfg_scale":6,"batch_size":1}'</pre>
+  Full prompt + negative prompt + style suffixes are in
+  <code>crustaceans-internal/drawthings-prompts.md</code>. Use the toolkit script
+  <code>python crustaceans-internal/drawthings-generate.py &lt;slug&gt;</code> to generate, poll GPU idle, and promote the best output automatically.
 </div>
 
 <div class="rack-footer">
