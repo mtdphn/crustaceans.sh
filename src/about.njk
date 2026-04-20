@@ -54,12 +54,12 @@ permalink: /about/index.html
     }
 
     .frame {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 1.2rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.4));
+      background: transparent;
       border-radius: 28px;
-      box-shadow: 0 24px 64px var(--shadow);
+      box-shadow: none;
     }
 
     .sheet {
@@ -161,8 +161,8 @@ permalink: /about/index.html
 
     /* Explicit light mode */
     html:not(.dark) body { background: #f6efe2; background-image: linear-gradient(180deg, #f7efe3 0%, #f4ead8 42%, #efe2cf 100%); }
-    html:not(.dark) .frame { background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.42)); }
-    html:not(.dark) .sheet { background: linear-gradient(180deg, #fffaf1, #f5fbff); border-color: rgba(109, 74, 56, 0.2); color: #26343c; }
+    html:not(.dark) .frame { background: transparent; }
+    html:not(.dark) .sheet { background: linear-gradient(180deg, #f4ead8, #ede0c8); border-color: rgba(109, 74, 56, 0.2); color: #26343c; }
     html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3 { color: #28576b; }
     html.dark .frame {
       background: linear-gradient(180deg, rgba(35, 42, 48, 0.8), rgba(35, 42, 48, 0.5));
@@ -179,6 +179,31 @@ permalink: /about/index.html
     html.dark h1, html.dark h2, html.dark h3 { color: #8ab4c7; }
     html.dark .stamp { background: rgba(244, 201, 107, 0.15); color: #b8a595; }
     html.dark .theme-toggle { background: rgba(35, 42, 48, 0.95); border: 1px solid rgba(138, 180, 199, 0.35); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    html.dark .note-card { background: rgba(45, 53, 61, 0.6); border-color: rgba(216, 121, 89, 0.2); color: #e8ebe8; }
+    html.dark .note-card h3 { color: #8ab4c7; }
+    html.dark .hero { border-bottom-color: rgba(184, 165, 149, 0.2); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
+      align-items: start;
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(109, 74, 56, 0.18);
+    }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+    .note-card {
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(216, 121, 89, 0.18);
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+      transform: rotate(-1.5deg);
+    }
+    .note-card h3 { color: var(--deep-sea); margin-top: 0; }
   </style>
 </head>
 <body>
@@ -197,26 +222,29 @@ permalink: /about/index.html
         </nav>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
 
+        <div class="hero">
+          <div>
+            <span class="eyebrow">About the site</span>
+            <h1>About the Crustaceans</h1>
+            <p>crustaceans.sh is a postcard rack for the OpenClaw coast — a collection of seaside dispatches for anyone exploring self-hosted AI assistants, local-first agents, and the quiet infrastructure that makes them tick.</p>
+            <p>We built this site because the usual giant brochure approach to documentation felt wrong for a project that thrives on experimentation and personal setup. Instead of one canonical answer, we offer cards: each one addresses a different mood or question you might bring to the shore.</p>
+          </div>
+          <aside class="note-card">
+            <h3>The vibe</h3>
+            <p>This isn't a corporate landing page. It's more like a boardwalk bulletin board — a little rough around the edges, full of handwritten notes, and honest about what we don't know yet. The aesthetic pulls from late-1950s automotive travel posters: Daphne Blue, seafoam green, shoreline gold, and cream.</p>
+          </aside>
+        </div>
 
-        <span class="stamp">Stationed 2025</span>
-        <h1>About the Crustaceans</h1>
-
-        <p>crustaceans.sh is a postcard rack for the OpenClaw coast — a collection of seaside dispatches for anyone exploring self-hosted AI assistants, local-first agents, and the quiet infrastructure that makes them tick.</p>
-
-        <p>We built this site because the usual giant brochure approach to documentation felt wrong for a project that thrives on experimentation and personal setup. Instead of one canonical answer, we offer cards: each one addresses a different mood or question you might bring to the shore.</p>
-
-        <hr>
-
-        <h2>The vibe</h2>
-        <p>This isn't a corporate landing page. It's more like a boardwalk bulletin board — a little rough around the edges, full of handwritten notes, and honest about what we don't know yet. The aesthetic pulls from late-1950s automotive travel posters: Daphne Blue, seafoam green, shoreline gold, and cream.</p>
-
-        <h2>Who runs this</h2>
-        <p>The site is maintained by the OpenClaw community. The postcards are generated with Draw Things on a local Mac Mini, because we believe the tools we write about should be used to write about the tools.</p>
-
-        <h2>Contributing</h2>
-        <p>Got a postcard idea? See something wrong? The source lives at <a href="https://github.com/mtdphn/crustaceans.sh">github.com/mtdphn/crustaceans.sh</a>. Pull requests welcome — especially if they come with new art.</p>
-
-        <hr>
+        <div class="hero">
+          <div>
+            <h2>Who runs this</h2>
+            <p>The site is maintained by the OpenClaw community. The postcards are generated with Draw Things on a local Mac Mini, because we believe the tools we write about should be used to write about the tools.</p>
+          </div>
+          <aside class="note-card">
+            <h3>Contributing</h3>
+            <p>Got a postcard idea? See something wrong? The source lives at <a href="https://github.com/mtdphn/crustaceans.sh">github.com/mtdphn/crustaceans.sh</a>. Pull requests welcome — especially if they come with new art.</p>
+          </aside>
+        </div>
 
         <p style="font-style: italic; color: var(--coffee);">Thanks for stopping by the shore.</p>
       
