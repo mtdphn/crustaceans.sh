@@ -173,8 +173,14 @@ permalink: /community-currents/index.html
       color: #b8a595;
     }
     html.dark .theme-toggle { background: rgba(35, 42, 48, 0.95); border: 1px solid rgba(138, 180, 199, 0.35); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    html.dark .card { background: rgba(45, 53, 61, 0.6); border-color: rgba(93, 143, 163, 0.2); }
-    html.dark .note-card { background: rgba(45, 53, 61, 0.6); border-color: rgba(216, 121, 89, 0.2); }
+    html.dark .card, html.dark .note-card {
+      background: rgba(45, 53, 61, 0.6);
+      border-color: rgba(93, 143, 163, 0.2);
+      color: #e8ebe8;
+    }
+    html.dark .note-card { border-color: rgba(216, 121, 89, 0.2); }
+    html.dark .card h2 { color: #8ab4c7; }
+    html.dark .card span { color: #b8a595; }
     html.dark .note-card img { opacity: 0.8; }
     html.dark .summary { background: rgba(93, 143, 163, 0.1); border-color: rgba(93, 143, 163, 0.2); color: #e8ebe8; }
     html.dark .summary strong { color: #e8ebe8; }
