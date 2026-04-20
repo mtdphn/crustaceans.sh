@@ -1,73 +1,84 @@
 ---
-title: Which Claw Should I Choose?
+title: Which Claw? — The Lay of the Land
 permalink: /which-claw/index.html
 ---
 {% extends "_includes/layouts/base.njk" %}
 
+{% block extraCSS %}
+<style>
+  .claw-option {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.2rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(244, 201, 107, 0.10), rgba(93, 143, 163, 0.06));
+    border: 1px solid rgba(216, 121, 89, 0.10);
+  }
+  html.dark .claw-option {
+    background: rgba(93,143,163,0.08);
+    border-color: rgba(93,143,163,0.15);
+  }
+  .claw-option h3 { margin: 0 0 0.4rem; }
+  .claw-option .tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 0.1rem 0.45rem; border-radius: 999px; margin-left: 0.5rem;
+    background: rgba(216, 121, 89, 0.15); color: #c4644a;
+  }
+  html.dark .claw-option .tag { background: rgba(216,121,89,0.25); }
+  .claw-option .stars { font-size: 0.78rem; color: #8a9ea3; margin-top: 0.3rem; }
+  html.dark .claw-option .stars { color: #7a8e93; }
+  .claw-option .pulse {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: #5e9274; margin-right: 4px; vertical-align: middle;
+  }
+  html.dark .claw-option .pulse { background: #8abd9e; }
+</style>
+{% endblock %}
+
 {% block body %}
-<div class="hero">
-  <div>
-    <span class="eyebrow">Route planner</span>
-    <h1>Which Claw Should I Choose?</h1>
-    <p class="lede">If you are standing on the shore wondering which claw to pick, here is the simplest way to think about it. Pick the project that matches your actual hardware and patience level, not the one that sounds coolest in a GitHub README.</p>
-  </div>
-  <aside class="note-card">
-    <h3>Short answer</h3>
-    <p>Most people should start with OpenClaw. If you want something smaller and easier to audit, try NanoClaw. If you are on a Pi or have very limited hardware, PicoClaw. If you are researching safety and can tolerate alpha software, look at NemoClaw.</p>
-  </aside>
+<span class="stamp">The Boardwalk</span>
+<h1>Which Claw?</h1>
+<p class="lede">The claw ecosystem has grown. Here's the lay of the land as of April 2026.</p>
+
+<div class="claw-option">
+  <h3>OpenClaw <span class="tag">main</span></h3>
+  <p>The full-featured AI assistant runtime. Python-based, connects to Telegram, Discord, Signal, Slack, and more. Has plugins, skills, cron jobs, subagents, memory, and a growing ClawHub ecosystem. 211K+ GitHub stars since November 2025 (started as Clawdbot → Moltbot → OpenClaw).</p>
+  <p class="stars"><span class="pulse"></span> 211K stars · 2026.4.14 latest (GPT-5.4 routing, security hardening, 138+ CVEs tracked)</p>
 </div>
 
-<div class="grid">
-  <section class="card">
-    <span class="mini">OpenClaw</span>
-    <h2>The main pier</h2>
-    <p><strong>Pick this if:</strong> you want the full experience — broad channel support, the most mature ecosystem, and the biggest community. You are willing to manage a bigger setup.</p>
-    <ul>
-      <li>macOS / Linux / WSL2 / Docker</li>
-      <li>Heaviest on resources, richest in features</li>
-      <li>Best for people who want everything in one place</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <span class="mini">NanoClaw</span>
-    <h2>The smaller dock</h2>
-    <p><strong>Pick this if:</strong> you value auditability and a codebase you can actually read. NanoClaw is lighter and more approachable for tinkerers who want to understand what they are running.</p>
-    <ul>
-      <li>Self-contained, container-friendly</li>
-      <li>Great for people who want to read the code</li>
-      <li>Balanced between capability and complexity</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <span class="mini">PicoClaw</span>
-    <h2>The tiny skiff</h2>
-    <p><strong>Pick this if:</strong> you are running on modest hardware, care about performance, and want a lightweight path into the claw ecosystem.</p>
-    <ul>
-      <li>Optimized for small-footprint machines</li>
-      <li>Fastest startup, lowest memory usage</li>
-      <li>Best for edge devices and resource-conscious setups</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <span class="mini">NemoClaw</span>
-    <h2>NVIDIA's venture</h2>
-    <p><strong>Pick this if:</strong> you are interested in enterprise-grade security guardrails and don't mind working with alpha software that has rough edges.</p>
-    <ul>
-      <li>Alpha preview since March 2026</li>
-      <li>Sandboxed via OpenShell (Landlock + seccomp + netns)</li>
-      <li>Still young — expect friction and read the issue tracker</li>
-    </ul>
-  </section>
-
-  <section class="card full">
-    <span class="mini">Daphne's take</span>
-    <h2>My own recommendation</h2>
-    <p>Start with whichever project solves your problem with the least friction. If it is a personal assistant on a Mac, OpenClaw. If you are cautious or audit-focused, NanoClaw. If it is a Pi project, PicoClaw. If you want to research safety, NemoClaw. You can always migrate later — the important thing is to start somewhere practical and small.</p>
-  </section>
+<div class="claw-option">
+  <h3>NanoClaw <span class="tag">lightweight</span></h3>
+  <p>A containerized, security-first alternative to OpenClaw. Runs in containers for isolation. Connects to WhatsApp, Telegram, Slack, Discord, Gmail, and other messaging apps. Has memory, scheduled jobs, and runs directly on Anthropic's Agents SDK.</p>
+  <p>Latest preview includes Vercel Chat SDK integration (15 messaging platforms from one codebase) and one-tap approval dialogs for sensitive agent actions.</p>
+  <p class="stars"><span class="pulse"></span> High velocity — 36-50 PRs per day tracked as of early April</p>
 </div>
 
-<p class="backlink"><a href="/">← Back to the postcard rack</a></p>
+<div class="claw-option">
+  <h3>PicoClaw <span class="tag">ultra-light</span></h3>
+  <p>Written entirely in Go for sub-second startup and static binary distribution. A single native binary with no runtime dependencies — designed for ultra-portable hardware including $10-class devices and RISC-V boards.</p>
+  <p>Built through a self-bootstrapping process where the AI agent itself drove the entire architectural migration and code optimization. Channel auto-orchestration and capability interfaces are live.</p>
+  <p class="stars"><span class="pulse"></span> 20K+ stars in just 17 days · v0.2.6 released April 8</p>
+</div>
+
+<div class="claw-option">
+  <h3>ZeroClaw <span class="tag">minimal</span></h3>
+  <p>The most stripped-down variant — bare-bones AI agent runtime for minimal environments. Targets edge cases where even PicoClaw might be overkill.</p>
+</div>
+
+<div class="claw-option">
+  <h3>NemoClaw <span class="tag">enterprise</span></h3>
+  <p>NVIDIA's enterprise wrapper for OpenClaw — sandboxed, guarded, managed. Runs OpenClaw inside NVIDIA OpenShell with Landlock + seccomp + network namespace isolation. Policy-based guardrails for every network request, file access, and inference call.</p>
+  <p>Launched March 16 at GTC 2026. Still in early preview — interfaces may change without notice. Showcased at National Robotics Week for translating text instructions into physical robot actions via Isaac Sim.</p>
+</div>
+
+<h2>How to choose</h2>
+<ul>
+  <li><strong>Want everything?</strong> Go with <a href="/">OpenClaw</a>. It's the main event.</li>
+  <li><strong>Need container security?</strong> <a href="#nanoclaw">NanoClaw</a> is your friend.</li>
+  <li><strong>Running on a microcontroller or $10 board?</strong> <a href="#picoclaw">PicoClaw</a> (Go binary, no deps).</li>
+  <li><strong>Enterprise deployment?</strong> <a href="/nemoclaw/">NemoClaw</a> wraps OpenClaw for production.</li>
+  <li><strong>Minimal, bare-bones?</strong> <a href="#zeroclaw">ZeroClaw</a> exists for the edge cases.</li>
+</ul>
+
+<a href="/first-routes/" class="backlink">← First Setup Routes →</a>
 {% endblock %}
